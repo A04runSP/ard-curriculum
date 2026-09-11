@@ -1,0 +1,51 @@
+name: Extract CSS
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  extract-css:
+    if: "!contains(github.event.head_commit.message, '[skip css extraction]')"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Extract embedded CSS
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          html_path = Path('index.html')
+          css_path = Path('style.css')
+          html = html_path.read_text(encoding='utf-8')
+
+          start = html.find('<style>')
+          end = html.find('</style>', start)
+
+          if start == -1 or end == -1:
+              print('No embedded style block found; nothing to do.')
+              raise SystemExit(0)
+
+          css = html[start + len('<style>'):end]
+          css_path.write_text(css.lstrip('\n'), encoding='utf-8')
+          html = html[:start] + '<link rel="stylesheet" href="style.css">\n' + html[end + len('</style>'):]
+          html_path.write_text(html, encoding='utf-8')
+          print('Extracted embedded CSS into style.css and linked it from index.html.')
+          PY
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html style.css
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "Extract CSS from index.html [skip css extraction]"
+          git push
