@@ -1,0 +1,36 @@
+export const projectLadder = [
+  { level:1, title:"Beginner — Small Exercises & Simple Websites", objective:"Prove you can turn a plain-English spec into working, correct code without hand-holding.",
+    prerequisites:"Programming + start of Web Development stage.",
+    projects:[
+      { name:"Personal bio page", features:"A single static page: photo, short bio, links.", tech:"HTML + CSS only.", ui:"Clean, readable, responsive from 320px up.", db:"None.", testing:"Manual — check on 3 screen sizes.", deployment:"GitHub Pages or Netlify (drag-and-drop is fine here).", stretch:"Add a simple CSS animation on load.", evaluation:"Loads correctly, fully responsive, valid semantic HTML." },
+      { name:"Interactive quiz app", features:"5+ multiple-choice questions, score tracking, results screen.", tech:"HTML/CSS + vanilla JavaScript (DOM + events).", ui:"One question visible at a time; clear feedback per answer.", db:"None (data as a JS array).", testing:"Manual — verify score is always correct across all paths.", deployment:"Netlify/Vercel static hosting.", stretch:"Add a timer per question.", evaluation:"No console errors; score logic is provably correct." }
+    ]},
+  { level:2, title:"Foundation — Interactive Websites", objective:"Build real interactivity and talk to a live external API.",
+    prerequisites:"Web Development stage (DOM, events, async JS).",
+    projects:[
+      { name:"To-do list with localStorage", features:"Add/complete/delete tasks; tasks persist after refresh.", tech:"Vanilla JS + localStorage.", ui:"Clear empty state when no tasks exist.", db:"Browser localStorage only.", testing:"Manual — refresh mid-use and confirm nothing is lost.", deployment:"Netlify/Vercel.", stretch:"Add categories/tags and filtering.", evaluation:"Data survives refresh reliably; no data loss bugs." },
+      { name:"Weather app", features:"Search a city, fetch and display real live weather.", tech:"Vanilla JS + Fetch API + a public weather API.", ui:"Loading, error, and success states all designed and handled.", db:"None.", testing:"Manual — test an invalid city name and a network failure.", deployment:"Netlify/Vercel.", stretch:"Add a 5-day forecast view.", evaluation:"Handles failure gracefully, never shows a broken/blank screen." }
+    ]},
+  { level:3, title:"Intermediate — Frontend Applications", objective:"Build a real multi-view application with a frontend framework and clean component architecture.",
+    prerequisites:"Frontend stage (React + TypeScript).",
+    projects:[
+      { name:"Movie/recipe search app", features:"Search, results grid, detail view, favorites (client-side).", tech:"React + TypeScript + a public API + React Router.", ui:"Loading/empty/error states throughout; responsive grid.", db:"None (favorites in localStorage).", testing:"A handful of component unit tests (Vitest + RTL).", deployment:"Vercel.", stretch:"Add debounced search-as-you-type.", evaluation:"Clean component boundaries; no prop-drilling more than 2 levels deep." },
+      { name:"Budget tracker with charts", features:"Add/edit/delete transactions, category totals, a simple chart.", tech:"React + TypeScript, a lightweight chart library, localStorage.", ui:"A real dashboard layout (Grid-based).", db:"None (localStorage).", testing:"Unit tests on the calculation logic (totals, category grouping).", deployment:"Vercel.", stretch:"Add CSV export.", evaluation:"Calculation logic is separated from UI and independently testable." }
+    ]},
+  { level:4, title:"Full Stack — Database-Backed Applications", objective:"Build and connect your own real backend and database to a frontend, with real authentication.",
+    prerequisites:"Backend, Databases, and Full Stack stages.",
+    projects:[
+      { name:"Note-taking app (full stack)", features:"Signup/login, CRUD notes, tags, per-user data isolation.", tech:"React + TypeScript frontend, Express + PostgreSQL backend, JWT auth.", ui:"A real app shell: nav, list view, editor view.", db:"Normalized schema: users, notes, tags (many-to-many).", testing:"API integration tests for auth and CRUD; a few frontend unit tests.", deployment:"Vercel (frontend) + Render/Railway (backend + Postgres).", stretch:"Add real-time sync across tabs.", evaluation:"Users can only ever see/edit their own data — verified by testing as two different accounts." },
+      { name:"Blog / CMS", features:"Public blog with an authenticated admin area for writing posts.", tech:"Same stack as above.", ui:"A distinct public-facing design and a separate simple admin UI.", db:"Posts, authors, comments (optional 1:N relations).", testing:"API tests + at least one E2E test of the publish flow.", deployment:"Vercel + Render/Railway.", stretch:"Add comments with moderation.", evaluation:"A stranger can actually sign up, and posts render correctly for public visitors." }
+    ]},
+  { level:5, title:"Advanced — Production-Style Applications", objective:"Add the professional practices that make an app trustworthy in production: real testing, CI/CD, containers, and monitoring.",
+    prerequisites:"Software Engineering, DevOps, and System Design stages.",
+    projects:[
+      { name:"E-commerce-style app", features:"Product catalog, cart, checkout flow (test-mode payments), order history.", tech:"Full stack from Level 4 + a payment provider's test/sandbox mode + Docker + CI/CD.", ui:"A polished, fully responsive multi-page flow.", db:"Products, orders, order_items, users — a genuinely normalized schema with foreign keys throughout.", testing:"Unit + integration + at least 2 critical-path E2E tests (checkout must be one).", deployment:"Dockerized, deployed via an automated CI/CD pipeline (GitHub Actions).", stretch:"Add basic error tracking (Sentry) and uptime monitoring.", evaluation:"A full checkout can be completed end-to-end by a stranger with no guidance, and a broken PR is caught by CI before merge." }
+    ]},
+  { level:6, title:"Capstone — A Serious Complete Software Product", objective:"Ship something real, from your own idea, that demonstrates the full breadth of this curriculum end to end — and can genuinely anchor a portfolio or interview conversation.",
+    prerequisites:"All prior stages.",
+    projects:[
+      { name:"Your own product idea (chosen by you)", features:"Defined by real (even if lightweight) user research into an actual problem you or someone you know has.", tech:"Your full accumulated stack: React/TypeScript, Express/PostgreSQL, real auth, Docker, CI/CD, deployed to a real domain.", ui:"A complete Figma design system used consistently throughout, including all states (loading/empty/error).", db:"A schema you designed and can defend, with at least one non-trivial relationship and at least one optimized query.", testing:"A real test suite covering critical paths, run automatically in CI on every change.", deployment:"Live on a real custom domain, monitored, with backups.", stretch:"Write a full case-study write-up: the problem, your research, key decisions, trade-offs, and what you'd do differently.", evaluation:"You can walk a stranger through the entire product — decisions and trade-offs included — for 15+ minutes without notes." }
+    ]}
+];
