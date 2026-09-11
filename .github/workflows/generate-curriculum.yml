@@ -23,7 +23,8 @@ jobs:
           scripts=re.findall(r'<script>(.*?)</script>', html, re.S)
           if not scripts: raise SystemExit('No script found')
           data=scripts[0]
-          starts=list(re.finditer(r'^const (stages|lessons|lessons2|conceptCards|skillMatrix|tools|resourceLibrary|projectLadder|methodology|allLessons)\\s*=', data, re.M))
+          names='stages|lessons|lessons2|conceptCards|skillMatrix|tools|resourceLibrary|projectLadder|methodology|allLessons'
+          starts=list(re.finditer(r'^const ('+names+r')\s*=', data, re.M))
           if len(starts)!=10: raise SystemExit(f'Expected 10 data declarations, got {len(starts)}')
           out=Path('src/data')
           for i,m in enumerate(starts):
