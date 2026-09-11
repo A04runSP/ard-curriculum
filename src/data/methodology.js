@@ -1,0 +1,12 @@
+export const methodology = {
+  loop: ["Learn", "Practice", "Build", "Review", "Test", "Ship", "Reflect"],
+  description: "Each lesson or module should move through this full loop, not stop at 'Learn.' Learn the concept from real material (this curriculum, docs, or a linked resource). Practice it in isolation with the small exercises provided. Build it into something real — even a tiny mini-project — because using a concept to make something is what actually cements it. Review your own work critically against the lesson's mastery checklist before moving on. Test what you built, even informally at first (does it handle bad input? an empty state?). Ship it somewhere real — pushed to GitHub at minimum, deployed publicly when it's a real project — because unshipped work doesn't build the muscle of finishing. Reflect briefly: what was confusing, what would you do differently, what do you still not fully understand.",
+  practices: [
+    "Retrieval practice: before re-reading a lesson you've forgotten, try to recall and rebuild it from memory first (even badly) — the struggle to recall is what builds durable memory, far more than re-reading passively.",
+    "Spaced repetition for facts that don't come up daily (HTTP status codes, Big O classes, Git commands): briefly revisit them after 1 day, 3 days, and 1 week rather than cramming once.",
+    "Interleaving: mix topics rather than mastering one completely before touching another — alternate a bit of frontend work with a bit of backend or CS practice in the same week, which research shows improves long-term retention over single-topic blocks.",
+    "Always have exactly one active 'build' project per stage, not just isolated exercises — exercises teach syntax, projects teach how the pieces actually fit together.",
+    "Write a short reflection note after finishing each project: what you'd do differently. This is the single highest-leverage habit for actually improving between projects instead of repeating the same mistakes."
+  ],
+  masteryRequirement: "Before moving to a new stage, you should be able to do everything in that stage's 'exit criteria' without a tutorial open beside you — using documentation to look up specifics is expected and normal; needing a tutorial to follow the overall approach is the signal you're not ready to move on yet."
+};
