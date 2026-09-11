@@ -1,0 +1,43 @@
+name: Generate ARD curriculum data
+on:
+  push:
+    branches: [react-migration]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rebuild curriculum modules from original source
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p src/data
+          git show c34394db565993cb4a6359d692d7fab7a48a7d3e:index.html > /tmp/original-index.html
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          html=Path('/tmp/original-index.html').read_text()
+          scripts=re.findall(r'<script>(.*?)</script>', html, re.S)
+          if not scripts: raise SystemExit('No script found')
+          data=scripts[0]
+          starts=list(re.finditer(r'^const (stages|lessons|lessons2|conceptCards|skillMatrix|tools|resourceLibrary|projectLadder|methodology|allLessons)\\s*=', data, re.M))
+          if len(starts)!=10: raise SystemExit(f'Expected 10 data declarations, got {len(starts)}')
+          out=Path('src/data')
+          for i,m in enumerate(starts):
+              end=starts[i+1].start() if i+1<len(starts) else len(data)
+              block=re.sub(r'^const ', 'export const ', data[m.start():end].strip(), count=1)
+              (out/(m.group(1)+'.js')).write_text(block+'\n')
+          (out/'curriculum.js').write_text('import { stages } from "./stages.js";\nimport { lessons } from "./lessons.js";\nimport { lessons2 } from "./lessons2.js";\nimport { conceptCards } from "./conceptCards.js";\nimport { skillMatrix } from "./skillMatrix.js";\nimport { tools } from "./tools.js";\nimport { resourceLibrary } from "./resourceLibrary.js";\nimport { projectLadder } from "./projectLadder.js";\nimport { methodology } from "./methodology.js";\nexport const allLessons = [...lessons, ...lessons2];\nexport { stages, lessons, lessons2, conceptCards, skillMatrix, tools, resourceLibrary, projectLadder, methodology };\n')
+          PY
+      - name: Install and build
+        run: npm install --no-audit --no-fund && npm run build
+      - name: Commit generated modules
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data
+          git diff --cached --quiet || git commit -m "Split ARD curriculum data into modules"
+          git push
