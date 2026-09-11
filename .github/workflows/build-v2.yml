@@ -1,0 +1,59 @@
+name: Build ARD V2
+
+on:
+  push:
+    branches: [react-migration]
+
+permissions:
+  contents: write
+
+jobs:
+  build-v2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Generate curriculum data from original source
+        run: |
+          python3 - <<'PY'
+          import re, subprocess
+          source = subprocess.check_output([
+              'git','show','0877b2f54a20b1312cec5f57e16b7d25dce53d6b:index.html'
+          ], text=True)
+          script = re.search(r'<script(?:\s[^>]*)?>(.*?)</script>', source, re.S | re.I).group(1)
+          end = script.index('const allLessons = [...lessons, ...lessons2];') + len('const allLessons = [...lessons, ...lessons2];')
+          data = script[:end]
+          for name in ['stages','lessons','lessons2','conceptCards','skillMatrix','tools','resourceLibrary','projectLadder','methodology','allLessons']:
+              data = re.sub(rf'(?m)^const {name} =', f'export const {name} =', data)
+          data = data.lstrip('\n') + '\n'
+          import pathlib
+          pathlib.Path('src/data').mkdir(parents=True, exist_ok=True)
+          pathlib.Path('src/data/curriculum.js').write_text(data)
+          PY
+
+      - name: Install and build
+        run: npm install --no-audit --no-fund && npm run build
+
+      - name: Remove legacy site files
+        run: |
+          rm -f base.css style.css
+          rm -f .github/workflows/ard-layout.yml .github/workflows/extract-css.yml .github/workflows/layout-fix.yml
+
+      - name: Commit generated data and cleanup
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          if git diff --cached --quiet; then
+            echo 'Nothing to commit.'
+          else
+            git commit -m 'Complete ARD V2 migration'
+            git push
+          fi
