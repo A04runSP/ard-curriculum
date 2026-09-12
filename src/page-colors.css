@@ -9,9 +9,12 @@
 .app-shell:has(.sidebar .nav-top-item:nth-of-type(5).active){--page-a:#20E3B2;--page-b:#82F5D6;--page-soft:rgba(32,227,178,.10);--page-border:rgba(32,227,178,.34)}
 .app-shell:has(.sidebar .nav-top-item:nth-of-type(6).active){--page-a:#FFD166;--page-b:#FFE6A3;--page-soft:rgba(255,209,102,.10);--page-border:rgba(255,209,102,.34)}
 
-/* Main heading = white + page primary + page secondary. */
-.main h1{background:linear-gradient(100deg,#F7F5FA 0%,#F7F5FA 27%,var(--page-a) 58%,var(--page-b) 100%);-webkit-background-clip:text;background-clip:text;color:transparent !important}
+/* Top-level page headings only = white + page primary + page secondary. */
+.dash-hero h1{background:linear-gradient(100deg,#F7F5FA 0%,#F7F5FA 27%,var(--page-a) 58%,var(--page-b) 100%);-webkit-background-clip:text;background-clip:text;color:transparent !important}
 .main h2,.main .subheading{background:linear-gradient(100deg,var(--page-a),var(--page-b));-webkit-background-clip:text;background-clip:text;color:transparent !important}
+
+/* Stage and lesson titles are neutral and always visible. */
+.stage-view h1,.lesson-view h1{background:none !important;-webkit-background-clip:initial !important;background-clip:initial !important;color:#F7F5FA !important;-webkit-text-fill-color:#F7F5FA !important;text-shadow:none !important}
 
 /* Page colour reaches the supporting UI, not only the heading. */
 .eyebrow,.stage-eyebrow,.lesson-eyebrow,.stat-box .num,.cmod,.complete,.rtitle a,.main a{color:var(--page-a)}
