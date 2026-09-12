@@ -8,22 +8,62 @@ GitHub: https://github.com/A04runSP/ard-curriculum
 
 The curriculum follows a practical learning loop: **learn → practice → build → test → ship**.
 
-## Current layout
+## Stack
 
-The interface uses a fixed vertical navigation rail with a separate, breathable main workspace. On smaller screens the navigation remains a left-side rail instead of stacking above the content.
+- React 19
+- Vite 7
+- JavaScript (ES modules)
+- CSS
 
-## Roadmap
+## Development
 
-The curriculum is organized into 15 progressive stages covering computer fundamentals, programming, computer science, web development, frontend, UI/UX, backend, databases, software engineering, testing, deployment, and professional practice.
+```bash
+npm install
+npm run dev
+```
+
+## Production build
+
+```bash
+npm run build
+npm run preview
+```
 
 ## Project structure
 
 ```text
 ard-curriculum/
 ├── index.html
-├── style.css
-├── base.css
-└── README.md
+├── package.json
+├── src/
+│   ├── main.jsx
+│   ├── styles.css
+│   └── data/
+│       ├── curriculum.js
+│       ├── stage1.js
+│       ├── stage2.js
+│       ├── lessonA1.js
+│       ├── lessonA2.js
+│       ├── lessonA3.js
+│       ├── lessonB1.js
+│       ├── lessonB2.js
+│       ├── lessonB3.js
+│       ├── lessonB4.js
+│       ├── concept1.js
+│       ├── concept2.js
+│       ├── concept3.js
+│       ├── skillMatrix.js
+│       ├── tools.js
+│       ├── resourceLibrary.js
+│       ├── projectLadder.js
+│       └── methodology.js
+└── .github/
+    └── workflows/
+        └── vite-build.yml
 ```
 
-`style.css` contains the current workspace-layout layer. `base.css` preserves the earlier visual system so layout changes can be iterated without losing the curriculum's existing styling.
+`src/main.jsx` contains the current application shell, navigation, views, and interaction logic. `src/styles.css` is the active React stylesheet. Curriculum content is kept as modular data under `src/data/` and assembled through `curriculum.js`.
+
+## Build workflow
+
+The `react-migration` branch uses `.github/workflows/vite-build.yml` to install dependencies and verify the Vite production build on pushes to that branch.
