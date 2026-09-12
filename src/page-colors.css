@@ -1,0 +1,36 @@
+/* ARD page identity layer
+   Shared material stays dark and glossy. Each top-level page gets its locked colour pair.
+*/
+.app-shell{--page-a:#20E3E6;--page-b:#39D5C6;--page-soft:rgba(32,227,230,.10);--page-border:rgba(32,227,230,.34)}
+.app-shell:has(.sidebar .nav-top-item:nth-of-type(1).active){--page-a:#FF3EA5;--page-b:#8B5CFF;--page-soft:rgba(255,62,165,.11);--page-border:rgba(255,62,165,.36)}
+.app-shell:has(.sidebar .nav-top-item:nth-of-type(2).active){--page-a:#4D7CFF;--page-b:#8EADFF;--page-soft:rgba(77,124,255,.11);--page-border:rgba(77,124,255,.36)}
+.app-shell:has(.sidebar .nav-top-item:nth-of-type(3).active){--page-a:#8B5CFF;--page-b:#D6A4FF;--page-soft:rgba(139,92,255,.11);--page-border:rgba(139,92,255,.36)}
+.app-shell:has(.sidebar .nav-top-item:nth-of-type(4).active){--page-a:#FF6B9A;--page-b:#FFC1D6;--page-soft:rgba(255,107,154,.10);--page-border:rgba(255,107,154,.34)}
+.app-shell:has(.sidebar .nav-top-item:nth-of-type(5).active){--page-a:#20E3B2;--page-b:#82F5D6;--page-soft:rgba(32,227,178,.10);--page-border:rgba(32,227,178,.34)}
+.app-shell:has(.sidebar .nav-top-item:nth-of-type(6).active){--page-a:#FFD166;--page-b:#FFE6A3;--page-soft:rgba(255,209,102,.10);--page-border:rgba(255,209,102,.34)}
+
+/* Main heading = white + page primary + page secondary. */
+.main h1{background:linear-gradient(100deg,#F7F5FA 0%,#F7F5FA 27%,var(--page-a) 58%,var(--page-b) 100%);-webkit-background-clip:text;background-clip:text;color:transparent !important}
+.main h2,.main .subheading{background:linear-gradient(100deg,var(--page-a),var(--page-b));-webkit-background-clip:text;background-clip:text;color:transparent !important}
+
+/* Page colour reaches the supporting UI, not only the heading. */
+.eyebrow,.stage-eyebrow,.lesson-eyebrow,.stat-box .num,.cmod,.complete,.rtitle a,.main a{color:var(--page-a)}
+.flow-stage:hover .ftitle,.content-link:hover{color:var(--page-a)}
+.nav-top-item.active{box-shadow:inset 3px 0 var(--page-a),inset 0 1px 0 var(--gloss-highlight-soft) !important}.nav-top-item.active .icon{color:var(--page-a)}
+.stage-item.active-stage .stage-num{border-color:var(--page-a);color:var(--page-a);box-shadow:0 0 14px var(--page-soft)}
+.tool-cost{color:var(--page-b);border-color:var(--page-border);background:var(--page-soft)}
+
+/* Cards receive the page identity while keeping the same glossy dark surface. */
+.stat-box,.meta-block,.concept-card,.tool-card,.project-card{border-color:var(--page-border) !important}
+.stat-box::before,.meta-block::before,.concept-card::before,.tool-card::before,.project-card::before{background:linear-gradient(115deg,var(--page-soft) 0%,transparent 23%,transparent 68%,var(--page-soft) 100%) !important}
+.stat-box:hover,.meta-block:hover,.concept-card:hover,.tool-card:hover,.project-card:hover{border-color:var(--page-a) !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.15),inset 0 -1px 0 rgba(0,0,0,.42),0 16px 38px rgba(0,0,0,.52),0 0 26px var(--page-soft) !important}
+
+/* Locked page-specific detail colours. */
+.app-shell:has(.nav-top-item:nth-of-type(3).active) .tool-card .trow b{color:#B388FF !important}
+.app-shell:has(.nav-top-item:nth-of-type(3).active) .tool-card .tool-cost{color:#D6A4FF !important;border-color:rgba(214,164,255,.38) !important}
+.app-shell:has(.nav-top-item:nth-of-type(4).active) .resource-item .rtitle a{color:#FF6B9A !important}.app-shell:has(.nav-top-item:nth-of-type(4).active) .resource-item .rnote{color:#FFD0B8 !important}
+.app-shell:has(.nav-top-item:nth-of-type(5).active) .project-fields .pf-label{color:#82F5D6 !important}.app-shell:has(.nav-top-item:nth-of-type(5).active) .project-fields .loop{color:#20E3B2 !important}
+.app-shell:has(.nav-top-item:nth-of-type(6).active) .loop{color:#FFD166 !important}
+
+@media(max-width:520px){.stat-box:hover,.meta-block:hover,.concept-card:hover,.tool-card:hover,.project-card:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){.stat-box,.meta-block,.concept-card,.tool-card,.project-card{transition:none !important}.stat-box:hover,.meta-block:hover,.concept-card:hover,.tool-card:hover,.project-card:hover{transform:none !important}}
