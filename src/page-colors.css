@@ -65,3 +65,12 @@
 /* Keep lesson/stage cards neutral while allowing a restrained identity edge. */
 .stage-view .meta-block,.lesson-view .concept-card{border-color:#34345C !important}
 .stage-view .meta-block::before,.lesson-view .concept-card::before{background:linear-gradient(115deg,rgba(255,255,255,.035),transparent 24%,transparent 72%,rgba(255,255,255,.02)) !important}
+
+
+/* Full lesson colour binding: stage identity is carried by the rendered lesson view. */
+.stage-view .stage-eyebrow,.lesson-view .lesson-eyebrow{color:var(--lesson-a,#20E3E6)!important}
+.stage-view h1,.lesson-view h1{background:linear-gradient(100deg,#F7F5FA 0%,#F7F5FA 30%,var(--lesson-a,#20E3E6) 62%,var(--lesson-b,#39D5C6) 100%)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;-webkit-text-fill-color:transparent!important}
+.stage-view .subheading,.lesson-view .lsection h2{background:linear-gradient(100deg,var(--lesson-a,#20E3E6),var(--lesson-b,#39D5C6))!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important}
+.stage-item.active-stage .stage-num{border-color:var(--lesson-a,#20E3E6)!important;color:var(--lesson-a,#20E3E6)!important;box-shadow:0 0 14px var(--lesson-a,#20E3E6)!important}
+.stage-item[data-stage="1"]{--lesson-a:#20E3E6;--lesson-b:#39D5C6}.stage-item[data-stage="2"]{--lesson-a:#35C9FF;--lesson-b:#7BE0FF}.stage-item[data-stage="3"]{--lesson-a:#4D7CFF;--lesson-b:#8EADFF}.stage-item[data-stage="4"]{--lesson-a:#6675FF;--lesson-b:#9AA4FF}.stage-item[data-stage="5"]{--lesson-a:#7C5CFF;--lesson-b:#B59AFF}.stage-item[data-stage="6"]{--lesson-a:#9B6BFF;--lesson-b:#C7A8FF}.stage-item[data-stage="7"]{--lesson-a:#C18CFF;--lesson-b:#E0C8FF}.stage-item[data-stage="8"]{--lesson-a:#FF3EA5;--lesson-b:#FF78AC}.stage-item[data-stage="9"]{--lesson-a:#FF5C9A;--lesson-b:#FF9BBD}.stage-item[data-stage="10"]{--lesson-a:#FF78AC;--lesson-b:#FFC1D6}.stage-item[data-stage="11"]{--lesson-a:#FF8A78;--lesson-b:#FFB09F}.stage-item[data-stage="12"]{--lesson-a:#FFB38A;--lesson-b:#FFD0B8}.stage-item[data-stage="13"]{--lesson-a:#FFE0A3;--lesson-b:#FFF0C9}.stage-item[data-stage="14"]{--lesson-a:#FFD166;--lesson-b:#FFE6A3}.stage-item[data-stage="15"]{--lesson-a:#39D5C6;--lesson-b:#82F5D6}
+.stage-item.active-stage .lesson-link.active{color:var(--lesson-a)!important;box-shadow:inset 2px 0 var(--lesson-a),inset 0 1px 0 var(--gloss-highlight-soft)}
