@@ -79,3 +79,11 @@ a,.rtitle a{color:var(--page-a)}
 .resource-item .rtitle a{color:var(--page-a) !important}.resource-item .rnote{color:var(--muted)}
 
 @media (prefers-reduced-motion:reduce){.btn,.stat-box,.meta-block,.concept-card,.tool-card,.project-card{transition:none !important}.btn:hover{transform:none !important}}
+
+
+/* Word-level heading colour system: first word white, second word solid primary, remaining words primary → secondary. */
+.dash-hero h1,.stage-view h1,.lesson-view h1{background:none !important;-webkit-background-clip:initial !important;background-clip:initial !important;color:var(--text) !important;text-shadow:none !important}
+.dash-hero h1 .word-first,.stage-view h1 .word-first,.lesson-view h1 .word-first{color:#F7F5FA !important;background:none !important}
+.dash-hero h1 .word-second,.stage-view h1 .word-second,.lesson-view h1 .word-second{color:var(--page-a) !important;background:none !important}
+.dash-hero h1 .word-third,.stage-view h1 .word-third,.lesson-view h1 .word-third{background:linear-gradient(90deg,var(--page-a) 0%,var(--page-b) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+@media(max-width:520px){.dash-hero h1,.stage-view h1,.lesson-view h1{line-height:1.12}}
