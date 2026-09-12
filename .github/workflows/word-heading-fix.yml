@@ -1,0 +1,52 @@
+name: Apply Word Heading Treatment
+
+on:
+  push:
+    branches: [react-migration]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix-heading:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Update heading markup and styles
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          p = Path('src/main.jsx')
+          s = p.read_text()
+
+          helper = '''\nfunction WordHeading({children}){\n  const words=String(children).trim().split(/\\s+/);\n  if(words.length<=1)return <>{words[0]||''}</>;\n  return <>{words.map((word,i)=><span key={i} className={i===0?'word-first':i===1?'word-second':'word-third'}>{i>0&&i<words.length?' ':''}{word}</span>)}</>;\n}\n'''
+
+          if 'function WordHeading(' not in s:
+              marker = "const TOP_ITEMS = [\n"
+              s = s.replace(marker, helper + "\n" + marker, 1)
+
+          s = s.replace('<h1>Web Development → Full Stack → UI/UX → Software Engineering</h1>', '<h1><WordHeading>Web Development → Full Stack → UI/UX → Software Engineering</WordHeading></h1>', 1)
+          s = s.replace('<h1>{s.title}</h1>', '<h1><WordHeading>{s.title}</WordHeading></h1>', 1)
+          s = s.replace('<h1>{l.title}</h1>', '<h1><WordHeading>{l.title}</WordHeading></h1>', 1)
+          p.write_text(s)
+
+          css = Path('src/glossy.css')
+          c = css.read_text()
+          block = '''\n\n/* Word-level heading colour system: first word white, second word solid primary, remaining words primary → secondary. */\n.dash-hero h1,.stage-view h1,.lesson-view h1{background:none !important;-webkit-background-clip:initial !important;background-clip:initial !important;color:var(--text) !important;text-shadow:none !important}\n.dash-hero h1 .word-first,.stage-view h1 .word-first,.lesson-view h1 .word-first{color:#F7F5FA !important;background:none !important}\n.dash-hero h1 .word-second,.stage-view h1 .word-second,.lesson-view h1 .word-second{color:var(--page-a) !important;background:none !important}\n.dash-hero h1 .word-third,.stage-view h1 .word-third,.lesson-view h1 .word-third{background:linear-gradient(90deg,var(--page-a) 0%,var(--page-b) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}\n@media(max-width:520px){.dash-hero h1,.stage-view h1,.lesson-view h1{line-height:1.12}}\n'''
+          if '/* Word-level heading colour system:' not in c:
+              css.write_text(c + block)
+          PY
+
+      - name: Commit changes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src/main.jsx src/glossy.css
+          git diff --cached --quiet && exit 0
+          git commit -m 'fix: apply word-level heading colour treatment'
+          git push
