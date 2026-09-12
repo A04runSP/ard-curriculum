@@ -37,23 +37,6 @@ body[data-theme="light"] .topbar,body[data-theme="light"] .sidebar,body[data-the
 .app-shell:has(.sidebar .nav-top-item:nth-of-type(5).active){--page-a:#20E3B2;--page-b:#82F5D6;--page-soft:rgba(32,227,178,.10);--page-border:rgba(32,227,178,.34)}
 .app-shell:has(.sidebar .nav-top-item:nth-of-type(6).active){--page-a:#FFD166;--page-b:#FFE6A3;--page-soft:rgba(255,209,102,.10);--page-border:rgba(255,209,102,.34)}
 
-/* 15 stage identities. The sidebar's active stage drives the page palette. */
-.app-shell:has(.sidebar .stage-item:nth-of-type(3).active-stage){--page-a:#FF3EA5;--page-b:#D6A4FF;--page-soft:rgba(255,62,165,.10);--page-border:rgba(255,62,165,.34)}
-.app-shell:has(.sidebar .stage-item:nth-of-type(4).active-stage){--page-a:#FF8A65;--page-b:#FFD0B8;--page-soft:rgba(255,138,101,.10);--page-border:rgba(255,138,101,.34)}
-.app-shell:has(.sidebar .stage-item:nth-of-type(5).active-stage){--page-a:#20E3E6;--page-b:#8EADFF;--page-soft:rgba(32,227,230,.10);--page-border:rgba(32,227,230,.34)}
-.app-shell:has(.sidebar .stage-item:nth-of-type(6).active-stage){--page-a:#5B7CFF;--page-b:#B388FF;--page-soft:rgba(91,124,255,.10);--page-border:rgba(91,124,255,.34)}
-.app-shell:has(.sidebar .stage-item:nth-of-type(7).active-stage){--page-a:#8B5CFF;--page-b:#D6A4FF;--page-soft:rgba(139,92,255,.10);--page-border:rgba(139,92,255,.34)}
-.app-shell:has(.sidebar .stage-item:nth-of-type(8).active-stage){--page-a:#20E3E6;--page-b:#39D5C6;--page-soft:rgba(32,227,230,.10);--page-border:rgba(32,227,230,.34)}
-.app-shell:has(.sidebar .stage-item:nth-of-type(9).active-stage){--page-a:#FF3EA5;--page-b:#B388FF;--page-soft:rgba(255,62,165,.10);--page-border:rgba(255,62,165,.34)}
-.app-shell:has(.sidebar .stage-item:nth-of-type(10).active-stage){--page-a:#7A4CFF;--page-b:#D6A4FF;--page-soft:rgba(122,76,255,.10);--page-border:rgba(122,76,255,.34)}
-.app-shell:has(.sidebar .stage-item:nth-of-type(11).active-stage){--page-a:#FFD166;--page-b:#FFE7A3;--page-soft:rgba(255,209,102,.10);--page-border:rgba(255,209,102,.34)}
-.app-shell:has(.sidebar .stage-item:nth-of-type(12).active-stage){--page-a:#20E3B2;--page-b:#82F5D6;--page-soft:rgba(32,227,178,.10);--page-border:rgba(32,227,178,.34)}
-.app-shell:has(.sidebar .stage-item:nth-of-type(13).active-stage){--page-a:#4D7CFF;--page-b:#8EADFF;--page-soft:rgba(77,124,255,.10);--page-border:rgba(77,124,255,.34)}
-.app-shell:has(.sidebar .stage-item:nth-of-type(14).active-stage){--page-a:#6A2C91;--page-b:#B388FF;--page-soft:rgba(106,44,145,.10);--page-border:rgba(106,44,145,.34)}
-.app-shell:has(.sidebar .stage-item:nth-of-type(15).active-stage){--page-a:#FF6B9A;--page-b:#FFB7D1;--page-soft:rgba(255,107,154,.10);--page-border:rgba(255,107,154,.34)}
-.app-shell:has(.sidebar .stage-item:nth-of-type(16).active-stage){--page-a:#FF3EA5;--page-b:#FF78AC;--page-soft:rgba(255,62,165,.10);--page-border:rgba(255,62,165,.34)}
-.app-shell:has(.sidebar .stage-item:nth-of-type(17).active-stage){--page-a:#FFD166;--page-b:#FFE7A3;--page-soft:rgba(255,209,102,.10);--page-border:rgba(255,209,102,.34)}
-
 /* Main headings: three deliberate bands — WHITE → PRIMARY → SECONDARY.
    Hard stops make all three colours visibly present instead of blending into one. */
 .dash-hero h1,.stage-view h1,.lesson-view h1{background:linear-gradient(90deg,#F7F5FA 0 28%,var(--page-a) 28% 62%,var(--page-b) 62% 100%);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none}
@@ -95,3 +78,8 @@ a,.rtitle a{color:var(--page-a)}
 .main-inner h1 .word-second{color:var(--page-a) !important;background:none !important}
 .main-inner h1 .word-third{background:linear-gradient(90deg,var(--page-a) 0%,var(--page-b) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 @media(max-width:520px){.main-inner h1{line-height:1.12}}
+
+
+/* Stage + lesson headings: neutral, always visible. Top-level six-page identities remain unchanged. */
+.stage-view h1,.lesson-view h1{background:none !important;-webkit-background-clip:initial !important;background-clip:initial !important;color:#F7F5FA !important;text-shadow:none !important}
+.stage-view h1 .word-first,.stage-view h1 .word-second,.stage-view h1 .word-third,.lesson-view h1 .word-first,.lesson-view h1 .word-second,.lesson-view h1 .word-third{color:#F7F5FA !important;background:none !important;-webkit-background-clip:initial !important;background-clip:initial !important}
