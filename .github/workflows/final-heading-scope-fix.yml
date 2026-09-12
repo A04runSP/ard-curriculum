@@ -1,0 +1,59 @@
+name: Scope Page Colours Correctly
+
+on:
+  push:
+    branches: [react-migration]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fix colour scope and heading rendering
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          # Stage 1-15 pages must NOT inherit the six top-level page identities.
+          css = Path('src/glossy.css')
+          c = css.read_text()
+          c = re.sub(
+              r'/\* 15 stage identities\. The sidebar\'s active stage drives the page palette\. \*/.*?(?=/\* Main headings:)',
+              '', c, flags=re.S
+          )
+
+          # Keep stage/lesson headings visible and neutral. Their colour is not
+          # part of the six top-level page identity system.
+          c += '''\n\n/* Stage + lesson headings: neutral, always visible. Top-level six-page identities remain unchanged. */\n.stage-view h1,.lesson-view h1{background:none !important;-webkit-background-clip:initial !important;background-clip:initial !important;color:#F7F5FA !important;text-shadow:none !important}\n.stage-view h1 .word-first,.stage-view h1 .word-second,.stage-view h1 .word-third,.lesson-view h1 .word-first,.lesson-view h1 .word-second,.lesson-view h1 .word-third{color:#F7F5FA !important;background:none !important;-webkit-background-clip:initial !important;background-clip:initial !important}\n'''
+          css.write_text(c)
+
+          # Dashboard and the six Page-based views keep the word-heading treatment.
+          p = Path('src/main.jsx')
+          s = p.read_text()
+          s = s.replace('<h1><WordHeading>{s.title}</WordHeading></h1>', '<h1>{s.title}</h1>')
+          s = s.replace('<h1><WordHeading>{l.title}</WordHeading></h1>', '<h1>{l.title}</h1>')
+          # Page titles use the same heading system as the six top-level views.
+          s = s.replace('<h1>{title}</h1>', '<h1><WordHeading>{title}</WordHeading></h1>')
+          p.write_text(s)
+          PY
+
+      - name: Remove temporary heading workflows
+        run: |
+          rm -f .github/workflows/word-heading-fix.yml .github/workflows/fix-h1-attributes.yml .github/workflows/final-heading-scope-fix.yml
+
+      - name: Commit final fix
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src/main.jsx src/glossy.css .github/workflows
+          git diff --cached --quiet && exit 0
+          git commit -m 'fix: scope colours to top pages and restore headings'
+          git push
