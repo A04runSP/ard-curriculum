@@ -35,7 +35,7 @@ function App(){
   return <div className={'app-shell '+(collapsed?'is-collapsed':'')}>
     <Topbar theme={theme} setTheme={setTheme} done={done} query={query} setQuery={setQuery} navigate={navigate}/>
     <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} view={view} navigate={navigate} progress={progress}/>
-    <main className="main"><div className="main-inner"><RouterView view={view} navigate={navigate} progress={progress} toggleDone={toggleDone}/></div></main>
+    <main className="main" onClick={e=>{if(!collapsed&&window.innerWidth<=520&&!e.target.closest(".sidebar"))setCollapsed(true)}}><div className="main-inner"><RouterView view={view} navigate={navigate} progress={progress} toggleDone={toggleDone}/></div></main>
   </div>
 }
 

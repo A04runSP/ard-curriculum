@@ -25,3 +25,7 @@ body[data-theme="light"]{--ink:#F5F7FA;--surface:#FFFFFF;--surface-2:#EEF2F6;--s
   .app-shell:not(.is-collapsed) .sidebar-scroll{overflow:auto}
   .app-shell:not(.is-collapsed) .stage-body{display:block}
 }
+/* Mobile outside-click layer closes the expanded navigation. */
+@media(max-width:520px){
+  .app-shell:not(.is-collapsed) .main::before{pointer-events:auto}
+}
