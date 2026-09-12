@@ -2,7 +2,7 @@
 
 A structured learning system for Web Development, UI/UX Design, Computer Science, and Software Engineering.
 
-Live site: https://ard-curriculum.vercel.app/
+Live site: https://ard-curriculum-git-react-m-123565-arunsridhar692-6569s-projects.vercel.app/
 
 GitHub: https://github.com/A04runSP/ard-curriculum
 
