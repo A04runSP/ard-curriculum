@@ -1,0 +1,45 @@
+name: Fix All Page Headings
+
+on:
+  push:
+    branches: [react-migration]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply word-level heading treatment everywhere
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          p=Path('src/main.jsx')
+          s=p.read_text()
+          if 'function WordHeading(' not in s:
+              helper='''\nfunction WordHeading({children}){\n  const words=String(children).trim().split(/\\s+/);\n  if(words.length<=1)return <>{words[0]||''}</>;\n  return <>{words.map((word,i)=><span key={i} className={i===0?'word-first':i===1?'word-second':'word-third'}>{i>0?' ':''}{word}</span>)}</>;\n}\n'''
+              s=s.replace('const TOP_ITEMS = [',helper+'\nconst TOP_ITEMS = [',1)
+          s=re.sub(r'<h1>(?!\\s*<WordHeading>)(.*?)</h1>',r'<h1><WordHeading>\1</WordHeading></h1>',s,flags=re.S)
+          p.write_text(s)
+
+          css=Path('src/glossy.css')
+          c=css.read_text()
+          block='''\n\n/* Final word-level heading treatment: word 1 white, word 2 solid primary, word 3+ primary → secondary. */\n.main-inner h1{background:none !important;-webkit-background-clip:initial !important;background-clip:initial !important;color:var(--text) !important;text-shadow:none !important}\n.main-inner h1 .word-first{color:#F7F5FA !important;background:none !important}\n.main-inner h1 .word-second{color:var(--page-a) !important;background:none !important}\n.main-inner h1 .word-third{background:linear-gradient(90deg,var(--page-a) 0%,var(--page-b) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}\n@media(max-width:520px){.main-inner h1{line-height:1.12}}\n'''
+          c=re.sub(r'\n/\* Final word-level heading treatment:.*?(?=\n/\*|\Z)','',c,flags=re.S)
+          css.write_text(c+block)
+          PY
+      - name: Commit and remove temporary workflow
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src/main.jsx src/glossy.css
+          git rm .github/workflows/fix-all-h1.yml
+          git diff --cached --quiet && exit 0
+          git commit -m 'fix: apply word-level colours to every page heading'
+          git push
