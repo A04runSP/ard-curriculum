@@ -1,0 +1,81 @@
+name: Apply glossy UI surface treatment
+
+on:
+  push:
+    branches: [react-migration]
+
+permissions:
+  contents: write
+
+jobs:
+  glossy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: react-migration
+          fetch-depth: 0
+
+      - name: Apply glossy surface layer
+        run: |
+          cat >> src/styles.css <<'EOF'
+
+/* Glossy UI foundation — solid polished surfaces, not glassmorphism. */
+:root{
+  --gloss-hi:rgba(255,255,255,.075);
+  --gloss-soft:rgba(255,255,255,.035);
+  --gloss-shadow:rgba(0,0,0,.38);
+}
+.topbar,
+.sidebar,
+.stat-box,
+.meta-block,
+.concept-card,
+.tool-card,
+.project-card,
+.search-wrap input,
+.search-results,
+.theme-toggle,
+.collapse-btn{
+  background:linear-gradient(145deg,var(--gloss-hi),var(--surface) 38%,var(--surface-2));
+  box-shadow:inset 0 1px 0 var(--gloss-hi),inset 0 -1px 0 rgba(0,0,0,.18),0 12px 28px var(--gloss-shadow);
+}
+.topbar{backdrop-filter:none}
+.sidebar{backdrop-filter:none}
+.search-wrap input:focus,
+.theme-toggle:hover,
+.collapse-btn:hover{
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.11),0 0 0 1px var(--teal-dim),0 10px 28px rgba(0,0,0,.3);
+}
+.nav-top-item:hover,.nav-top-item.active,
+.stage-header:hover,.stage-item.active-stage>.stage-header,
+.lesson-link:hover,.lesson-link.active,
+.search-result-item:hover,
+.data-table tr:hover td{
+  background:linear-gradient(145deg,var(--gloss-hi),var(--surface-2));
+  box-shadow:inset 0 1px 0 var(--gloss-soft);
+}
+.rail-mark,.btn,.level-tag{
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.28),inset 0 -2px 0 rgba(0,0,0,.16),0 8px 20px rgba(0,0,0,.28);
+}
+.btn:hover{transform:translateY(-1px);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 10px 24px rgba(0,0,0,.3)}
+pre{
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.045),inset 0 -1px 0 rgba(0,0,0,.28),0 10px 24px rgba(0,0,0,.25);
+}
+body[data-theme="light"]{
+  --gloss-hi:rgba(255,255,255,.9);
+  --gloss-soft:rgba(255,255,255,.55);
+  --gloss-shadow:rgba(26,42,64,.14);
+}
+EOF
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/styles.css
+          git commit -m "Apply glossy UI surface treatment"
+          git push origin react-migration
+
+          rm -f .github/workflows/apply-glossy-ui.yml
+          git add -u .github/workflows/apply-glossy-ui.yml
+          git commit -m "Remove one-time glossy UI patch workflow"
+          git push origin react-migration
