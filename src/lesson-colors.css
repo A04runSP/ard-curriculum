@@ -1,0 +1,80 @@
+/* Strong stage/lesson colour layer.
+   The stage identity must be immediately visible without recolouring the neutral cards.
+   --lesson-a / --lesson-b are supplied by StageView and LessonView.
+*/
+.stage-view h1,
+.lesson-view h1{
+  display:inline-block;
+  max-width:100%;
+  margin-bottom:12px;
+  background:linear-gradient(100deg,var(--lesson-a),var(--lesson-b)) !important;
+  -webkit-background-clip:text !important;
+  background-clip:text !important;
+  color:var(--lesson-a) !important;
+  -webkit-text-fill-color:transparent !important;
+  text-shadow:0 0 18px color-mix(in srgb,var(--lesson-a) 22%,transparent);
+}
+
+.stage-view .stage-eyebrow,
+.lesson-view .lesson-eyebrow{
+  color:var(--lesson-a) !important;
+  text-shadow:0 0 10px color-mix(in srgb,var(--lesson-a) 28%,transparent);
+}
+
+.stage-view .meta-block h3,
+.lesson-view .lsection h2,
+.lesson-view .section-title{
+  color:var(--lesson-a) !important;
+  background:none !important;
+  -webkit-text-fill-color:initial !important;
+  text-shadow:0 0 8px color-mix(in srgb,var(--lesson-a) 18%,transparent);
+}
+
+.stage-view .subheading{
+  color:var(--lesson-a) !important;
+  background:none !important;
+  -webkit-text-fill-color:initial !important;
+}
+
+.stage-view .exit-box{
+  border-color:color-mix(in srgb,var(--lesson-a) 38%,#34345C) !important;
+  background:linear-gradient(115deg,color-mix(in srgb,var(--lesson-a) 8%,transparent),transparent 45%) !important;
+}
+
+.stage-view .exit-box .label{
+  color:var(--lesson-a) !important;
+}
+
+.stage-view .meta-block,
+.lesson-view .concept-card{
+  border-color:#34345C !important;
+}
+
+.stage-item.active-stage .stage-num{
+  border-color:var(--lesson-a) !important;
+  color:var(--lesson-a) !important;
+  box-shadow:0 0 0 1px color-mix(in srgb,var(--lesson-a) 20%,transparent),0 0 18px color-mix(in srgb,var(--lesson-a) 32%,transparent) !important;
+  text-shadow:0 0 8px color-mix(in srgb,var(--lesson-a) 35%,transparent);
+}
+
+.stage-item:has(.lesson-link.active) .stage-num{
+  border-color:var(--lesson-a) !important;
+  color:var(--lesson-a) !important;
+}
+
+.lesson-link.active{
+  color:var(--lesson-a) !important;
+  box-shadow:inset 2px 0 var(--lesson-a),inset 0 1px 0 var(--gloss-highlight-soft) !important;
+}
+
+.lesson-link.active .lesson-check.done{
+  border-color:var(--lesson-a) !important;
+  color:var(--lesson-a) !important;
+}
+
+@media(max-width:520px){
+  .stage-view h1,
+  .lesson-view h1{
+    text-shadow:0 0 14px color-mix(in srgb,var(--lesson-a) 18%,transparent);
+  }
+}
