@@ -13,9 +13,6 @@
 .dash-hero h1{background:linear-gradient(100deg,#F7F5FA 0%,#F7F5FA 27%,var(--page-a) 58%,var(--page-b) 100%);-webkit-background-clip:text;background-clip:text;color:transparent !important}
 .main h2,.main .subheading{background:linear-gradient(100deg,var(--page-a),var(--page-b));-webkit-background-clip:text;background-clip:text;color:transparent !important}
 
-/* Stage and lesson titles are neutral and always visible. */
-.stage-view h1,.lesson-view h1{background:none !important;-webkit-background-clip:initial !important;background-clip:initial !important;color:#F7F5FA !important;-webkit-text-fill-color:#F7F5FA !important;text-shadow:none !important}
-
 /* Page colour reaches the supporting UI, not only the heading. */
 .eyebrow,.stage-eyebrow,.lesson-eyebrow,.stat-box .num,.cmod,.complete,.rtitle a,.main a{color:var(--page-a)}
 .flow-stage:hover .ftitle,.content-link:hover{color:var(--page-a)}
@@ -37,3 +34,34 @@
 
 @media(max-width:520px){.stat-box:hover,.meta-block:hover,.concept-card:hover,.tool-card:hover,.project-card:hover{transform:none}}
 @media(prefers-reduced-motion:reduce){.stat-box,.meta-block,.concept-card,.tool-card,.project-card{transition:none !important}.stat-box:hover,.meta-block:hover,.concept-card:hover,.tool-card:hover,.project-card:hover{transform:none !important}}
+
+/* 15-stage / lesson colour identities. These apply only to stage and full-lesson views. */
+.app-shell:has(.stage-item:nth-of-type(3).active-stage),.app-shell:has(.stage-item:nth-of-type(3) .lesson-link.active){--lesson-a:#20E3E6;--lesson-b:#39D5C6}
+.app-shell:has(.stage-item:nth-of-type(4).active-stage),.app-shell:has(.stage-item:nth-of-type(4) .lesson-link.active){--lesson-a:#35C9FF;--lesson-b:#7BE0FF}
+.app-shell:has(.stage-item:nth-of-type(5).active-stage),.app-shell:has(.stage-item:nth-of-type(5) .lesson-link.active){--lesson-a:#4D7CFF;--lesson-b:#8EADFF}
+.app-shell:has(.stage-item:nth-of-type(6).active-stage),.app-shell:has(.stage-item:nth-of-type(6) .lesson-link.active){--lesson-a:#6675FF;--lesson-b:#9AA4FF}
+.app-shell:has(.stage-item:nth-of-type(7).active-stage),.app-shell:has(.stage-item:nth-of-type(7) .lesson-link.active){--lesson-a:#7C5CFF;--lesson-b:#B59AFF}
+.app-shell:has(.stage-item:nth-of-type(8).active-stage),.app-shell:has(.stage-item:nth-of-type(8) .lesson-link.active){--lesson-a:#9B6BFF;--lesson-b:#C7A8FF}
+.app-shell:has(.stage-item:nth-of-type(9).active-stage),.app-shell:has(.stage-item:nth-of-type(9) .lesson-link.active){--lesson-a:#C18CFF;--lesson-b:#E0C8FF}
+.app-shell:has(.stage-item:nth-of-type(10).active-stage),.app-shell:has(.stage-item:nth-of-type(10) .lesson-link.active){--lesson-a:#FF3EA5;--lesson-b:#FF78AC}
+.app-shell:has(.stage-item:nth-of-type(11).active-stage),.app-shell:has(.stage-item:nth-of-type(11) .lesson-link.active){--lesson-a:#FF5C9A;--lesson-b:#FF9BBD}
+.app-shell:has(.stage-item:nth-of-type(12).active-stage),.app-shell:has(.stage-item:nth-of-type(12) .lesson-link.active){--lesson-a:#FF78AC;--lesson-b:#FFC1D6}
+.app-shell:has(.stage-item:nth-of-type(13).active-stage),.app-shell:has(.stage-item:nth-of-type(13) .lesson-link.active){--lesson-a:#FF8A78;--lesson-b:#FFB09F}
+.app-shell:has(.stage-item:nth-of-type(14).active-stage),.app-shell:has(.stage-item:nth-of-type(14) .lesson-link.active){--lesson-a:#FFB38A;--lesson-b:#FFD0B8}
+.app-shell:has(.stage-item:nth-of-type(15).active-stage),.app-shell:has(.stage-item:nth-of-type(15) .lesson-link.active){--lesson-a:#FFE0A3;--lesson-b:#FFF0C9}
+.app-shell:has(.stage-item:nth-of-type(16).active-stage),.app-shell:has(.stage-item:nth-of-type(16) .lesson-link.active){--lesson-a:#FFD166;--lesson-b:#FFE6A3}
+.app-shell:has(.stage-item:nth-of-type(17).active-stage),.app-shell:has(.stage-item:nth-of-type(17) .lesson-link.active){--lesson-a:#39D5C6;--lesson-b:#82F5D6}
+
+/* Stage/lesson accents use the identity without recolouring their neutral cards. */
+.stage-view .stage-eyebrow,.lesson-view .lesson-eyebrow{color:var(--lesson-a,#20E3E6) !important}
+.stage-view h1,.lesson-view h1{background:linear-gradient(100deg,#F7F5FA 0%,#F7F5FA 30%,var(--lesson-a,#20E3E6) 62%,var(--lesson-b,#39D5C6) 100%) !important;-webkit-background-clip:text !important;background-clip:text !important;color:transparent !important;-webkit-text-fill-color:transparent !important}
+.stage-view .subheading,.lesson-view .lsection h2{background:linear-gradient(100deg,var(--lesson-a,#20E3E6),var(--lesson-b,#39D5C6)) !important;-webkit-background-clip:text !important;background-clip:text !important;color:transparent !important}
+.stage-view .content-link:hover,.lesson-view a:hover{color:var(--lesson-a,#20E3E6) !important}
+.stage-item.active-stage .stage-num{border-color:var(--lesson-a,#20E3E6);color:var(--lesson-a,#20E3E6);box-shadow:0 0 14px color-mix(in srgb,var(--lesson-a,#20E3E6) 25%,transparent)}
+.stage-item:has(.lesson-link.active) .stage-num{border-color:var(--lesson-a,#20E3E6);color:var(--lesson-a,#20E3E6)}
+.lesson-link.active{box-shadow:inset 2px 0 var(--lesson-a,#20E3E6),inset 0 1px 0 var(--gloss-highlight-soft)}
+.lesson-link.active .lesson-check.done{border-color:var(--lesson-a,#20E3E6);color:var(--lesson-a,#20E3E6)}
+
+/* Keep lesson/stage cards neutral while allowing a restrained identity edge. */
+.stage-view .meta-block,.lesson-view .concept-card{border-color:#34345C !important}
+.stage-view .meta-block::before,.lesson-view .concept-card::before{background:linear-gradient(115deg,rgba(255,255,255,.035),transparent 24%,transparent 72%,rgba(255,255,255,.02)) !important}
