@@ -1,12 +1,47 @@
-/* ARD Glossy UI Foundation
-   Solid polished surfaces. No frosted-glass transparency or backdrop blur. */
+/* ARD Glossy UI System
+   Glossy = solid polished material, not glassmorphism.
+   Palette is derived from the ARD Personal Palette collection.
+*/
 :root{
-  --gloss-highlight:rgba(255,255,255,.09);
-  --gloss-highlight-soft:rgba(255,255,255,.045);
-  --gloss-shadow:rgba(0,0,0,.34);
-  --gloss-shadow-deep:rgba(0,0,0,.48);
+  /* Environment */
+  --ink:#0F0F1A;
+  --surface:#15152A;
+  --surface-2:#20204A;
+  --surface-3:#2A2358;
+  --border:#34345C;
+
+  /* Typography */
+  --text:#F7F5FA;
+  --muted:#B8B3C8;
+  --muted-2:#89839E;
+
+  /* ARD palette accents */
+  --pink:#FF3EA5;
+  --magenta:#FF78AC;
+  --lavender:#B388FF;
+  --lilac:#D6A4FF;
+  --cyan:#20E3E6;
+  --turquoise:#39D5C6;
+  --cream:#FFE7A3;
+  --violet:#6A2C91;
+  --blue:#3D5AFE;
+
+  /* Existing semantic aliases */
+  --teal:var(--cyan);
+  --teal-dim:#185B67;
+  --amber:var(--cream);
+  --red:#FF6B8A;
+
+  /* Gloss material */
+  --gloss-highlight:rgba(255,255,255,.12);
+  --gloss-highlight-soft:rgba(255,255,255,.055);
+  --gloss-pink:rgba(255,62,165,.18);
+  --gloss-cyan:rgba(32,227,230,.10);
+  --gloss-shadow:rgba(0,0,0,.42);
+  --gloss-shadow-deep:rgba(0,0,0,.62);
 }
 
+/* Polished surfaces: layered colour and light, never transparent glass. */
 .topbar,
 .sidebar,
 .stat-box,
@@ -17,18 +52,52 @@
 .search-results,
 .theme-toggle,
 .collapse-btn{
-  background:linear-gradient(150deg,var(--gloss-highlight) 0%,var(--surface) 24%,var(--surface-2) 100%) !important;
-  box-shadow:inset 0 1px 0 var(--gloss-highlight),inset 0 -1px 0 rgba(0,0,0,.20),0 12px 30px var(--gloss-shadow) !important;
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.075) 0%,transparent 17%),
+    linear-gradient(155deg,var(--surface-2) 0%,var(--surface) 55%,#11111F 100%) !important;
+  border-color:var(--border) !important;
+  box-shadow:
+    inset 0 1px 0 var(--gloss-highlight),
+    inset 0 -1px 0 rgba(0,0,0,.42),
+    0 14px 34px var(--gloss-shadow),
+    0 1px 0 rgba(255,62,165,.035) !important;
 }
 
 .topbar,
 .sidebar{backdrop-filter:none !important}
 
+/* Search is a polished inset surface. */
 .search-wrap input{
-  background:linear-gradient(150deg,var(--gloss-highlight) 0%,var(--surface) 32%,var(--surface-2) 100%) !important;
-  box-shadow:inset 0 1px 0 var(--gloss-highlight),inset 0 -1px 0 rgba(0,0,0,.18),0 7px 18px var(--gloss-shadow) !important;
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.07),transparent 22%),
+    linear-gradient(155deg,#202044 0%,#15152A 62%,#10101D 100%) !important;
+  color:var(--text) !important;
+  border-color:var(--border) !important;
+  box-shadow:
+    inset 0 1px 0 var(--gloss-highlight-soft),
+    inset 0 -2px 0 rgba(0,0,0,.34),
+    0 8px 22px var(--gloss-shadow) !important;
+}
+.search-wrap input::placeholder{color:var(--muted-2)}
+
+/* Main heading system: soft white with room for topic accent colours. */
+.dash-hero h1,.stage-view h1,.lesson-view h1{
+  color:var(--text);
+  text-shadow:0 1px 0 rgba(255,255,255,.08);
 }
 
+.eyebrow,.stage-eyebrow,.lesson-eyebrow,
+.stat-box .num,.cmod,.complete,
+.rtitle a,a{color:var(--cyan)}
+
+/* Supporting text stays soft and readable rather than inheriting the accent. */
+.dash-hero p,.lead,
+.lsection p,.concept-card p,
+.fobjective,.rnote,.small,.muted,.stat-box .label,
+.nav-section-label,.nav-top-item,.stage-header,.lesson-link,
+.fnum,.flow-arrow{color:var(--muted)}
+
+/* Glossy navigation states. */
 .nav-top-item:hover,
 .nav-top-item.active,
 .stage-header:hover,
@@ -37,39 +106,110 @@
 .lesson-link.active,
 .search-result-item:hover,
 .data-table tr:hover td{
-  background:linear-gradient(150deg,var(--gloss-highlight) 0%,var(--surface-2) 100%) !important;
-  box-shadow:inset 0 1px 0 var(--gloss-highlight-soft) !important;
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.09),transparent 28%),
+    linear-gradient(155deg,#292957 0%,#20204A 100%) !important;
+  box-shadow:
+    inset 0 1px 0 var(--gloss-highlight-soft),
+    inset 0 0 22px rgba(255,62,165,.035) !important;
 }
 
-.rail-mark,
-.btn,
-.level-tag{
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.30),inset 0 -2px 0 rgba(0,0,0,.18),0 8px 22px var(--gloss-shadow-deep) !important;
+.nav-top-item.active{box-shadow:inset 3px 0 var(--pink),inset 0 1px 0 var(--gloss-highlight-soft) !important}
+.nav-top-item.active .icon{color:var(--pink)}
+.stage-item.active-stage .stage-num{border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 12px rgba(32,227,230,.12)}
+
+/* Fuchsia is the signature polished-card glow. It remains restrained at rest. */
+.stat-box,.meta-block,.concept-card,.tool-card,.project-card{
+  position:relative;
+  overflow:hidden;
+}
+.stat-box::before,.meta-block::before,.concept-card::before,.tool-card::before,.project-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border-radius:inherit;
+  background:linear-gradient(115deg,rgba(255,62,165,.12) 0%,transparent 18%,transparent 72%,rgba(32,227,230,.045) 100%);
+  opacity:.72;
+}
+.stat-box:hover,.meta-block:hover,.concept-card:hover,.tool-card:hover,.project-card:hover{
+  border-color:rgba(255,62,165,.42) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.13),
+    inset 0 -1px 0 rgba(0,0,0,.42),
+    0 16px 38px rgba(0,0,0,.52),
+    0 0 24px rgba(255,62,165,.12) !important;
 }
 
-.btn{transition:transform .15s ease,box-shadow .15s ease}
-.btn:hover{
-  transform:translateY(-1px);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.34),0 12px 26px var(--gloss-shadow-deep) !important;
+/* Glossy primary controls. */
+.rail-mark,.btn,.level-tag{
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.34),
+    inset 0 -2px 0 rgba(0,0,0,.22),
+    0 8px 22px var(--gloss-shadow-deep),
+    0 0 18px rgba(32,227,230,.10) !important;
 }
+.rail-mark{background:linear-gradient(145deg,#39D5C6,#20E3E6) !important}
+.btn{background:linear-gradient(145deg,#39D5C6,#20E3E6) !important;color:#0F0F1A !important;border-color:#39D5C6 !important}
+.btn:hover{transform:translateY(-1px);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 12px 28px var(--gloss-shadow-deep),0 0 24px rgba(32,227,230,.16) !important}
+.btn.done{background:linear-gradient(145deg,#20204A,#2A2358) !important;color:var(--cyan) !important;border-color:var(--teal-dim) !important}
+.btn.secondary{background:linear-gradient(145deg,#24244D,#17172C) !important;color:var(--text) !important}
 
-.theme-toggle:hover,
-.collapse-btn:hover,
-.search-wrap input:focus{
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 0 1px var(--teal-dim),0 10px 26px var(--gloss-shadow) !important;
+.theme-toggle:hover,.collapse-btn:hover,.search-wrap input:focus{
+  border-color:var(--pink) !important;
+  color:var(--pink) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.16),
+    0 0 0 1px rgba(255,62,165,.16),
+    0 10px 28px var(--gloss-shadow) !important;
 }
 
 pre{
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.055),inset 0 -1px 0 rgba(0,0,0,.30),0 10px 24px var(--gloss-shadow-deep) !important;
+  background:linear-gradient(145deg,#111124,#0B0B15) !important;
+  border-color:#2E2E50 !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07),inset 0 -2px 0 rgba(0,0,0,.42),0 12px 28px var(--gloss-shadow-deep) !important;
 }
 
 .exit-box{
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 10px 24px var(--gloss-shadow) !important;
+  border-color:rgba(32,227,230,.25) !important;
+  background:linear-gradient(145deg,rgba(32,227,230,.10),rgba(106,44,145,.08)) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 10px 24px var(--gloss-shadow) !important;
 }
 
+/* Rounded, readable typography. */
+.dash-hero h1,.stage-view h1,.lesson-view h1,
+.subheading,.lsection h2,.concept-card h2,.tool-card h3,.project-card h3{
+  font-family:'Nunito', 'Nunito Sans', 'IBM Plex Sans', system-ui, sans-serif;
+}
+.dash-hero h1,.stage-view h1,.lesson-view h1{font-weight:800}
+.subheading,.lsection h2{font-weight:700}
+.dash-hero p,.lead,.lsection p,.concept-card p{font-size:.9rem;line-height:1.72}
+
+/* Light mode remains functional, but uses the same ARD colour family. */
 body[data-theme="light"]{
+  --ink:#F7F3FA;
+  --surface:#FFF9FD;
+  --surface-2:#F2EAF8;
+  --surface-3:#E9DDF2;
+  --border:#D7C8E1;
+  --text:#241B32;
+  --muted:#665A72;
+  --muted-2:#8A7C96;
+  --teal:#008C91;
+  --teal-dim:#B7DCDC;
+  --amber:#D49A24;
+  --red:#C83E62;
   --gloss-highlight:rgba(255,255,255,.92);
-  --gloss-highlight-soft:rgba(255,255,255,.58);
-  --gloss-shadow:rgba(26,42,64,.14);
-  --gloss-shadow-deep:rgba(26,42,64,.20);
+  --gloss-highlight-soft:rgba(255,255,255,.62);
+  --gloss-shadow:rgba(73,42,92,.14);
+  --gloss-shadow-deep:rgba(73,42,92,.20);
+}
+body[data-theme="light"] .topbar,
+body[data-theme="light"] .sidebar,
+body[data-theme="light"] .stat-box,
+body[data-theme="light"] .meta-block,
+body[data-theme="light"] .concept-card,
+body[data-theme="light"] .tool-card,
+body[data-theme="light"] .project-card{
+  background:linear-gradient(145deg,#FFFFFF 0%,#F7F0FA 100%) !important;
 }
