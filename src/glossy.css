@@ -5,88 +5,61 @@
    Palette is derived from the ARD Personal Palette collection.
 */
 :root{
-  /* Environment */
-  --ink:#0F0F1A;
-  --surface:#15152A;
-  --surface-2:#20204A;
-  --surface-3:#2A2358;
-  --border:#34345C;
-
-  /* Typography */
-  --text:#F7F5FA;
-  --muted:#B8B3C8;
-  --muted-2:#89839E;
-
-  /* ARD palette accents */
-  --pink:#FF3EA5;
-  --magenta:#FF78AC;
-  --lavender:#B388FF;
-  --lilac:#D6A4FF;
-  --cyan:#20E3E6;
-  --turquoise:#39D5C6;
-  --cream:#FFE7A3;
-  --violet:#6A2C91;
-  --blue:#3D5AFE;
-
-  /* Existing semantic aliases */
-  --teal:var(--cyan);
-  --teal-dim:#185B67;
-  --amber:var(--cream);
-  --red:#FF6B8A;
-
-  /* Gloss material */
-  --gloss-highlight:rgba(255,255,255,.12);
-  --gloss-highlight-soft:rgba(255,255,255,.055);
-  --gloss-pink:rgba(255,62,165,.18);
-  --gloss-cyan:rgba(32,227,230,.10);
-  --gloss-shadow:rgba(0,0,0,.42);
-  --gloss-shadow-deep:rgba(0,0,0,.62);
+  --ink:#0F0F1A;--surface:#15152A;--surface-2:#20204A;--surface-3:#2A2358;--border:#34345C;
+  --text:#F7F5FA;--muted:#B8B3C8;--muted-2:#89839E;
+  --pink:#FF3EA5;--magenta:#FF78AC;--lavender:#B388FF;--lilac:#D6A4FF;--cyan:#20E3E6;--turquoise:#39D5C6;--cream:#FFE7A3;--violet:#6A2C91;--blue:#3D5AFE;
+  --teal:var(--cyan);--teal-dim:#185B67;--amber:var(--cream);--red:#FF6B8A;
+  --gloss-highlight:rgba(255,255,255,.12);--gloss-highlight-soft:rgba(255,255,255,.055);--gloss-pink:rgba(255,62,165,.18);--gloss-cyan:rgba(32,227,230,.10);--gloss-shadow:rgba(0,0,0,.42);--gloss-shadow-deep:rgba(0,0,0,.62);
 }
-
-.topbar,.sidebar,.stat-box,.meta-block,.concept-card,.tool-card,.project-card,.search-results,.theme-toggle,.collapse-btn{
-  background:linear-gradient(135deg,rgba(255,255,255,.075) 0%,transparent 17%),linear-gradient(155deg,var(--surface-2) 0%,var(--surface) 55%,#11111F 100%) !important;
-  border-color:var(--border) !important;
-  box-shadow:inset 0 1px 0 var(--gloss-highlight),inset 0 -1px 0 rgba(0,0,0,.42),0 14px 34px var(--gloss-shadow),0 1px 0 rgba(255,62,165,.035) !important;
-}
+.topbar,.sidebar,.stat-box,.meta-block,.concept-card,.tool-card,.project-card,.search-results,.theme-toggle,.collapse-btn{background:linear-gradient(135deg,rgba(255,255,255,.075) 0%,transparent 17%),linear-gradient(155deg,var(--surface-2) 0%,var(--surface) 55%,#11111F 100%) !important;border-color:var(--border) !important;box-shadow:inset 0 1px 0 var(--gloss-highlight),inset 0 -1px 0 rgba(0,0,0,.42),0 14px 34px var(--gloss-shadow),0 1px 0 rgba(255,62,165,.035) !important}
 .topbar,.sidebar{backdrop-filter:none !important}
-.search-wrap input{background:linear-gradient(135deg,rgba(255,255,255,.07),transparent 22%),linear-gradient(155deg,#202044 0%,#15152A 62%,#10101D 100%) !important;color:var(--text) !important;border-color:var(--border) !important;box-shadow:inset 0 1px 0 var(--gloss-highlight-soft),inset 0 -2px 0 rgba(0,0,0,.34),0 8px 22px var(--gloss-shadow) !important}
-.search-wrap input::placeholder{color:var(--muted-2)}
+.search-wrap input{background:linear-gradient(135deg,rgba(255,255,255,.07),transparent 22%),linear-gradient(155deg,#202044 0%,#15152A 62%,#10101D 100%) !important;color:var(--text) !important;border-color:var(--border) !important;box-shadow:inset 0 1px 0 var(--gloss-highlight-soft),inset 0 -2px 0 rgba(0,0,0,.34),0 8px 22px var(--gloss-shadow) !important}.search-wrap input::placeholder{color:var(--muted-2)}
 .dash-hero h1,.stage-view h1,.lesson-view h1{color:var(--text);text-shadow:0 1px 0 rgba(255,255,255,.08)}
 .eyebrow,.stage-eyebrow,.lesson-eyebrow,.stat-box .num,.cmod,.complete,.rtitle a,a{color:var(--cyan)}
 .dash-hero p,.lead,.lsection p,.concept-card p,.fobjective,.rnote,.small,.muted,.stat-box .label,.nav-section-label,.nav-top-item,.stage-header,.lesson-link,.fnum,.flow-arrow{color:var(--muted)}
 .nav-top-item:hover,.nav-top-item.active,.stage-header:hover,.stage-item.active-stage>.stage-header,.lesson-link:hover,.lesson-link.active,.search-result-item:hover,.data-table tr:hover td{background:linear-gradient(135deg,rgba(255,255,255,.09),transparent 28%),linear-gradient(155deg,#292957 0%,#20204A 100%) !important;box-shadow:inset 0 1px 0 var(--gloss-highlight-soft),inset 0 0 22px rgba(255,62,165,.035) !important}
-.nav-top-item.active{box-shadow:inset 3px 0 var(--pink),inset 0 1px 0 var(--gloss-highlight-soft) !important}.nav-top-item.active .icon{color:var(--pink)}
-.stage-item.active-stage .stage-num{border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 12px rgba(32,227,230,.12)}
-.stat-box,.meta-block,.concept-card,.tool-card,.project-card{position:relative;overflow:hidden}
-.stat-box::before,.meta-block::before,.concept-card::before,.tool-card::before,.project-card::before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background:linear-gradient(115deg,rgba(255,62,165,.12) 0%,transparent 18%,transparent 72%,rgba(32,227,230,.045) 100%);opacity:.72}
-.stat-box:hover,.meta-block:hover,.concept-card:hover,.tool-card:hover,.project-card:hover{border-color:rgba(255,62,165,.42) !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.13),inset 0 -1px 0 rgba(0,0,0,.42),0 16px 38px rgba(0,0,0,.52),0 0 24px rgba(255,62,165,.12) !important}
-.rail-mark,.btn,.level-tag{box-shadow:inset 0 1px 0 rgba(255,255,255,.34),inset 0 -2px 0 rgba(0,0,0,.22),0 8px 22px var(--gloss-shadow-deep),0 0 18px rgba(32,227,230,.10) !important}
-.rail-mark{background:linear-gradient(145deg,#39D5C6,#20E3E6) !important}.btn{background:linear-gradient(145deg,#39D5C6,#20E3E6) !important;color:#0F0F1A !important;border-color:#39D5C6 !important}.btn:hover{transform:translateY(-1px);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 12px 28px var(--gloss-shadow-deep),0 0 24px rgba(32,227,230,.16) !important}.btn.done{background:linear-gradient(145deg,#20204A,#2A2358) !important;color:var(--cyan) !important;border-color:var(--teal-dim) !important}.btn.secondary{background:linear-gradient(145deg,#24244D,#17172C) !important;color:var(--text) !important}
+.nav-top-item.active{box-shadow:inset 3px 0 var(--pink),inset 0 1px 0 var(--gloss-highlight-soft) !important}.nav-top-item.active .icon{color:var(--pink)}.stage-item.active-stage .stage-num{border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 12px rgba(32,227,230,.12)}
+.stat-box,.meta-block,.concept-card,.tool-card,.project-card{position:relative;overflow:hidden;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}.stat-box::before,.meta-block::before,.concept-card::before,.tool-card::before,.project-card::before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background:linear-gradient(115deg,rgba(255,62,165,.12) 0%,transparent 18%,transparent 72%,rgba(32,227,230,.045) 100%);opacity:.72}.stat-box:hover,.meta-block:hover,.concept-card:hover,.tool-card:hover,.project-card:hover{border-color:rgba(255,62,165,.42) !important;transform:translateY(-3px);box-shadow:inset 0 1px 0 rgba(255,255,255,.13),inset 0 -1px 0 rgba(0,0,0,.42),0 16px 38px rgba(0,0,0,.52),0 0 24px rgba(255,62,165,.12) !important}
+.rail-mark,.btn,.level-tag{box-shadow:inset 0 1px 0 rgba(255,255,255,.34),inset 0 -2px 0 rgba(0,0,0,.22),0 8px 22px var(--gloss-shadow-deep),0 0 18px rgba(32,227,230,.10) !important}.rail-mark{background:linear-gradient(145deg,#39D5C6,#20E3E6) !important}.btn{background:linear-gradient(145deg,#39D5C6,#20E3E6) !important;color:#0F0F1A !important;border-color:#39D5C6 !important}.btn:hover{transform:translateY(-1px);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 12px 28px var(--gloss-shadow-deep),0 0 24px rgba(32,227,230,.16) !important}.btn.done{background:linear-gradient(145deg,#20204A,#2A2358) !important;color:var(--cyan) !important;border-color:var(--teal-dim) !important}.btn.secondary{background:linear-gradient(145deg,#24244D,#17172C) !important;color:var(--text) !important}
 .theme-toggle:hover,.collapse-btn:hover,.search-wrap input:focus{border-color:var(--pink) !important;color:var(--pink) !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 0 0 1px rgba(255,62,165,.16),0 10px 28px var(--gloss-shadow) !important}
-pre{background:linear-gradient(145deg,#111124,#0B0B15) !important;border-color:#2E2E50 !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.07),inset 0 -2px 0 rgba(0,0,0,.42),0 12px 28px var(--gloss-shadow-deep) !important}
-.exit-box{border-color:rgba(32,227,230,.25) !important;background:linear-gradient(145deg,rgba(32,227,230,.10),rgba(106,44,145,.08)) !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 10px 24px var(--gloss-shadow) !important}
+pre{background:linear-gradient(145deg,#111124,#0B0B15) !important;border-color:#2E2E50 !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.07),inset 0 -2px 0 rgba(0,0,0,.42),0 12px 28px var(--gloss-shadow-deep) !important}.exit-box{border-color:rgba(32,227,230,.25) !important;background:linear-gradient(145deg,rgba(32,227,230,.10),rgba(106,44,145,.08)) !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 10px 24px var(--gloss-shadow) !important}
 .dash-hero h1,.stage-view h1,.lesson-view h1,.subheading,.lsection h2,.concept-card h2,.tool-card h3,.project-card h3{font-family:'Nunito','Nunito Sans','IBM Plex Sans',system-ui,sans-serif}.dash-hero h1,.stage-view h1,.lesson-view h1{font-weight:800}.subheading,.lsection h2{font-weight:700}.dash-hero p,.lead,.lsection p,.concept-card p{font-size:.9rem;line-height:1.72}
 body[data-theme="light"]{--ink:#F7F3FA;--surface:#FFF9FD;--surface-2:#F2EAF8;--surface-3:#E9DDF2;--border:#D7C8E1;--text:#241B32;--muted:#665A72;--muted-2:#8A7C96;--teal:#008C91;--teal-dim:#B7DCDC;--amber:#D49A24;--red:#C83E62;--gloss-highlight:rgba(255,255,255,.92);--gloss-highlight-soft:rgba(255,255,255,.62);--gloss-shadow:rgba(73,42,92,.14);--gloss-shadow-deep:rgba(73,42,92,.20)}
 body[data-theme="light"] .topbar,body[data-theme="light"] .sidebar,body[data-theme="light"] .stat-box,body[data-theme="light"] .meta-block,body[data-theme="light"] .concept-card,body[data-theme="light"] .tool-card,body[data-theme="light"] .project-card{background:linear-gradient(145deg,#FFFFFF 0%,#F7F0FA 100%) !important}
 
-/* Locked page identities — the shared card material stays dark/glossy. */
-/* 01 Roadmap Overview: Magenta + Purple */
-.roadmap-flow .ftitle:hover,.dash-hero h1 .topic-accent{color:var(--pink)}
-.roadmap-flow .fnum{color:#FF78AC}.roadmap-flow .flow-arrow{color:#B388FF}.roadmap-flow .flow-stage:hover .ftitle{color:#FF78AC}.roadmap-flow .flow-stage:hover{background:linear-gradient(90deg,rgba(255,62,165,.055),rgba(139,92,255,.035))}
+/* Page-specific identities. The material stays shared; only the colour identity changes. */
+.app-shell{--page-a:#20E3E6;--page-b:#39D5C6;--page-soft:rgba(32,227,230,.10);--page-border:rgba(32,227,230,.34)}
+.app-shell:has(.sidebar .nav-top-item:nth-of-type(1).active){--page-a:#FF3EA5;--page-b:#8B5CFF;--page-soft:rgba(255,62,165,.11);--page-border:rgba(255,62,165,.36)}
+.app-shell:has(.sidebar .nav-top-item:nth-of-type(2).active){--page-a:#4D7CFF;--page-b:#8EADFF;--page-soft:rgba(77,124,255,.11);--page-border:rgba(77,124,255,.36)}
+.app-shell:has(.sidebar .nav-top-item:nth-of-type(3).active){--page-a:#8B5CFF;--page-b:#D6A4FF;--page-soft:rgba(139,92,255,.11);--page-border:rgba(139,92,255,.36)}
+.app-shell:has(.sidebar .nav-top-item:nth-of-type(4).active){--page-a:#FF6B9A;--page-b:#FFC1D6;--page-soft:rgba(255,107,154,.10);--page-border:rgba(255,107,154,.34)}
+.app-shell:has(.sidebar .nav-top-item:nth-of-type(5).active){--page-a:#20E3B2;--page-b:#82F5D6;--page-soft:rgba(32,227,178,.10);--page-border:rgba(32,227,178,.34)}
+.app-shell:has(.sidebar .nav-top-item:nth-of-type(6).active){--page-a:#FFD166;--page-b:#FFE6A3;--page-soft:rgba(255,209,102,.10);--page-border:rgba(255,209,102,.34)}
 
-/* 07 Skill Matrix: Electric Blue + Sky Blue */
-.data-table th{color:#8EADFF !important}.data-table td:first-child{color:#B8C7FF}.data-table tr:hover td{background:linear-gradient(90deg,rgba(77,124,255,.08),rgba(142,173,255,.035)) !important}.stage-view .data-table{border-color:rgba(77,124,255,.30)}
+/* Main heading: white first, then the page's two accent colours. */
+.dash-hero h1,.stage-view h1,.lesson-view h1{background:linear-gradient(100deg,#F7F5FA 0%,#F7F5FA 28%,var(--page-a) 57%,var(--page-b) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.subheading,.lsection h2,.concept-card h2,.tool-card h3,.project-card h3{background:linear-gradient(100deg,var(--page-a),var(--page-b));-webkit-background-clip:text;background-clip:text;color:transparent}
+.eyebrow,.stage-eyebrow,.lesson-eyebrow,.stat-box .num,.cmod,.complete,.rtitle a,a{color:var(--page-a)}
+.flow-stage:hover .ftitle,.content-link:hover{color:var(--page-a)}.tool-cost{color:var(--page-b);border-color:var(--page-border);background:var(--page-soft)}.level-tag{background:linear-gradient(135deg,var(--page-a),var(--page-b)) !important}.stage-item.active-stage .stage-num{border-color:var(--page-a);color:var(--page-a);box-shadow:0 0 14px var(--page-soft)}
+.nav-top-item.active{box-shadow:inset 3px 0 var(--page-a),inset 0 1px 0 var(--gloss-highlight-soft) !important}.nav-top-item.active .icon{color:var(--page-a)}
+.stat-box,.meta-block,.concept-card,.tool-card,.project-card{border-color:var(--page-border) !important}.stat-box::before,.meta-block::before,.concept-card::before,.tool-card::before,.project-card::before{background:linear-gradient(115deg,var(--page-soft) 0%,transparent 22%,transparent 70%,var(--page-soft) 100%)}
+.stat-box:hover,.meta-block:hover,.concept-card:hover,.tool-card:hover,.project-card:hover{border-color:var(--page-a) !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.15),inset 0 -1px 0 rgba(0,0,0,.42),0 16px 38px rgba(0,0,0,.52),0 0 26px var(--page-soft) !important}
 
-/* 05 Tools: Purple + Lilac */
-.tool-card .tool-cost{color:#D6A4FF !important;border-color:rgba(211,164,255,.34) !important}.tool-card h3{color:#F7F5FA}.tool-card:hover{border-color:rgba(139,92,255,.48) !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.13),0 16px 38px rgba(0,0,0,.52),0 0 24px rgba(139,92,255,.14) !important}.tool-card .trow b{color:#B388FF !important}
+/* Explicit heading treatment for the currently locked pages. */
+.app-shell:has(.sidebar .nav-top-item:nth-of-type(1).active) .dash-hero h1{background:linear-gradient(100deg,#F7F5FA 0%,#F7F5FA 24%,#FF3EA5 58%,#8B5CFF 100%);-webkit-background-clip:text;background-clip:text}
+.app-shell:has(.sidebar .nav-top-item:nth-of-type(2).active) .dash-hero h1{background:linear-gradient(100deg,#F7F5FA 0%,#F7F5FA 24%,#4D7CFF 58%,#8EADFF 100%);-webkit-background-clip:text;background-clip:text}
+.app-shell:has(.sidebar .nav-top-item:nth-of-type(3).active) .dash-hero h1{background:linear-gradient(100deg,#F7F5FA 0%,#F7F5FA 25%,#8B5CFF 58%,#D6A4FF 100%);-webkit-background-clip:text;background-clip:text}
+.app-shell:has(.sidebar .nav-top-item:nth-of-type(4).active) .dash-hero h1{background:linear-gradient(100deg,#F7F5FA 0%,#F7F5FA 25%,#FF6B9A 58%,#FFC1D6 100%);-webkit-background-clip:text;background-clip:text}
+.app-shell:has(.sidebar .nav-top-item:nth-of-type(5).active) .dash-hero h1{background:linear-gradient(100deg,#F7F5FA 0%,#F7F5FA 25%,#20E3B2 58%,#82F5D6 100%);-webkit-background-clip:text;background-clip:text}
+.app-shell:has(.sidebar .nav-top-item:nth-of-type(6).active) .dash-hero h1{background:linear-gradient(100deg,#F7F5FA 0%,#F7F5FA 25%,#FFD166 58%,#FFE6A3 100%);-webkit-background-clip:text;background-clip:text}
 
-/* 03 Resource Library: Coral + Peach */
-.resource-item .rtitle a{color:#FF6B9A !important}.resource-item .rnote{color:#FFD0B8 !important}.resource-item:hover{background:linear-gradient(90deg,rgba(255,107,154,.055),rgba(255,208,184,.025));border-radius:6px}.resource-item:hover .rtitle a{color:#FF9DB8 !important}
+/* Main content accents follow the active page pair instead of the global cyan. */
+.app-shell:has(.sidebar .nav-top-item:nth-of-type(1).active) .stat-box .num,.app-shell:has(.sidebar .nav-top-item:nth-of-type(1).active) .fnum{color:#FF3EA5}
+.app-shell:has(.sidebar .nav-top-item:nth-of-type(2).active) .data-table th{color:#8EADFF !important}
+.app-shell:has(.sidebar .nav-top-item:nth-of-type(3).active) .tool-card .trow b{color:#B388FF !important}.app-shell:has(.sidebar .nav-top-item:nth-of-type(3).active) .tool-card .tool-cost{color:#D6A4FF !important}
+.app-shell:has(.sidebar .nav-top-item:nth-of-type(4).active) .resource-item .rtitle a{color:#FF6B9A !important}.app-shell:has(.sidebar .nav-top-item:nth-of-type(4).active) .resource-item .rnote{color:#FFD0B8 !important}
+.app-shell:has(.sidebar .nav-top-item:nth-of-type(5).active) .project-fields .pf-label{color:#82F5D6 !important}.app-shell:has(.sidebar .nav-top-item:nth-of-type(5).active) .project-fields .loop{color:#20E3B2 !important}
+.app-shell:has(.sidebar .nav-top-item:nth-of-type(6).active) .methodology-view .loop{color:#FFD166 !important}
 
-/* 10 Project Ladder: Mint + Seafoam */
-.level-block .level-tag{background:linear-gradient(145deg,#82F5D6,#20E3B2) !important;color:#0F0F1A !important}.project-card:hover{border-color:rgba(32,227,178,.42) !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.13),0 16px 38px rgba(0,0,0,.52),0 0 24px rgba(32,227,178,.12) !important}.project-card h3{color:#F7F5FA}.project-fields .pf-label{color:#82F5D6 !important}.project-fields .loop{color:#20E3B2 !important}
-
-/* 12 Learning System: Gold + Cream */
-body:has(.loop) .stage-eyebrow,body:has(.loop) .subheading{color:#FFE6A3 !important}body:has(.loop) .loop{color:#FFD166 !important}body:has(.loop) .content-link:hover{color:#FFD166 !important}
-
-@media (prefers-reduced-motion:reduce){.btn,.stat-box,.meta-block,.concept-card,.tool-card,.project-card{transition:none !important}.btn:hover{transform:none !important}}
+@media(max-width:520px){.stat-box:hover,.meta-block:hover,.concept-card:hover,.tool-card:hover,.project-card:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){.stat-box,.meta-block,.concept-card,.tool-card,.project-card{transition:none !important}.stat-box:hover,.meta-block:hover,.concept-card:hover,.tool-card:hover,.project-card:hover{transform:none !important}.btn:hover{transform:none !important}}
