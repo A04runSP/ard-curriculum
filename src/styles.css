@@ -7,3 +7,17 @@ body[data-theme="light"]{--ink:#F5F7FA;--surface:#FFFFFF;--surface-2:#EEF2F6;--s
 .app-shell.is-collapsed .sidebar{width:76px}.app-shell.is-collapsed .topbar{left:76px}.app-shell.is-collapsed .main{left:76px}.app-shell.is-collapsed .rail-logo{justify-content:center;padding:0}.app-shell.is-collapsed .rail-label,.app-shell.is-collapsed .nav-section-label,.app-shell.is-collapsed .nav-top-item span,.app-shell.is-collapsed .stage-title,.app-shell.is-collapsed .stage-caret,.app-shell.is-collapsed .stage-body,.app-shell.is-collapsed .collapse-btn span{display:none}.app-shell.is-collapsed .nav-top-item{justify-content:center;padding:10px}.app-shell.is-collapsed .stage-header{justify-content:center;padding:9px 4px}.app-shell.is-collapsed .stage-num{width:30px;height:30px}.app-shell.is-collapsed .collapse-btn{width:46px;margin:auto}.app-shell.is-collapsed .collapse-btn .icon{transform:rotate(180deg)}
 @media(max-width:860px){.topbar{left:76px}.main{left:76px;padding:32px 24px 72px}.brand{left:0;width:76px;justify-content:center}.brand .full{display:none}.brand .compact{display:inline}.stat-row{grid-template-columns:1fr 1fr}.stage-meta-grid,.project-fields{grid-template-columns:1fr}.progress-chip{display:none}}
 @media(max-width:520px){.sidebar,.app-shell.is-collapsed .sidebar{width:64px}.topbar,.app-shell.is-collapsed .topbar{left:64px;padding:0 10px;gap:8px}.brand,.app-shell.is-collapsed .brand{width:64px}.main,.app-shell.is-collapsed .main{left:64px;padding:28px 16px 60px}.search-wrap input{font-size:.78rem}.dash-hero h1{font-size:1.45rem}.flow-stage{grid-template-columns:36px 1fr 12px}.mark-complete-bar{flex-direction:column}.btn{width:100%}}
+
+/* Mobile: keep the navigation rail compact so it never overlaps the content. */
+@media(max-width:520px){
+  .sidebar,.app-shell.is-collapsed .sidebar{width:64px;overflow:hidden}
+  .rail-logo{justify-content:center;padding:0}
+  .rail-label,.nav-section-label,.nav-top-item span,.stage-title,.stage-caret,.stage-body,.collapse-btn span{display:none}
+  .nav-top-item{justify-content:center;padding:10px}
+  .stage-header{justify-content:center;padding:9px 4px}
+  .stage-num{width:30px;height:30px}
+  .collapse-btn{width:46px;margin:auto}
+  .main,.app-shell.is-collapsed .main{left:64px;right:0;padding-left:16px;padding-right:16px}
+  .topbar,.app-shell.is-collapsed .topbar{left:64px;right:0}
+  .brand,.app-shell.is-collapsed .brand{width:64px}
+}
