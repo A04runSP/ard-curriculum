@@ -87,3 +87,11 @@ a,.rtitle a{color:var(--page-a)}
 .dash-hero h1 .word-second,.stage-view h1 .word-second,.lesson-view h1 .word-second{color:var(--page-a) !important;background:none !important}
 .dash-hero h1 .word-third,.stage-view h1 .word-third,.lesson-view h1 .word-third{background:linear-gradient(90deg,var(--page-a) 0%,var(--page-b) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 @media(max-width:520px){.dash-hero h1,.stage-view h1,.lesson-view h1{line-height:1.12}}
+
+
+/* Final word-level heading treatment: word 1 white, word 2 solid primary, word 3+ primary → secondary. */
+.main-inner h1{background:none !important;-webkit-background-clip:initial !important;background-clip:initial !important;color:var(--text) !important;text-shadow:none !important}
+.main-inner h1 .word-first{color:#F7F5FA !important;background:none !important}
+.main-inner h1 .word-second{color:var(--page-a) !important;background:none !important}
+.main-inner h1 .word-third{background:linear-gradient(90deg,var(--page-a) 0%,var(--page-b) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+@media(max-width:520px){.main-inner h1{line-height:1.12}}
