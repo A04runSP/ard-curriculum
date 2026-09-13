@@ -1,0 +1,16 @@
+/* Concept-note section labels
+   Keep the body copy neutral; use the stage accent on the internal labels.
+*/
+.concept-card{
+  --lesson-a:#20E3E6;
+}
+
+.concept-card h4{
+  color:var(--lesson-a) !important;
+  text-shadow:0 0 12px color-mix(in srgb,var(--lesson-a) 18%,transparent);
+}
+
+/* The requested editorial punctuation: "Why it matters..." */
+.concept-card h4:nth-of-type(2)::after{
+  content:"...";
+}
