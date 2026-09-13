@@ -12,9 +12,8 @@
     box-sizing:border-box !important;
   }
 
-  .app-shell.is-collapsed:not(.filament-open) .topbar,
+  .app-shell.is-collapsed:not(.filament-open) .topbar{left:64px !important}
   .app-shell.is-collapsed:not(.filament-open) .main{left:0 !important}
-
   .app-shell.is-collapsed.filament-open .topbar,
   .app-shell.is-collapsed.filament-open .main{left:64px !important}
 
