@@ -1,5 +1,6 @@
 import { stage1 } from "./stage1.js";
 import { stage2 } from "./stage2.js";
+import { lessonBeginner } from "./lessonBeginner.js";
 import { lessonA1 } from "./lessonA1.js";
 import { lessonA2 } from "./lessonA2.js";
 import { lessonA3 } from "./lessonA3.js";
@@ -17,7 +18,7 @@ import { projectLadder } from "./projectLadder.js";
 import { methodology } from "./methodology.js";
 
 export const stages = [...stage1, ...stage2];
-export const lessons = [...lessonA1, ...lessonA2, ...lessonA3];
+export const lessons = [...lessonBeginner, ...lessonA1, ...lessonA2, ...lessonA3];
 export const lessons2 = [...lessonB1, ...lessonB2, ...lessonB3, ...lessonB4];
 export const conceptCards = [...concept1, ...concept2, ...concept3];
 export { skillMatrix, tools, resourceLibrary, projectLadder, methodology };
