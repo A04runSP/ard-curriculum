@@ -70,6 +70,57 @@
   line-height:1.48;
 }
 
+/* Sidebar interaction:
+   inactive navigation stays plain; only the selected item receives the
+   premium glass/elevation treatment. Each top-level destination inherits
+   its own page identity through --page-a / --page-b. */
+.nav-top-item.active{
+  position:relative !important;
+  margin:4px 0 !important;
+  min-height:48px !important;
+  padding:10px 14px !important;
+  border:1px solid var(--page-border) !important;
+  border-radius:16px !important;
+  background:
+    linear-gradient(135deg,var(--page-soft),rgba(139,92,255,.055)) !important;
+  color:var(--text) !important;
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.26),
+    0 0 24px var(--page-soft),
+    inset 0 1px 0 rgba(255,255,255,.11),
+    inset 0 -1px 0 rgba(0,0,0,.24) !important;
+  backdrop-filter:blur(14px) saturate(145%) !important;
+  -webkit-backdrop-filter:blur(14px) saturate(145%) !important;
+}
+.nav-top-item.active::before{
+  content:"";
+  position:absolute;
+  left:-1px;
+  top:7px;
+  bottom:7px;
+  width:3px;
+  border-radius:999px;
+  background:linear-gradient(180deg,var(--page-a),var(--page-b));
+  box-shadow:0 0 12px var(--page-soft);
+}
+.nav-top-item.active::after{
+  content:"";
+  position:absolute;
+  left:12%;
+  right:12%;
+  top:1px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.34),transparent);
+  pointer-events:none;
+}
+.nav-top-item.active .icon{
+  color:var(--page-a) !important;
+  filter:drop-shadow(0 0 7px var(--page-soft));
+}
+.nav-top-item.active span{
+  color:var(--text) !important;
+}
+
 @media(max-width:520px){
   .flow-stage{
     min-height:220px;
@@ -112,5 +163,13 @@
     right:20px !important;
     bottom:18px !important;
     top:auto !important;
+  }
+
+  /* Keep the mobile sidebar's inactive rows exactly as before while giving
+     the active row the same premium treatment as Stages. */
+  .nav-top-item.active{
+    min-height:48px !important;
+    padding:10px 14px !important;
+    border-radius:16px !important;
   }
 }
