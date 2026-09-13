@@ -1,46 +1,103 @@
-/* ARD MOBILE FILAMENT NAVIGATION
-   Mobile only. The collapsed sidebar is a true 64px filament. Its compact
-   navigation lives inside that filament and is revealed by touching the rail.
-   The existing bottom collapse control is the only control that expands the
-   filament back into the full sidebar. No external/floating button. */
+/* ARD MOBILE FILAMENT
+   One small access filament below the ARD logo. It reveals the existing
+   collapsed icon menu without creating another sidebar or another button. */
+.mobile-filament{display:none}
+
 @media (max-width:520px){
+  /* When the normal sidebar is collapsed, hide its menu rail completely.
+     The logo and filament remain as the access point. */
   .app-shell.is-collapsed .sidebar{
-    width:64px !important;
-    overflow:hidden !important;
-    cursor:pointer;
-    transition:width .18s ease,box-shadow .18s ease;
+    width:0 !important;
+    overflow:visible !important;
+    background:transparent !important;
+    border-right:0 !important;
+    box-shadow:none !important;
+    pointer-events:none;
   }
 
-  /* Closed filament: keep only the rail/logo and the existing bottom control. */
-  .app-shell.is-collapsed:not(.collapsed-menu-open) .sidebar-scroll{
-    opacity:0 !important;
-    visibility:hidden !important;
+  .app-shell.is-collapsed .rail-logo{
+    position:fixed !important;
+    top:12px !important;
+    left:12px !important;
+    width:40px !important;
+    height:40px !important;
+    padding:0 !important;
+    margin:0 !important;
+    justify-content:center !important;
+    z-index:95 !important;
     pointer-events:none !important;
-    transform:translateY(5px);
-    transition:opacity .14s ease,transform .14s ease,visibility 0s linear .14s;
   }
 
-  /* Touched filament: reveal the compact menu INSIDE the same 64px rail. */
-  .app-shell.is-collapsed.collapsed-menu-open .sidebar-scroll{
-    opacity:1 !important;
-    visibility:visible !important;
+  .app-shell.is-collapsed .rail-mark{
+    width:40px !important;
+    height:40px !important;
+  }
+
+  .app-shell.is-collapsed .mobile-filament{
+    display:flex !important;
+    position:fixed !important;
+    top:62px !important;
+    left:12px !important;
+    width:40px !important;
+    height:34px !important;
+    align-items:center !important;
+    justify-content:center !important;
+    padding:0 !important;
+    margin:0 !important;
+    border:1px solid rgba(255,255,255,.16) !important;
+    border-radius:11px !important;
+    background:rgba(18,16,42,.72) !important;
+    color:rgba(255,255,255,.82) !important;
+    box-shadow:0 8px 20px rgba(0,0,0,.24),inset 0 1px rgba(255,255,255,.10) !important;
+    backdrop-filter:blur(12px) !important;
+    -webkit-backdrop-filter:blur(12px) !important;
+    cursor:pointer !important;
     pointer-events:auto !important;
-    transform:translateY(0);
-    transition:opacity .14s ease,transform .14s ease;
+    z-index:100 !important;
   }
 
-  .app-shell.is-collapsed.collapsed-menu-open .sidebar{
-    box-shadow:6px 0 24px rgba(0,0,0,.28),inset -1px 0 rgba(255,255,255,.08) !important;
+  .app-shell.is-collapsed .mobile-filament span{
+    display:block !important;
+    font-size:22px !important;
+    line-height:1 !important;
+    transform:rotate(0deg) !important;
+    transition:transform .18s ease !important;
   }
 
-  /* Compact menu remains icon-only and contained by the filament. */
-  .app-shell.is-collapsed .sidebar-scroll{
+  /* The same filament points downward when the hidden collapsed menu is open. */
+  .app-shell.is-collapsed.filament-open .mobile-filament span{
+    transform:rotate(90deg) !important;
+  }
+
+  .app-shell.is-collapsed:not(.filament-open) .sidebar-scroll,
+  .app-shell.is-collapsed:not(.filament-open) .sidebar-footer{
+    display:none !important;
+  }
+
+  /* Reveal the EXISTING collapsed navigation inside the normal 64px rail. */
+  .app-shell.is-collapsed.filament-open .sidebar{
+    width:64px !important;
+    background:var(--surface) !important;
+    border-right:1px solid var(--border) !important;
+    box-shadow:6px 0 24px rgba(0,0,0,.24) !important;
+    pointer-events:auto !important;
+  }
+
+  .app-shell.is-collapsed.filament-open .rail-logo{
+    position:fixed !important;
+    left:12px !important;
+  }
+
+  .app-shell.is-collapsed.filament-open .sidebar-scroll{
+    display:block !important;
     width:64px !important;
     box-sizing:border-box !important;
     overflow-x:hidden !important;
+    padding-top:64px !important;
   }
 
-  .app-shell.is-collapsed .nav-top-item{
+  .app-shell.is-collapsed.filament-open .nav-section-label{display:none !important}
+  .app-shell.is-collapsed.filament-open .nav-top-item{
     width:50px !important;
     min-width:50px !important;
     margin-left:7px !important;
@@ -50,8 +107,8 @@
     justify-content:center !important;
   }
 
-  /* The existing bottom control stays INSIDE the filament. */
-  .app-shell.is-collapsed .sidebar-footer{
+  .app-shell.is-collapsed.filament-open .sidebar-footer{
+    display:block !important;
     left:0 !important;
     right:0 !important;
     bottom:0 !important;
@@ -60,15 +117,9 @@
     pointer-events:auto !important;
   }
 
-  .app-shell.is-collapsed .collapse-btn{
+  .app-shell.is-collapsed.filament-open .collapse-btn{
     width:46px !important;
     height:40px !important;
     margin:0 auto !important;
-  }
-
-  /* When the compact menu is open, the rail itself is still the menu surface;
-     there is no drawer extending into page content. */
-  .app-shell.is-collapsed.collapsed-menu-open .sidebar-scroll .nav-section-label{
-    display:none !important;
   }
 }
