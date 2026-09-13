@@ -1,0 +1,70 @@
+/* ARD MOBILE WIDTH CONTAINMENT
+   Fixes the mobile shell geometry without changing the visual system.
+   The sidebar overlays the workspace, so the workspace always occupies exactly
+   the viewport width remaining beside the 64px mobile rail. */
+@media (max-width:520px){
+  .app-shell{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+  }
+
+  .topbar,
+  .main{
+    left:64px !important;
+    right:auto !important;
+    width:calc(100vw - 64px) !important;
+    max-width:calc(100vw - 64px) !important;
+    min-width:0 !important;
+    box-sizing:border-box;
+  }
+
+  .main-inner{
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    box-sizing:border-box;
+  }
+
+  .search-wrap{
+    min-width:0;
+  }
+
+  .search-wrap input{
+    min-width:0;
+    box-sizing:border-box;
+  }
+
+  .stat-row,
+  .stage-meta-grid,
+  .project-fields,
+  .stage-index-grid{
+    min-width:0;
+  }
+
+  .stat-box,
+  .stage-index-card,
+  .meta-block,
+  .concept-card,
+  .tool-card,
+  .project-card,
+  .lsection,
+  .exit-box,
+  .flow-stage,
+  .content-link{
+    min-width:0;
+    max-width:100%;
+    box-sizing:border-box;
+  }
+
+  .stage-index-card p,
+  .content-link,
+  .flow-stage,
+  .lsection,
+  .meta-block,
+  .concept-card,
+  .tool-card,
+  .project-card{
+    overflow-wrap:anywhere;
+  }
+}
