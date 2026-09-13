@@ -16,11 +16,56 @@
 .stage-index-card h2{margin-top:14px;margin-bottom:7px}
 .stage-index-card p{line-height:1.48}
 
-/* Premium sidebar feedback is transient: it appears only while pressing/touching. */
-.nav-top-item:active{position:relative !important;transform:translateY(-1px) scale(.995);border:1px solid var(--page-border) !important;border-radius:16px !important;background:linear-gradient(135deg,var(--page-soft),rgba(139,92,255,.055)) !important;box-shadow:0 12px 28px rgba(0,0,0,.26),0 0 24px var(--page-soft),inset 0 1px 0 rgba(255,255,255,.11),inset 0 -1px 0 rgba(0,0,0,.24) !important;backdrop-filter:blur(14px) saturate(145%) !important;-webkit-backdrop-filter:blur(14px) saturate(145%) !important}
-.nav-top-item:active::before{content:"";position:absolute;left:-1px;top:7px;bottom:7px;width:3px;border-radius:999px;background:linear-gradient(180deg,var(--page-a),var(--page-b));box-shadow:0 0 12px var(--page-soft)}
-.nav-top-item:active::after{content:"";position:absolute;left:12%;right:12%;top:1px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.34),transparent);pointer-events:none}
-.nav-top-item:active .icon{color:var(--page-a) !important;filter:drop-shadow(0 0 7px var(--page-soft))}
+/* Sidebar navigation: premium feedback exists ONLY while the item is being pressed/touched.
+   Idle state is intentionally untouched so the existing typography, spacing and mobile layout remain unchanged. */
+.nav-top-item:active{
+  position:relative !important;
+  z-index:2;
+  transform:translate3d(0,-1px,0) scale(.995);
+  border:1px solid color-mix(in srgb,var(--page-a) 55%,rgba(255,255,255,.16)) !important;
+  border-radius:16px !important;
+  background:
+    linear-gradient(135deg,
+      color-mix(in srgb,var(--page-a) 15%,rgba(30,29,55,.82)),
+      rgba(19,18,39,.70) 48%,
+      color-mix(in srgb,var(--page-b) 7%,rgba(12,12,27,.72))) !important;
+  box-shadow:
+    0 14px 30px rgba(0,0,0,.34),
+    0 0 28px color-mix(in srgb,var(--page-a) 15%,transparent),
+    inset 0 1px 0 rgba(255,255,255,.16),
+    inset 0 -1px 0 rgba(0,0,0,.30),
+    inset 1px 0 0 rgba(255,255,255,.045) !important;
+  backdrop-filter:blur(16px) saturate(150%) !important;
+  -webkit-backdrop-filter:blur(16px) saturate(150%) !important;
+}
+.nav-top-item:active::before{
+  content:"";
+  position:absolute;
+  left:-1px;
+  top:7px;
+  bottom:7px;
+  width:3px;
+  border-radius:999px;
+  background:linear-gradient(180deg,var(--page-b),var(--page-a));
+  box-shadow:0 0 13px color-mix(in srgb,var(--page-a) 65%,transparent);
+  pointer-events:none;
+}
+.nav-top-item:active::after{
+  content:"";
+  position:absolute;
+  left:11%;
+  right:11%;
+  top:1px;
+  height:1px;
+  border-radius:999px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.38),transparent);
+  box-shadow:0 0 7px rgba(255,255,255,.08);
+  pointer-events:none;
+}
+.nav-top-item:active .icon{
+  color:var(--page-a) !important;
+  filter:drop-shadow(0 0 8px color-mix(in srgb,var(--page-a) 58%,transparent));
+}
 
 @media(max-width:520px){
 .flow-stage{min-height:220px;padding:19px 62px 61px 16px !important}.flow-stage .fnum{min-width:52px;height:44px}.flow-stage .ftitle{margin-top:14px;font-size:18px;line-height:1.15}.flow-stage .fobjective{margin-top:6px;max-width:none;font-size:13.5px;line-height:1.48}.flow-stage .flow-arrow{right:16px;bottom:17px;width:36px;height:36px;font-size:18px}
