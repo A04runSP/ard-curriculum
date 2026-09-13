@@ -1,0 +1,149 @@
+/* ARD mobile reference system
+   Direction: glossy environment + coloured glass cards + restrained neon depth. */
+@media (max-width:520px){
+  :root{
+    --ard-pink:#FF3EA5;
+    --ard-violet:#9B6BFF;
+    --ard-cyan:#20E3E6;
+    --ard-blue:#4D7CFF;
+  }
+
+  body{
+    background:
+      radial-gradient(420px 300px at 92% 3%,rgba(155,107,255,.20),transparent 68%),
+      radial-gradient(420px 300px at 2% 45%,rgba(32,227,230,.13),transparent 70%),
+      radial-gradient(420px 320px at 88% 92%,rgba(255,62,165,.16),transparent 70%),
+      linear-gradient(145deg,#05060d 0%,#0b0a18 48%,#070914 100%);
+    background-attachment:fixed;
+  }
+
+  .app-shell{position:relative}
+  .app-shell::before{
+    content:"";
+    position:fixed;
+    z-index:0;
+    top:58px;
+    left:64px;
+    right:0;
+    bottom:0;
+    pointer-events:none;
+    opacity:.8;
+    background:
+      linear-gradient(138deg,transparent 0 28%,rgba(77,124,255,.055) 36%,transparent 45%),
+      linear-gradient(154deg,transparent 0 52%,rgba(255,62,165,.07) 61%,transparent 70%),
+      linear-gradient(28deg,transparent 0 68%,rgba(32,227,230,.045) 75%,transparent 82%);
+    filter:blur(10px);
+  }
+
+  .main,.topbar,.sidebar{position:fixed}
+  .main{z-index:1;background:transparent}
+  .topbar,.sidebar{z-index:60}
+
+  .search-wrap input{
+    background:linear-gradient(145deg,rgba(35,34,58,.70),rgba(10,11,24,.58));
+    border-color:rgba(255,255,255,.16);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.10),0 10px 26px rgba(0,0,0,.28),0 0 18px rgba(155,107,255,.08);
+  }
+
+  .stages-index-hero h1,.dash-hero h1,.stage-view h1,.lesson-view h1{
+    text-shadow:0 8px 28px rgba(0,0,0,.42);
+  }
+  .stages-index-hero h1 .word-second,.dash-hero h1 .word-second{color:#FF78AC}
+
+  /* Reference-style coloured glass cards: colour is visible through the glass, not painted flat. */
+  .stage-index-card{
+    isolation:isolate;
+    min-height:178px;
+    overflow:hidden;
+    border:1px solid color-mix(in srgb,var(--lesson-a) 48%,rgba(255,255,255,.15)) !important;
+    background:
+      linear-gradient(135deg,
+        color-mix(in srgb,var(--lesson-a) 16%,rgba(25,25,45,.72)),
+        rgba(12,12,26,.56) 48%,
+        color-mix(in srgb,var(--lesson-b) 7%,rgba(10,11,24,.52))) !important;
+    backdrop-filter:blur(18px) saturate(145%);
+    -webkit-backdrop-filter:blur(18px) saturate(145%);
+    box-shadow:
+      0 20px 40px rgba(0,0,0,.34),
+      inset 0 1px 0 rgba(255,255,255,.14),
+      inset 1px 0 rgba(255,255,255,.045),
+      0 0 20px color-mix(in srgb,var(--lesson-a) 12%,transparent);
+    transform:translateY(0);
+  }
+
+  .stage-index-card::before{
+    content:"";
+    position:absolute;
+    z-index:-1;
+    inset:-45% 28% 45% -18%;
+    border-radius:50%;
+    background:radial-gradient(circle,color-mix(in srgb,var(--lesson-a) 22%,transparent),transparent 68%);
+    filter:blur(14px);
+    pointer-events:none;
+  }
+
+  .stage-index-card::after{
+    content:"";
+    position:absolute;
+    z-index:-1;
+    right:-35px;
+    bottom:-55px;
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    background:radial-gradient(circle,color-mix(in srgb,var(--lesson-b) 12%,transparent),transparent 70%);
+    filter:blur(12px);
+    pointer-events:none;
+  }
+
+  .stage-card-top{position:relative;z-index:2}
+  .stage-card-num{
+    min-width:45px;
+    height:36px;
+    border-color:color-mix(in srgb,var(--lesson-a) 62%,rgba(255,255,255,.12));
+    background:color-mix(in srgb,var(--lesson-a) 13%,rgba(255,255,255,.035)) !important;
+    color:var(--lesson-a);
+    text-shadow:0 0 12px color-mix(in srgb,var(--lesson-a) 35%,transparent);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 0 14px color-mix(in srgb,var(--lesson-a) 10%,transparent);
+  }
+  .stage-card-arrow{
+    text-shadow:0 0 12px color-mix(in srgb,var(--lesson-a) 38%,transparent);
+  }
+  .stage-index-card h2{
+    position:relative;
+    z-index:2;
+    color:#f7f5fa;
+    text-shadow:0 2px 12px rgba(0,0,0,.45);
+  }
+  .stage-index-card p{position:relative;z-index:2;color:#c3c1cf}
+  .stage-card-meta{position:relative;z-index:2;color:color-mix(in srgb,var(--lesson-a) 76%,#d9d6e2)}
+  .stage-card-progress{position:relative;z-index:2;box-shadow:inset 0 1px rgba(255,255,255,.05)}
+  .stage-card-progress span{box-shadow:0 0 12px color-mix(in srgb,var(--lesson-a) 35%,transparent)}
+
+  /* Other content surfaces share the same floating material. */
+  .stat-box,.meta-block,.concept-card,.tool-card,.project-card,.lsection,.exit-box,.flow-stage{
+    border-color:rgba(255,255,255,.13);
+    background:linear-gradient(145deg,rgba(31,30,52,.62),rgba(10,11,23,.50));
+    backdrop-filter:blur(16px) saturate(130%);
+    -webkit-backdrop-filter:blur(16px) saturate(130%);
+    box-shadow:0 16px 34px rgba(0,0,0,.27),inset 0 1px 0 rgba(255,255,255,.085);
+  }
+
+  .flow-stage{border-radius:16px}
+  .stat-box{border-radius:16px}
+
+  /* Sidebar keeps the Stages destination visible, like the reference. */
+  .stages-index-link{
+    background:linear-gradient(135deg,rgba(255,62,165,.055),rgba(155,107,255,.035));
+  }
+  .stages-index-link.active{
+    border-color:rgba(255,62,165,.40);
+    background:linear-gradient(135deg,rgba(255,62,165,.16),rgba(155,107,255,.10));
+    box-shadow:0 0 22px rgba(255,62,165,.10),inset 0 1px 0 rgba(255,255,255,.10);
+  }
+  .stages-index-link .icon{color:#FF78AC}
+
+  @media (prefers-reduced-motion:no-preference){
+    .stage-index-card:active{transform:translateY(-3px) scale(.995)}
+  }
+}
