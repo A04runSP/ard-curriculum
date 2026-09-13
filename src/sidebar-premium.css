@@ -98,42 +98,4 @@
     top:6px;
     bottom:6px;
   }
-
-  /* Collapsed mobile rail: turn the existing collapse control into a visible
-     edge handle so the sidebar can be opened without hunting at the bottom. */
-  .is-collapsed .sidebar .sidebar-footer{
-    position:absolute !important;
-    top:50% !important;
-    right:-1px !important;
-    bottom:auto !important;
-    transform:translateY(-50%) !important;
-    width:30px !important;
-    height:58px !important;
-    z-index:80 !important;
-    pointer-events:none !important;
-  }
-
-  .is-collapsed .sidebar .collapse-btn{
-    width:30px !important;
-    height:58px !important;
-    min-width:30px !important;
-    margin:0 !important;
-    padding:0 !important;
-    border-radius:14px 0 0 14px !important;
-    border-right:0 !important;
-    display:grid !important;
-    place-items:center !important;
-    pointer-events:auto !important;
-    background:linear-gradient(180deg,rgba(40,35,70,.96),rgba(19,17,39,.96)) !important;
-    box-shadow:
-      -6px 0 18px rgba(0,0,0,.28),
-      inset 1px 0 rgba(255,255,255,.10),
-      inset 0 1px rgba(255,255,255,.10) !important;
-  }
-
-  .is-collapsed .sidebar .collapse-btn .icon{
-    color:#FF78AC !important;
-    filter:drop-shadow(0 0 8px rgba(255,62,165,.48));
-    transform:rotate(180deg);
-  }
 }
