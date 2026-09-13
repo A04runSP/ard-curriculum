@@ -1,6 +1,7 @@
 import { stage1 } from "./stage1.js";
 import { stage2 } from "./stage2.js";
 import { lessonBeginner } from "./lessonBeginner.js";
+import { lessonFoundation } from "./lessonFoundation.js";
 import { lessonA1 } from "./lessonA1.js";
 import { lessonA2 } from "./lessonA2.js";
 import { lessonA3 } from "./lessonA3.js";
@@ -10,6 +11,7 @@ import { lessonB3 } from "./lessonB3.js";
 import { lessonB4 } from "./lessonB4.js";
 import { shortcutReferenceBeginner } from "./shortcutReferenceBeginner.js";
 import { conceptBeginner } from "./conceptBeginner.js";
+import { conceptFoundation } from "./conceptFoundation.js";
 import { concept1 } from "./concept1.js";
 import { concept2 } from "./concept2.js";
 import { concept3 } from "./concept3.js";
@@ -20,8 +22,8 @@ import { projectLadder } from "./projectLadder.js";
 import { methodology } from "./methodology.js";
 
 export const stages = [...stage1, ...stage2];
-export const lessons = [...lessonBeginner, ...lessonA1, ...lessonA2, ...lessonA3];
+export const lessons = [...lessonBeginner, ...lessonFoundation, ...lessonA1, ...lessonA2, ...lessonA3];
 export const lessons2 = [...lessonB1, ...lessonB2, ...lessonB3, ...lessonB4];
-export const conceptCards = [...shortcutReferenceBeginner, ...conceptBeginner, ...concept1, ...concept2, ...concept3];
+export const conceptCards = [...shortcutReferenceBeginner, ...conceptBeginner, ...conceptFoundation, ...concept1, ...concept2, ...concept3];
 export { skillMatrix, tools, resourceLibrary, projectLadder, methodology };
 export const allLessons = [...lessons, ...lessons2];
