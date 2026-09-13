@@ -2,7 +2,7 @@ name: ARD Vite Build
 
 on:
   push:
-    branches: [react-migration]
+    branches: [main, react-migration]
   workflow_dispatch:
 
 jobs:
