@@ -1,13 +1,25 @@
-/* Concept-note section labels
-   Keep the body copy neutral; use the stage accent on the internal labels.
+/* Concept-note family
+   Concept notes use their own blue family, separate from lesson accents.
+   Body copy stays neutral; internal labels and the card edge carry the family.
 */
 .concept-card{
-  --lesson-a:#20E3E6;
+  --concept-a:#6675FF;
+  --concept-b:#9AA4FF;
+  border-color:color-mix(in srgb,var(--concept-a) 72%,rgba(255,255,255,.12)) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.10),
+    0 0 22px color-mix(in srgb,var(--concept-a) 10%,transparent);
 }
 
+.concept-card h2,
+.concept-card .cmod,
 .concept-card h4{
-  color:var(--lesson-a) !important;
-  text-shadow:0 0 12px color-mix(in srgb,var(--lesson-a) 18%,transparent);
+  color:var(--concept-a) !important;
+  text-shadow:0 0 12px color-mix(in srgb,var(--concept-a) 18%,transparent);
+}
+
+.concept-card h2{
+  text-shadow:0 0 16px color-mix(in srgb,var(--concept-a) 20%,transparent);
 }
 
 /* The requested editorial punctuation: "Why it matters..." */
