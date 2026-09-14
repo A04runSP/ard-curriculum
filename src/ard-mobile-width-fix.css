@@ -6,11 +6,11 @@
 @media (max-width:520px){
   .app-shell{width:100% !important;max-width:100% !important;min-width:0 !important}
 
-  /* Keep the browser/header area clean; the search control visually belongs to the page. */
+  /* Mobile search belongs to the page content area, directly above the heading. */
   .topbar{left:0 !important;right:0 !important;height:56px !important;padding:0 !important;background:transparent !important;border-bottom:0 !important;pointer-events:none !important}
   .brand{display:none !important}
   .topbar-right{display:none !important}
-  .search-wrap{position:fixed !important;top:68px !important;left:76px !important;right:12px !important;width:auto !important;max-width:none !important;margin:0 !important;z-index:70 !important;pointer-events:auto !important}
+  .search-wrap{position:absolute !important;top:68px !important;left:22px !important;right:22px !important;width:auto !important;max-width:none !important;margin:0 !important;z-index:70 !important;pointer-events:auto !important}
   .search-wrap input{height:38px !important;font-size:.74rem !important;border-radius:12px !important;padding-left:32px !important}
   .search-wrap>.icon{left:11px !important;width:14px !important;height:14px !important}
 
@@ -18,9 +18,11 @@
   .app-shell.is-collapsed:not(.filament-open) .main{left:0 !important}
   .app-shell.is-collapsed.filament-open .main{left:64px !important}
   .app-shell:not(.is-collapsed) .main{left:0 !important}
-  .main{padding:118px 12px 52px !important}
 
+  /* Pull the page content up so the search bar sits immediately above the heading. */
+  .main{padding:54px 12px 52px !important}
   .main-inner{display:block !important;width:100% !important;max-width:620px !important;min-width:0 !important;margin-left:auto !important;margin-right:auto !important;box-sizing:border-box !important}
+  .dash-hero,.stages-index-hero,.stage-view,.lesson-view{margin-top:0 !important}
 
   body{font-size:13px !important}
   .eyebrow,.stage-eyebrow,.lesson-eyebrow{font-size:.60rem !important;line-height:1.45 !important;letter-spacing:.075em !important}
