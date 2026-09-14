@@ -31,5 +31,12 @@
     <link rel="stylesheet" href="/src/tools-heading-colors.css" />
     <link rel="stylesheet" href="/src/ard-mobile-width-fix.css" />
     <link rel="stylesheet" href="/src/sidebar-premium.css" />
+    <style>
+      @media (max-width:520px){
+        /* Keep the hamburger in one fixed header position on every mobile state. */
+        .app-shell .mobile-filament{top:12px !important;left:12px !important;width:40px !important;height:40px !important}
+        .app-shell:not(.is-collapsed) .mobile-filament{display:none !important}
+      }
+    </style>
   </body>
 </html>
