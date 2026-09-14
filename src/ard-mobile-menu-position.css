@@ -1,6 +1,0 @@
-/* Keep the EXISTING mobile hamburger inside the existing ARD header row. */
-@media (max-width:520px){
-  .app-shell.is-collapsed .mobile-filament{
-    transform:translateY(-46px) !important;
-  }
-}
