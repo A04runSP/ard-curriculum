@@ -10,6 +10,7 @@
   --ard-blue:#4D7CFF;
 }
 
+/* ARD mobile visual system: glossy environment + elevated glass surfaces */
 body{
   background:
     radial-gradient(600px 420px at 88% 8%,rgba(155,107,255,.12),transparent 62%),
@@ -19,13 +20,11 @@ body{
   background-attachment:fixed;
 }
 
-/* Keep the existing 15-stage implementation, but present the sidebar item as simply "Stages". */
 .stages-index-link .stage-index-icon{display:none}
 .stages-index-link .stage-index-text{font-size:0}
 .stages-index-link .stage-index-text::after{content:"Stages";font-size:.82rem}
 .stages-index-link .stage-index-arrow{margin-left:auto}
 
-/* Glossy shell surfaces */
 .topbar,.sidebar{
   background:linear-gradient(145deg,rgba(11,12,25,.88),rgba(7,8,18,.78));
   border-color:rgba(255,255,255,.10);
@@ -44,7 +43,6 @@ body{
       radial-gradient(420px 260px at 95% 5%,rgba(155,107,255,.10),transparent 65%),
       radial-gradient(360px 240px at 0% 58%,rgba(32,227,230,.075),transparent 68%);
   }
-
   .topbar{
     height:58px;
     background:linear-gradient(180deg,rgba(7,8,18,.94),rgba(7,8,18,.76));
@@ -57,7 +55,6 @@ body{
     border-radius:12px;
     background:rgba(23,23,40,.62);
   }
-
   .sidebar{
     background:linear-gradient(160deg,rgba(10,11,23,.94),rgba(8,8,18,.88));
     backdrop-filter:blur(20px) saturate(135%);
@@ -77,124 +74,93 @@ body{
     border-color:rgba(255,62,165,.30);
     box-shadow:0 0 18px rgba(255,62,165,.08),inset 0 1px rgba(255,255,255,.08);
   }
-
   .main{padding:24px 14px 64px}
   .main-inner{width:100%}
-
-  .dash-hero,.stages-index-hero,.stage-view,.lesson-view{
-    position:relative;
-  }
+  .dash-hero,.stages-index-hero,.stage-view,.lesson-view{position:relative}
   .dash-hero::before,.stages-index-hero::before,.stage-view::before,.lesson-view::before{
-    content:"";
-    position:absolute;
-    inset:-80px -70px auto auto;
-    width:230px;
-    height:230px;
-    border-radius:50%;
-    background:radial-gradient(circle,rgba(255,62,165,.12),transparent 68%);
-    pointer-events:none;
-    filter:blur(8px);
+    content:"";position:absolute;inset:-80px -70px auto auto;width:230px;height:230px;border-radius:50%;
+    background:radial-gradient(circle,rgba(255,62,165,.12),transparent 68%);pointer-events:none;filter:blur(8px);
   }
-
-  .dash-hero h1,.stages-index-hero h1,.stage-view h1,.lesson-view h1{
-    font-size:clamp(1.7rem,8vw,2.25rem);
-    letter-spacing:-.035em;
-  }
+  .dash-hero h1,.stages-index-hero h1,.stage-view h1,.lesson-view h1{font-size:clamp(1.7rem,8vw,2.25rem);letter-spacing:-.035em}
   .eyebrow,.stage-eyebrow,.lesson-eyebrow{color:#FF78AC}
-
   .stat-row,.stages-index-stats{gap:8px}
   .stat-box{
-    border:1px solid rgba(255,255,255,.12);
-    border-radius:16px;
+    border:1px solid rgba(255,255,255,.12);border-radius:16px;
     background:linear-gradient(145deg,rgba(31,31,51,.60),rgba(12,13,27,.50));
-    backdrop-filter:blur(14px) saturate(125%);
-    -webkit-backdrop-filter:blur(14px) saturate(125%);
+    backdrop-filter:blur(14px) saturate(125%);-webkit-backdrop-filter:blur(14px) saturate(125%);
     box-shadow:0 14px 30px rgba(0,0,0,.24),inset 0 1px rgba(255,255,255,.08),0 0 15px rgba(255,62,165,.055);
   }
   .stat-box .num{color:#FF78AC}
-
-  /* The 15 stage grid becomes a single-column mobile stack. */
-  .stage-index-grid{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:12px;
-  }
+  .stage-index-grid{display:grid;grid-template-columns:1fr;gap:12px}
   .stage-index-card{
-    position:relative;
-    min-height:174px;
-    padding:18px !important;
-    overflow:hidden;
-    border:1px solid color-mix(in srgb,var(--lesson-a) 34%,rgba(255,255,255,.12)) !important;
-    border-radius:20px !important;
-    background:
-      linear-gradient(145deg,rgba(30,30,52,.58),rgba(9,10,22,.48)) !important;
-    backdrop-filter:blur(18px) saturate(135%);
-    -webkit-backdrop-filter:blur(18px) saturate(135%);
-    box-shadow:
-      0 18px 38px rgba(0,0,0,.30),
-      inset 0 1px 0 rgba(255,255,255,.11),
-      0 0 18px color-mix(in srgb,var(--lesson-a) 9%,transparent) !important;
-    transform:translateY(0);
-    transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+    position:relative;min-height:174px;padding:18px !important;overflow:hidden;
+    border:1px solid color-mix(in srgb,var(--lesson-a) 34%,rgba(255,255,255,.12)) !important;border-radius:20px !important;
+    background:linear-gradient(145deg,rgba(30,30,52,.58),rgba(9,10,22,.48)) !important;
+    backdrop-filter:blur(18px) saturate(135%);-webkit-backdrop-filter:blur(18px) saturate(135%);
+    box-shadow:0 18px 38px rgba(0,0,0,.30),inset 0 1px 0 rgba(255,255,255,.11),0 0 18px color-mix(in srgb,var(--lesson-a) 9%,transparent) !important;
+    transform:translateY(0);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
   }
-  .stage-index-card::before{
-    content:"";
-    position:absolute;
-    left:14%;right:14%;top:1px;height:1px;
-    border-radius:999px;
-    background:linear-gradient(90deg,transparent,rgba(255,255,255,.30),transparent);
-    pointer-events:none;
-  }
-  .stage-index-card::after{
-    content:"";
-    position:absolute;
-    width:130px;height:130px;
-    right:-55px;top:-60px;
-    border-radius:50%;
-    background:radial-gradient(circle,color-mix(in srgb,var(--lesson-a) 16%,transparent),transparent 70%);
-    filter:blur(10px);
-    pointer-events:none;
-  }
+  .stage-index-card::before{content:"";position:absolute;left:14%;right:14%;top:1px;height:1px;border-radius:999px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.30),transparent);pointer-events:none}
+  .stage-index-card::after{content:"";position:absolute;width:130px;height:130px;right:-55px;top:-60px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--lesson-a) 16%,transparent),transparent 70%);filter:blur(10px);pointer-events:none}
   .stage-index-card:active{transform:translateY(-2px) scale(.995)}
-  .stage-card-num{
-    border:1px solid color-mix(in srgb,var(--lesson-a) 35%,rgba(255,255,255,.10));
-    border-radius:11px;
-    background:rgba(255,255,255,.035) !important;
-    color:var(--lesson-a);
-    box-shadow:inset 0 1px rgba(255,255,255,.08),0 0 10px color-mix(in srgb,var(--lesson-a) 7%,transparent);
-  }
+  .stage-card-num{border:1px solid color-mix(in srgb,var(--lesson-a) 35%,rgba(255,255,255,.10));border-radius:11px;background:rgba(255,255,255,.035) !important;color:var(--lesson-a);box-shadow:inset 0 1px rgba(255,255,255,.08),0 0 10px color-mix(in srgb,var(--lesson-a) 7%,transparent)}
   .stage-index-card h2{font-size:1.1rem;margin:13px 0 7px}
   .stage-index-card p{font-size:.80rem;line-height:1.5;color:#B8B9C9}
   .stage-card-meta{font-size:.66rem;color:#888B9F}
   .stage-card-arrow{color:var(--lesson-a);text-shadow:0 0 10px color-mix(in srgb,var(--lesson-a) 35%,transparent)}
   .stage-card-progress{background:rgba(255,255,255,.07)}
   .stage-card-progress span{background:linear-gradient(90deg,var(--lesson-a),var(--lesson-b));box-shadow:0 0 10px color-mix(in srgb,var(--lesson-a) 28%,transparent)}
-
-  /* Glass content cards throughout the mobile curriculum. */
   .meta-block,.concept-card,.tool-card,.project-card,.lsection,.exit-box,.table-wrap{
-    border-color:rgba(255,255,255,.11);
-    border-radius:17px;
-    background:linear-gradient(145deg,rgba(29,29,49,.56),rgba(10,11,23,.46));
-    backdrop-filter:blur(15px) saturate(125%);
-    -webkit-backdrop-filter:blur(15px) saturate(125%);
+    border-color:rgba(255,255,255,.11);border-radius:17px;background:linear-gradient(145deg,rgba(29,29,49,.56),rgba(10,11,23,.46));
+    backdrop-filter:blur(15px) saturate(125%);-webkit-backdrop-filter:blur(15px) saturate(125%);
     box-shadow:0 15px 32px rgba(0,0,0,.22),inset 0 1px rgba(255,255,255,.07);
   }
   .lsection{padding:16px}
   pre{border-radius:14px;background:rgba(5,6,14,.68)}
-
   .roadmap-flow{border-top:0}
-  .flow-stage{
-    margin-bottom:8px;
-    padding:14px 12px;
-    border:1px solid rgba(255,255,255,.09);
-    border-radius:15px;
-    background:linear-gradient(145deg,rgba(29,29,49,.50),rgba(10,11,23,.40));
-    box-shadow:0 10px 24px rgba(0,0,0,.18),inset 0 1px rgba(255,255,255,.05);
-  }
+  .flow-stage{margin-bottom:8px;padding:14px 12px;border:1px solid rgba(255,255,255,.09);border-radius:15px;background:linear-gradient(145deg,rgba(29,29,49,.50),rgba(10,11,23,.40));box-shadow:0 10px 24px rgba(0,0,0,.18),inset 0 1px rgba(255,255,255,.05)}
   .flow-stage:hover .ftitle{color:var(--text)}
+  .btn{border-radius:13px;box-shadow:0 8px 20px rgba(32,227,230,.12),inset 0 1px rgba(255,255,255,.20)}
+}
 
-  .btn{
-    border-radius:13px;
-    box-shadow:0 8px 20px rgba(32,227,230,.12),inset 0 1px rgba(255,255,255,.20);
+/* Mobile is the locked dark cinematic ARD surface. The mobile theme control is hidden,
+   so an old persisted light-mode preference must not wash out this visual system. */
+@media(max-width:520px){
+  body[data-theme="light"]{
+    --ink:#0F0F1A;--surface:#15152A;--surface-2:#20204A;--surface-3:#2A2358;--border:#34345C;
+    --text:#F7F5FA;--muted:#B8B3C8;--muted-2:#89839E;
+    --teal:#20E3E6;--teal-dim:#185B67;--amber:#FFE7A3;--red:#FF6B8A;
+    --gloss-highlight:rgba(255,255,255,.12);--gloss-highlight-soft:rgba(255,255,255,.055);
+    --gloss-shadow:rgba(0,0,0,.42);--gloss-shadow-deep:rgba(0,0,0,.62);
+    background:
+      radial-gradient(600px 420px at 88% 8%,rgba(155,107,255,.12),transparent 62%),
+      radial-gradient(520px 360px at 8% 72%,rgba(32,227,230,.09),transparent 64%),
+      radial-gradient(520px 360px at 86% 88%,rgba(255,62,165,.09),transparent 64%),
+      linear-gradient(145deg,#060711 0%,#0b0b18 48%,#080914 100%) !important;
+    color:var(--text);
+  }
+  body[data-theme="light"] .topbar,body[data-theme="light"] .sidebar,
+  body[data-theme="light"] .stat-box,body[data-theme="light"] .meta-block,
+  body[data-theme="light"] .concept-card,body[data-theme="light"] .tool-card,
+  body[data-theme="light"] .project-card{
+    background:linear-gradient(145deg,rgba(29,29,49,.72),rgba(10,11,23,.62)) !important;
+    border-color:rgba(255,255,255,.11) !important;
+    color:var(--text) !important;
+  }
+  body[data-theme="light"] .search-wrap input{
+    background:linear-gradient(145deg,rgba(35,35,56,.72),rgba(12,13,27,.68)) !important;
+    color:var(--text) !important;border-color:rgba(255,255,255,.13) !important;
+  }
+  body[data-theme="light"] .dash-hero p,body[data-theme="light"] .lead,
+  body[data-theme="light"] .lsection p,body[data-theme="light"] .concept-card p,
+  body[data-theme="light"] .fobjective,body[data-theme="light"] .rnote,
+  body[data-theme="light"] .small,body[data-theme="light"] .muted,
+  body[data-theme="light"] .stat-box .label,body[data-theme="light"] .nav-section-label,
+  body[data-theme="light"] .nav-top-item,body[data-theme="light"] .fnum,
+  body[data-theme="light"] .flow-arrow{color:var(--muted) !important}
+  body[data-theme="light"] .dash-hero h1,body[data-theme="light"] .stage-view h1,
+  body[data-theme="light"] .lesson-view h1,body[data-theme="light"] .main-inner h1 .word-first{color:#F7F5FA !important}
+  body[data-theme="light"] .stage-index-card,body[data-theme="light"] .flow-stage{
+    background:linear-gradient(145deg,rgba(30,30,52,.62),rgba(9,10,22,.52)) !important;
   }
 }
