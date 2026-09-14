@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0F0F1A" />
     <title>The ARD Curriculum</title>
+    <script>
+      (function(){
+        var mobile=window.matchMedia&&window.matchMedia('(max-width:520px)').matches;
+        var saved=localStorage.getItem('ard_curriculum_theme');
+        document.documentElement.dataset.ardInitialTheme=mobile?'dark':(saved||'dark');
+        document.body&&document.body.setAttribute('data-theme',mobile?'dark':(saved||'dark'));
+      })();
+    </script>
   </head>
   <body data-theme="dark">
     <div id="root"></div>
