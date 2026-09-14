@@ -26,7 +26,7 @@
   .main-inner{display:block !important;width:100% !important;max-width:620px !important;min-width:0 !important;margin-left:auto !important;margin-right:auto !important;box-sizing:border-box !important;overflow-x:clip !important}
   .dash-hero,.stages-index-hero,.stage-view,.lesson-view{margin-top:0 !important}
 
-  body{font-size:13px !important;max-width:100% !important;overflow-x:hidden !important}
+  body{font-size:13px !important;max-width:100% !important}
   .eyebrow,.stage-eyebrow,.lesson-eyebrow{font-size:.60rem !important;line-height:1.45 !important;letter-spacing:.075em !important}
   .dash-hero h1,.stages-index-hero h1,.stage-view h1,.lesson-view h1{font-size:clamp(1.42rem,6vw,1.75rem) !important;line-height:1.08 !important;letter-spacing:-.028em !important}
   .dash-hero p,.lead{font-size:.84rem !important;line-height:1.58 !important}
