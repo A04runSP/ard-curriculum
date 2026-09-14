@@ -1,8 +1,7 @@
 /* ARD SIDEBAR — ACTIVE ITEM ONLY
    The normal navigation rows remain exactly as they are.
    Only the currently selected destination receives the premium Stages-style
-   glass treatment. This file must not alter inactive typography, spacing,
-   mobile layout, or the sidebar environment.
+   glass treatment.
 */
 
 .sidebar .nav-top-item.active{
@@ -16,26 +15,11 @@
   border:1px solid color-mix(in srgb,var(--nav-a) 76%,rgba(255,255,255,.20));
   border-radius:16px;
   color:#FFFFFF;
-  background:
-    linear-gradient(145deg,
-      rgba(255,255,255,.055) 0%,
-      transparent 25%),
-    linear-gradient(112deg,
-      color-mix(in srgb,var(--nav-a) 24%,rgba(31,25,61,.96)) 0%,
-      color-mix(in srgb,var(--nav-b) 12%,rgba(34,27,66,.94)) 54%,
-      rgba(27,23,53,.92) 100%);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.18),
-    inset 0 -1px 0 rgba(0,0,0,.30),
-    0 2px 0 rgba(255,255,255,.025),
-    0 12px 30px rgba(0,0,0,.34),
-    0 0 28px color-mix(in srgb,var(--nav-a) 17%,transparent),
-    0 0 7px color-mix(in srgb,var(--nav-a) 16%,transparent);
+  background:linear-gradient(145deg,rgba(255,255,255,.055) 0%,transparent 25%),linear-gradient(112deg,color-mix(in srgb,var(--nav-a) 24%,rgba(31,25,61,.96)) 0%,color-mix(in srgb,var(--nav-b) 12%,rgba(34,27,66,.94)) 54%,rgba(27,23,53,.92) 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18),inset 0 -1px 0 rgba(0,0,0,.30),0 2px 0 rgba(255,255,255,.025),0 12px 30px rgba(0,0,0,.34),0 0 28px color-mix(in srgb,var(--nav-a) 17%,transparent),0 0 7px color-mix(in srgb,var(--nav-a) 16%,transparent);
   transform:translateY(-1px);
   overflow:hidden;
 }
-
-/* Page-specific accent colours. Only the active item uses these. */
 .sidebar .nav-top-item.active:nth-of-type(1){--nav-a:#FF3EA5;--nav-b:#FF78AC}
 .sidebar .nav-top-item.active:nth-of-type(2){--nav-a:#4D7CFF;--nav-b:#8EADFF}
 .sidebar .nav-top-item.active:nth-of-type(3){--nav-a:#7C5CFF;--nav-b:#B59AFF}
@@ -43,59 +27,21 @@
 .sidebar .nav-top-item.active:nth-of-type(5){--nav-a:#39D5C6;--nav-b:#82F5D6}
 .sidebar .nav-top-item.active:nth-of-type(6){--nav-a:#FFD166;--nav-b:#FFE6A3}
 .sidebar .nav-top-item.active:nth-of-type(7){--nav-a:#FF3EA5;--nav-b:#FF78AC}
-
-/* Glossy top reflection. */
-.sidebar .nav-top-item.active::after{
-  content:"";
-  position:absolute;
-  z-index:-1;
-  left:10%;
-  right:10%;
-  top:1px;
-  height:1px;
-  border-radius:999px;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.42),transparent);
-  box-shadow:0 0 8px rgba(255,255,255,.08);
-  pointer-events:none;
-}
-
-/* Bright accent rail, matching the reference Stages control. */
-.sidebar .nav-top-item.active::before{
-  content:"";
-  position:absolute;
-  left:-1px;
-  top:7px;
-  bottom:7px;
-  width:3px;
-  border-radius:999px;
-  background:linear-gradient(180deg,var(--nav-b),var(--nav-a));
-  box-shadow:
-    0 0 7px color-mix(in srgb,var(--nav-a) 72%,transparent),
-    0 0 16px color-mix(in srgb,var(--nav-a) 38%,transparent);
-}
-
-.sidebar .nav-top-item.active .icon{
-  color:var(--nav-a);
-  filter:drop-shadow(0 0 7px color-mix(in srgb,var(--nav-a) 55%,transparent));
-}
-
-/* Stages keeps its established pink identity. */
-.sidebar .stages-nav-item.active{
-  --nav-a:#FF3EA5;
-  --nav-b:#FF78AC;
-}
+.sidebar .nav-top-item.active::after{content:"";position:absolute;z-index:-1;left:10%;right:10%;top:1px;height:1px;border-radius:999px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.42),transparent);box-shadow:0 0 8px rgba(255,255,255,.08);pointer-events:none}
+.sidebar .nav-top-item.active::before{content:"";position:absolute;left:-1px;top:7px;bottom:7px;width:3px;border-radius:999px;background:linear-gradient(180deg,var(--nav-b),var(--nav-a));box-shadow:0 0 7px color-mix(in srgb,var(--nav-a) 72%,transparent),0 0 16px color-mix(in srgb,var(--nav-a) 38%,transparent)}
+.sidebar .nav-top-item.active .icon{color:var(--nav-a);filter:drop-shadow(0 0 7px color-mix(in srgb,var(--nav-a) 55%,transparent))}
+.sidebar .stages-nav-item.active{--nav-a:#FF3EA5;--nav-b:#FF78AC}
 
 @media(max-width:520px){
-  /* Only the active item gets the premium geometry on mobile. */
-  .sidebar .nav-top-item.active{
-    min-height:46px;
-    margin:4px 7px;
-    padding:10px;
-    border-radius:15px;
-  }
+  .sidebar .nav-top-item.active{min-height:46px;margin:4px 7px;padding:10px;border-radius:15px}
+  .sidebar .nav-top-item.active::before{top:6px;bottom:6px}
 
-  .sidebar .nav-top-item.active::before{
-    top:6px;
-    bottom:6px;
-  }
+  /* Sidebar control: hamburger belongs inside the centered mobile header. */
+  .app-shell.is-collapsed .mobile-filament{top:15px !important;left:14px !important;width:34px !important;height:34px !important;z-index:101 !important;border:0 !important;border-radius:8px !important;background:transparent !important;box-shadow:none !important;backdrop-filter:none !important;-webkit-backdrop-filter:none !important}
+  .app-shell.is-collapsed .mobile-filament::before{font-size:21px !important;line-height:1 !important;color:rgba(255,255,255,.92) !important}
+
+  /* When the icon rail is revealed, it starts below the mobile header. */
+  .app-shell.is-collapsed.filament-open .sidebar{top:64px !important;bottom:0 !important;height:calc(100vh - 64px) !important}
+  .app-shell.is-collapsed.filament-open .sidebar-scroll{padding-top:10px !important;height:100% !important}
+  .app-shell.is-collapsed.filament-open .sidebar-footer{bottom:0 !important}
 }
