@@ -4,29 +4,29 @@
 .theme-toggle{display:none !important}
 
 @media (max-width:520px){
-  .app-shell{width:100% !important;max-width:100% !important;min-width:0 !important}
+  .app-shell{width:100% !important;max-width:100% !important;min-width:0 !important;overflow:hidden !important}
 
-  /* Mobile search is a fixed content toolbar: it stays in place while the page scrolls,
-     but the toolbar reserves its own vertical space so content never passes underneath it. */
-  .topbar{left:0 !important;right:0 !important;height:126px !important;padding:0 !important;background:linear-gradient(180deg,rgba(8,9,24,.88) 0%,rgba(8,9,24,.58) 68%,rgba(8,9,24,0) 100%) !important;border-bottom:0 !important;pointer-events:none !important;z-index:80 !important}
+  /* Mobile search is fixed to the top of the content viewport, but visually belongs to the page.
+     No separate header panel and no overlap with scrolling content. */
+  .topbar{left:0 !important;right:0 !important;width:auto !important;height:0 !important;padding:0 !important;background:transparent !important;border:0 !important;pointer-events:none !important;overflow:visible !important;z-index:80 !important}
   .brand{display:none !important}
   .topbar-right{display:none !important}
-  .search-wrap{position:absolute !important;top:68px !important;left:22px !important;right:22px !important;width:auto !important;max-width:none !important;margin:0 !important;z-index:81 !important;pointer-events:none !important}
-  .search-wrap input{height:38px !important;width:100% !important;min-width:0 !important;font-size:.74rem !important;border-radius:12px !important;padding-left:32px !important;pointer-events:auto !important;touch-action:pan-y !important}
+  .search-wrap{position:fixed !important;top:68px !important;left:22px !important;right:22px !important;width:auto !important;max-width:none !important;margin:0 !important;z-index:81 !important;pointer-events:none !important;box-sizing:border-box !important}
+  .search-wrap input{height:38px !important;width:100% !important;min-width:0 !important;box-sizing:border-box !important;font-size:.74rem !important;border-radius:12px !important;padding-left:32px !important;pointer-events:auto !important;touch-action:pan-y !important}
   .search-wrap>.icon{left:11px !important;width:14px !important;height:14px !important;pointer-events:none !important}
-  .search-results{pointer-events:auto !important}
+  .search-results{pointer-events:auto !important;max-width:100% !important;box-sizing:border-box !important}
 
-  .topbar,.main{right:0 !important;width:auto !important;max-width:none !important;min-width:0 !important;box-sizing:border-box !important}
+  .topbar,.main{right:0 !important;width:auto !important;max-width:100% !important;min-width:0 !important;box-sizing:border-box !important}
   .app-shell.is-collapsed:not(.filament-open) .main{left:0 !important}
   .app-shell.is-collapsed.filament-open .main{left:64px !important}
   .app-shell:not(.is-collapsed) .main{left:0 !important}
 
-  /* Reserve the toolbar lane. The page heading starts below the fixed search instead of being overlapped. */
-  .main{padding:126px 12px 52px !important}
-  .main-inner{display:block !important;width:100% !important;max-width:620px !important;min-width:0 !important;margin-left:auto !important;margin-right:auto !important;box-sizing:border-box !important}
+  /* Reserve only the search's vertical space. Content never sits behind it. */
+  .main{top:0 !important;overflow-y:auto !important;overflow-x:clip !important;padding:126px 12px 52px !important;max-width:100% !important;min-width:0 !important;box-sizing:border-box !important;overscroll-behavior-x:none !important}
+  .main-inner{display:block !important;width:100% !important;max-width:620px !important;min-width:0 !important;margin-left:auto !important;margin-right:auto !important;box-sizing:border-box !important;overflow-x:clip !important}
   .dash-hero,.stages-index-hero,.stage-view,.lesson-view{margin-top:0 !important}
 
-  body{font-size:13px !important}
+  body{font-size:13px !important;max-width:100% !important;overflow-x:hidden !important}
   .eyebrow,.stage-eyebrow,.lesson-eyebrow{font-size:.60rem !important;line-height:1.45 !important;letter-spacing:.075em !important}
   .dash-hero h1,.stages-index-hero h1,.stage-view h1,.lesson-view h1{font-size:clamp(1.42rem,6vw,1.75rem) !important;line-height:1.08 !important;letter-spacing:-.028em !important}
   .dash-hero p,.lead{font-size:.84rem !important;line-height:1.58 !important}
@@ -40,7 +40,7 @@
   .stage-index-grid{display:grid !important;grid-template-columns:minmax(0,1fr) !important;gap:10px !important}.stage-index-card{min-height:158px !important;padding:15px 15px 60px !important;border-radius:17px !important;overflow:hidden !important}.stage-card-num{min-width:43px !important;height:34px !important;font-size:.78rem !important}.stage-index-card h2{font-size:1rem !important;line-height:1.18 !important;margin:11px 0 6px !important}.stage-index-card p{font-size:.76rem !important;line-height:1.46 !important}.stage-card-meta{font-size:.63rem !important;margin-top:10px !important}.stage-index-card .stage-card-arrow{right:15px !important;bottom:15px !important;width:34px !important;height:34px !important;font-size:.9rem !important}.stage-card-progress{margin-top:9px !important;height:2px !important}
   .flow-stage{min-height:168px !important;padding:15px 55px 52px 14px !important;border-radius:14px !important}.flow-stage .fnum{min-width:46px !important;height:36px !important;font-size:.72rem !important}.flow-stage .ftitle{font-size:1rem !important;line-height:1.16 !important;margin-top:10px !important}.flow-stage .fobjective{font-size:.77rem !important;line-height:1.45 !important}.flow-stage .flow-arrow{right:14px !important;bottom:14px !important;width:34px !important;height:34px !important;font-size:.9rem !important}
   .meta-block,.concept-card,.tool-card,.project-card,.lsection,.exit-box{padding:13px !important;border-radius:14px !important}.search-wrap{min-width:0 !important}
-  table{min-width:720px}.table-wrap{overflow-x:auto !important}
+  table{min-width:720px}.table-wrap{overflow-x:auto !important;max-width:100% !important}
   .stat-box,.stage-index-card,.meta-block,.concept-card,.tool-card,.project-card,.lsection,.exit-box,.flow-stage,.content-link{overflow-wrap:anywhere;word-break:normal}
 
   /* Compact collapsed rail: small logo, small icons, and one small hamburger. */
