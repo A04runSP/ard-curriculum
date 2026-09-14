@@ -90,3 +90,14 @@
   .mobile-page-search{display:none !important}
   .desktop-topbar-search{display:block !important}
 }
+
+/* Mobile app frame: a deliberate thin separator above the app surface. */
+@media (max-width:520px){
+  body{background:#050509 !important}
+  .app-shell{top:7px !important;min-height:calc(100vh - 7px) !important;border-top:1px solid rgba(255,255,255,.10) !important;box-shadow:0 -1px 0 rgba(255,255,255,.035) !important}
+  .topbar{top:7px !important}
+  .main{top:7px !important;height:calc(100vh - 7px) !important}
+  .app-shell.is-collapsed .mobile-filament{top:59px !important}
+  .app-shell.is-collapsed:not(.filament-open) .rail-logo{top:19px !important}
+  .app-shell.is-collapsed.filament-open .sidebar{top:7px !important;height:calc(100vh - 7px) !important}
+}
