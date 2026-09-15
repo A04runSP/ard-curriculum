@@ -41,7 +41,7 @@ const getUrl=text=>{
 };
 
 const style=document.createElement('style');
-style.textContent='.meta-block .ard-resource-link{color:inherit;text-decoration:underline;text-decoration-color:rgba(32,227,230,.58);text-underline-offset:3px;text-decoration-thickness:1px;transition:color .18s ease,text-decoration-color .18s ease}.meta-block .ard-resource-link:hover{color:#20E3E6;text-decoration-color:#20E3E6}.meta-block .ard-resource-link:focus-visible{outline:2px solid #20E3E6;outline-offset:3px;border-radius:3px}';
+style.textContent='.meta-block .ard-resource-link{color:#20E3E6;text-decoration:underline;text-decoration-color:rgba(32,227,230,.78);text-underline-offset:3px;text-decoration-thickness:1px;transition:color .18s ease,text-decoration-color .18s ease}.meta-block .ard-resource-link:hover{color:#20E3E6;text-decoration-color:#20E3E6}.meta-block .ard-resource-link:focus-visible{outline:2px solid #20E3E6;outline-offset:3px;border-radius:3px}';
 document.head.appendChild(style);
 
 const enhanceResources=()=>{
