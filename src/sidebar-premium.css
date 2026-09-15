@@ -87,6 +87,7 @@
   .app-shell.is-collapsed.filament-open .rail-logo{position:relative !important;top:auto !important;left:auto !important;width:64px !important;height:64px !important;padding:0 !important;justify-content:center !important;background:var(--surface) !important;border-bottom:1px solid var(--border) !important;box-shadow:none !important;backdrop-filter:none !important;-webkit-backdrop-filter:none !important;z-index:auto !important}
   .app-shell.is-collapsed.filament-open .rail-logo::after{display:none !important}
   .app-shell.is-collapsed.filament-open .rail-logo .rail-mark{width:34px !important;height:34px !important}
+
   .app-shell:not(.is-collapsed) .rail-logo{position:relative !important;top:auto !important;left:auto !important;width:300px !important;height:56px !important;padding:0 18px !important;justify-content:flex-start !important;background:var(--surface) !important;border-bottom:1px solid var(--border) !important;box-shadow:none !important;backdrop-filter:none !important;-webkit-backdrop-filter:none !important;z-index:auto !important}
 
   .app-shell.is-collapsed.filament-open .sidebar-footer .collapse-btn{position:relative !important;display:flex !important;width:46px !important;height:46px !important;min-width:46px !important;padding:0 !important;margin:0 auto !important;border:1px solid rgba(255,255,255,.18) !important;border-radius:14px !important;background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(12,13,27,.72)) !important;color:rgba(255,255,255,.90) !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 8px 18px rgba(0,0,0,.28) !important;overflow:hidden !important}
@@ -94,4 +95,9 @@
   .app-shell.is-collapsed.filament-open .sidebar-footer .collapse-btn::after{content:"›" !important;position:absolute !important;left:17px !important;top:9px !important;font-size:25px !important;line-height:25px !important;font-family:Arial,sans-serif !important;font-weight:700 !important;color:currentColor !important;background:var(--surface) !important;padding:0 1px !important;pointer-events:none !important}
   .app-shell.is-collapsed.filament-open .sidebar-footer .collapse-btn .icon{display:none !important}
   .app-shell.is-collapsed.filament-open .sidebar-footer .collapse-btn span{display:none !important}
+}
+
+/* MOBILE HAMBURGER — independent control, left corner. */
+@media(max-width:520px){
+  .app-shell .mobile-filament{left:14px !important;right:auto !important;top:15px !important}
 }
