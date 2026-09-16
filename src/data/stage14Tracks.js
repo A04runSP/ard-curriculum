@@ -71,7 +71,7 @@ import("./stage2.js").then(({ stage2 }) => {
   stage.stage14LearningModel = stage14SpecializationModel;
   stage.specializationTracks = stage14SpecializationModel.tracks;
   stage.coreLessonIds = requiredLessonIds;
-  stage.electiveLessonIds = Object.values(trackByLesson);
+  stage.electiveLessonIds = Object.keys(trackByLesson);
   stage.projects = [
     "Complete the shared Stage 14 engineering core and maintain an evidence log of advanced work",
     "Complete one meaningful, reviewed open-source contribution",
