@@ -8,6 +8,7 @@ import { lessonComputerScienceExpansion } from "./lessonComputerScienceExpansion
 import { lessonWebDevelopmentExpansion } from "./lessonWebDevelopmentExpansion.js";
 import { lessonFrontendExpansion } from "./lessonFrontendExpansion.js";
 import { lessonUIUXExpansion } from "./lessonUIUXExpansion.js";
+import { lessonBackendExpansion } from "./lessonBackendExpansion.js";
 import { lessonA1 } from "./lessonA1.js";
 import { lessonA2 } from "./lessonA2.js";
 import { lessonA3 } from "./lessonA3.js";
@@ -24,6 +25,7 @@ import { conceptComputerScienceExpansion } from "./conceptComputerScienceExpansi
 import { conceptWebDevelopmentExpansion } from "./conceptWebDevelopmentExpansion.js";
 import { conceptFrontendExpansion } from "./conceptFrontendExpansion.js";
 import { conceptUIUXExpansion } from "./conceptUIUXExpansion.js";
+import { conceptBackendExpansion } from "./conceptBackendExpansion.js";
 import { concept1 } from "./concept1.js";
 import { concept2 } from "./concept2.js";
 import { concept3 } from "./concept3.js";
@@ -59,11 +61,22 @@ export const stages = baseStages.map(s => {
       exitCriteria: "You can take a rough product idea through evidence-based UX research, information architecture, responsive wireframes, a reusable Figma design system, an interactive prototype, usability iteration, accessibility review, and an implementation-ready developer handoff."
     };
   }
+  if (s.id === "backend") {
+    return {
+      ...s,
+      skills: [...s.skills, "Designing maintainable Express architectures", "Defining explicit API contracts and error models", "Writing unit, integration, and API tests", "Managing transaction boundaries and concurrency", "Threat-modeling API authorization and abuse cases", "Processing uploads and background jobs safely", "Measuring and improving backend performance", "Managing production configuration and secrets", "Using structured logs, health checks, and request correlation"],
+      concepts: [...s.concepts, "Express architecture and middleware lifecycle", "API contracts and consistent error design", "Backend testing strategy", "Transactions, concurrency, and data integrity", "OWASP API Security", "File uploads, streams, and background processing", "Caching, rate limiting, and backend performance", "Configuration, secrets, and production readiness", "API documentation and observability"],
+      projects: [...s.projects, "Refactor the note API into a maintainable feature-based architecture", "Build a fully tested API with contract-driven validation and error handling", "Implement a transaction-safe business operation with database constraints", "Audit and remediate the API against the OWASP API Security Top 10", "Build a secure file-upload pipeline with asynchronous processing and job status", "Add measured caching and rate limiting to a read-heavy endpoint", "Harden and document the API for production with configuration, health checks, logs, and request IDs"],
+      assessments: [...s.assessments, "Explain where routing, business logic, and data-access responsibilities belong in an Express application.", "Design a consistent error contract and choose appropriate status codes for validation, authentication, authorization, conflict, rate-limit, and server failures.", "Write tests for authenticated and unauthorized API behavior beyond the happy path.", "Identify a cross-user object authorization bug and propose a regression test.", "Explain why a uniqueness check can fail under concurrency and where the database constraint and transaction belong.", "Choose appropriate controls for uploads, background jobs, rate limiting, caching, and secrets.", "Given structured logs and request IDs, diagnose the likely failing backend boundary."],
+      resources: [...s.resources, "Express: Using Middleware", "Express: Routing", "Express: Error Handling", "OpenAPI Specification", "OWASP API Security Top 10", "OWASP API Top 10 Developer Guide", "Node.js Test Runner", "PostgreSQL: Transactions", "Node.js: Streams", "Node.js: Environment Variables"],
+      exitCriteria: "You can design, build, test, secure, document, and operate a REST API backed by PostgreSQL, with deliberate architecture, real authentication and authorization, transaction-safe business rules, asynchronous processing, measured performance controls, production configuration, and useful observability."
+    };
+  }
   return s;
 });
 
-export const lessons = [...lessonBeginner, ...lessonFoundation, ...lessonProgramming, ...lessonComputerScience, ...lessonComputerScienceExpansion, ...lessonWebDevelopmentExpansion, ...lessonFrontendExpansion, ...lessonUIUXExpansion, ...lessonA1, ...lessonA2, ...lessonA3];
+export const lessons = [...lessonBeginner, ...lessonFoundation, ...lessonProgramming, ...lessonComputerScience, ...lessonComputerScienceExpansion, ...lessonWebDevelopmentExpansion, ...lessonFrontendExpansion, ...lessonUIUXExpansion, ...lessonBackendExpansion, ...lessonA1, ...lessonA2, ...lessonA3];
 export const lessons2 = [...lessonB1, ...lessonB2, ...lessonB3, ...lessonB4];
-export const conceptCards = [...shortcutReferenceBeginner, ...conceptBeginner, ...conceptFoundation, ...conceptProgramming, ...conceptComputerScience, ...conceptComputerScienceExpansion, ...conceptWebDevelopmentExpansion, ...conceptFrontendExpansion, ...conceptUIUXExpansion, ...concept1, ...concept2, ...concept3];
+export const conceptCards = [...shortcutReferenceBeginner, ...conceptBeginner, ...conceptFoundation, ...conceptProgramming, ...conceptComputerScience, ...conceptComputerScienceExpansion, ...conceptWebDevelopmentExpansion, ...conceptFrontendExpansion, ...conceptUIUXExpansion, ...conceptBackendExpansion, ...concept1, ...concept2, ...concept3];
 export { skillMatrix, tools, resourceLibrary, projectLadder, methodology };
 export const allLessons = [...lessons, ...lessons2];
