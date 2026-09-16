@@ -2,6 +2,7 @@ import { lessonB4 } from "./lessonB4.js";
 import { lessonB7 } from "./lessonB7.js";
 import { concept3 } from "./concept3.js";
 import "./stage15Expansion.js";
+import "./stage14Tracks.js";
 
 lessonB4.push(...lessonB7);
 
@@ -25,7 +26,7 @@ import("./stage2.js").then(({ stage2 }) => {
   const stage = stage2.find(s => s.id === "advanced-engineering");
   if (!stage) return;
 
-  stage.objective = "Specialize and deepen through evidence-driven engineering: choose 1–2 directions, profile and optimize real systems, strengthen architecture and security, work safely in large codebases, contribute to open source, and produce a measurable depth project.";
+  stage.objective = "Specialize and deepen through evidence-driven engineering: choose 1–2 directions, complete the shared core, profile and optimize real systems, strengthen architecture and security, work safely in large codebases, contribute to open source, and produce a measurable depth project.";
   stage.skills.push(
     "Designing reproducible performance experiments and interpreting p50/p95/p99 results",
     "Profiling frontend rendering, network, JavaScript, and interaction costs",
@@ -93,5 +94,5 @@ import("./stage2.js").then(({ stage2 }) => {
     "GitHub — Contributing to Open Source",
     "Google SRE Book"
   ];
-  stage.exitCriteria = "You have demonstrated measurable depth in at least one engineering specialization: a real problem, explicit baseline and success criteria, multiple iterations, tests, technical reasoning, documented trade-offs, and evidence that another engineer can review and understand the work.";
+  stage.exitCriteria = "You have demonstrated measurable depth in at least one engineering specialization: a real problem, explicit baseline and success criteria, multiple iterations, tests, technical reasoning, documented trade-offs, peer-reviewed or externally reviewed work, and evidence that another engineer can review and understand the result.";
 });
