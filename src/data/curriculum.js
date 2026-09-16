@@ -1,6 +1,7 @@
 import { stage1 } from "./stage1.js";
 import { stage2 } from "./stage2.js";
 import { stage14SpecializationModel, stage14Metadata } from "./stage14Tracks.js";
+import { stage15Metadata } from "./stage15Metadata.js";
 import { lessonBeginner } from "./lessonBeginner.js";
 import { lessonFoundation } from "./lessonFoundation.js";
 import { lessonProgramming } from "./lessonProgramming.js";
@@ -59,6 +60,9 @@ export const stages = baseStages.map(s => {
         optionalPractice: "Other specialization exercises are optional practice unless selected as part of the learner's chosen track(s)."
       }
     };
+  }
+  if (s.id === "professional") {
+    return { ...s, ...stage15Metadata };
   }
   if (s.id === "programming") {
     return { ...s, skills: [...s.skills, "Choosing an appropriate collection type for a problem", "Designing basic test cases for program behavior"], concepts: [...s.concepts, "Map and Set", "Testing and verification of program behavior"], assessments: [...s.assessments, "Can you choose between an Array, Object, Map, or Set for a given problem and justify the choice?", "Can you design normal, edge-case, and invalid-input test cases for a function from its specification?"], resources: [...s.resources, "MDN: Keyed collections", "MDN: JavaScript testing and test-your-skills resources"] };
