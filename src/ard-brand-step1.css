@@ -1,4 +1,14 @@
-/* ARD BRAND STEP 1 — remove the current dashboard page identity. */
+/* ARD BRAND STEP 1 — remove the current top dashboard identity. */
 .page-identity{
   display:none !important;
+}
+
+/* Mobile currently renders the same top identity through this pseudo-element. */
+@media (max-width:520px){
+  .main-inner::before{
+    content:none !important;
+    display:none !important;
+    margin:0 !important;
+    padding:0 !important;
+  }
 }
