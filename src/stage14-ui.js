@@ -1,33 +1,7 @@
 import { stage14SpecializationModel } from "./data/stage14Tracks.js";
+import { lessonB7 } from "./data/lessonB7.js";
 
-const ROLE_LABELS = {
-  core: "Shared core",
-  "frontend-performance": "Frontend track",
-  "backend-systems": "Backend track",
-  "typescript-architecture": "TypeScript track"
-};
-
-const lessonById = new Map(
-  stage14SpecializationModel.requiredLessonIds
-    .map(id => [id, id])
-);
-
-stage14SpecializationModel.tracks.forEach(track => {
-  track.lessonIds.forEach(id => lessonById.set(id, id));
-});
-
-function findLessonButton(id) {
-  const lesson = document.querySelector(`.stage-view[data-stage="14"] .content-link[data-stage14-lesson="${id}"]`);
-  if (lesson) return lesson;
-  return [...document.querySelectorAll('.stage-view[data-stage="14"] .content-link')].find(button => {
-    const text = button.textContent || "";
-    const lessonIds = [...lessonById.keys()];
-    return lessonIds.some(lessonId => {
-      const title = document.querySelector(`.stage-view[data-stage="14"] [data-stage14-title="${lessonId}"]`);
-      return title && text.includes(title.textContent.trim());
-    });
-  });
-}
+const lessonTitleById = new Map(lessonB7.map(lesson => [lesson.id, lesson.title]));
 
 function makeLessonLookup() {
   const buttons = [...document.querySelectorAll('.stage-view[data-stage="14"] .content-link')];
@@ -43,18 +17,6 @@ function buildPlanner(stageView) {
   if (stageView.querySelector(".stage14-specialization-planner")) return;
 
   const lookup = makeLessonLookup();
-  const lessonTitles = new Map();
-  stage14SpecializationModel.core.forEach(title => lessonTitles.set(title, title));
-  stage14SpecializationModel.tracks.forEach(track => {
-    track.lessonIds.forEach(id => {
-      const lesson = [...lookup.entries()].find(([title]) => {
-        const normalized = title.toLowerCase();
-        return normalized.includes(id.replace("l-ae-", "").replaceAll("-", " "));
-      });
-      if (lesson) lessonTitles.set(id, lesson[0]);
-    });
-  });
-
   const planner = document.createElement("section");
   planner.className = "stage14-specialization-planner";
   planner.innerHTML = `
@@ -70,7 +32,8 @@ function buildPlanner(stageView) {
   `;
 
   const coreGrid = planner.querySelector("[data-stage14-core]");
-  stage14SpecializationModel.core.forEach(title => {
+  stage14SpecializationModel.requiredLessonIds.forEach(id => {
+    const title = lessonTitleById.get(id) || id;
     const button = lookup.get(title);
     const chip = document.createElement("button");
     chip.className = "stage14-lesson-chip core";
@@ -93,16 +56,12 @@ function buildPlanner(stageView) {
     `;
     const lessons = card.querySelector(".stage14-track-lessons");
     track.lessonIds.forEach(id => {
-      const title = [...lookup.keys()].find(value => {
-        const normalized = value.toLowerCase();
-        const key = id.replace("l-ae-", "").replaceAll("-", " ");
-        return normalized.includes(key);
-      });
-      const button = title ? lookup.get(title) : null;
+      const title = lessonTitleById.get(id) || id;
+      const button = lookup.get(title);
       const chip = document.createElement("button");
       chip.className = "stage14-lesson-chip elective";
       chip.type = "button";
-      chip.textContent = `→ ${title || id}`;
+      chip.textContent = `→ ${title}`;
       if (button) chip.addEventListener("click", () => button.click());
       lessons.appendChild(chip);
     });
