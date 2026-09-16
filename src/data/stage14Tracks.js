@@ -29,6 +29,32 @@ lessonB7.forEach(lesson => {
   }
 });
 
+const reactArchitectureLesson = lessonB7.find(lesson => lesson.id === "l-ae-react-architecture");
+if (reactArchitectureLesson) {
+  reactArchitectureLesson.coreConcepts = [
+    ...reactArchitectureLesson.coreConcepts,
+    "React 19 Actions and useActionState",
+    "useOptimistic and optimistic mutation design",
+    "React 19.3 View Transitions and Fragment Refs",
+    "Activity and modern rendering coordination"
+  ];
+  reactArchitectureLesson.resources = [
+    ...reactArchitectureLesson.resources,
+    { title: "React 19.3 — Official Blog", url: "https://react.dev/blog/2026/09/09/react-19-3", note: "Current stable React 19.3 features and architecture changes." }
+  ];
+}
+
+const capstoneLesson = lessonB7.find(lesson => lesson.id === "l-ae-specialization-capstone");
+if (capstoneLesson) {
+  capstoneLesson.what = "The final Stage 14 project turns one or two selected specializations into measurable evidence of depth rather than a collection of disconnected tutorials.";
+  capstoneLesson.mentalModel = "select 1–2 tracks → define a hard problem → establish evidence → experiment → implement → measure → review → iterate → explain";
+  capstoneLesson.coreConcepts = [
+    ...capstoneLesson.coreConcepts,
+    "Integrating two selected tracks when the engineering problem genuinely benefits from both"
+  ];
+  capstoneLesson.practice = "Write a capstone proposal with one or two selected specializations, one difficult problem, measurable success criteria, risks, and a six-iteration plan.";
+}
+
 export const stage14SpecializationModel = {
   requiredLessonIds,
   selectionRule: "Complete the shared core, then choose 1–2 specialization tracks. The specialization capstone must demonstrate measurable depth in at least one selected track and may integrate a second selected track where it strengthens the engineering problem.",
@@ -81,6 +107,7 @@ export const stage14Metadata = {
   technologies: [
     "Chrome DevTools Performance/Lighthouse",
     "React DevTools Profiler",
+    "React 19.3",
     "PostgreSQL EXPLAIN/EXPLAIN ANALYZE",
     "TypeScript",
     "OpenTelemetry concepts",
@@ -92,7 +119,7 @@ export const stage14Metadata = {
     "Profiling methodology and performance budgets",
     "Core Web Vitals and interaction performance",
     "Backend tail latency, saturation, and query optimization",
-    "Advanced React rendering, Actions, optimistic UI, and state boundaries",
+    "Advanced React rendering, Actions, optimistic UI, View Transitions, Fragment Refs, and state boundaries",
     "TypeScript generics, discriminated unions, runtime boundaries, and project references",
     "Concurrency limits, resource budgets, and back-pressure",
     "Threat modeling, supply-chain security, and defense in depth",
@@ -112,7 +139,7 @@ export const stage14Metadata = {
     "Can you enter an unfamiliar codebase and make a safe, scoped change?",
     "Can you complete and respond to review on an external open-source contribution?",
     "Can you complete selected-track projects with measurable evidence and defend the trade-offs?",
-    "Can you explain when React 19 Actions and optimistic state improve an application and when they add unnecessary complexity?",
+    "Can you explain when React 19 Actions, optimistic state, View Transitions, or Fragment Refs improve an application and when they add unnecessary complexity?",
     "Can you defend a specialization capstone using measurements, trade-offs, tests, and documented iterations?"
   ],
   resources: [
