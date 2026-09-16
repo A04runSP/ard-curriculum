@@ -78,5 +78,48 @@ export const conceptProgramming = [
     why: "Choosing the wrong relationship can make software rigid and difficult to change.",
     keyPoints: ["Prefer the simplest relationship that expresses the domain.", "Inheritance shares implementation through a hierarchy.", "Composition delegates behavior to collaborators.", "JavaScript's prototype system underlies class inheritance."],
     resource: { title: "MDN — Classes", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes" }
+  },
+  {
+    id: "concept-map-set-collections",
+    stage: "programming",
+    module: "JavaScript Collections",
+    title: "Map, Set & Choosing the Right Collection",
+    what: "JavaScript provides several collection types for different data shapes: arrays for ordered sequences, objects for named properties, Map for key/value associations, and Set for unique values.",
+    why: "Choosing the collection that matches the problem makes code clearer and avoids unnecessary searching, duplicate handling, or awkward data transformations.",
+    keyPoints: [
+      "Use arrays when order and indexed iteration are central to the data.",
+      "Use objects for records with named properties and a relatively stable shape.",
+      "Use Map when data is naturally a key/value association, especially when keys are not limited to strings or symbols.",
+      "Use Set when membership and uniqueness matter more than indexing.",
+      "Map supports get, set, has, delete, and iteration; Set supports add, has, delete, and iteration.",
+      "Map uses size for its number of entries; Set uses size for its number of unique values.",
+      "Do not choose a collection only because it is familiar; choose the representation that makes the required operations natural."
+    ],
+    resource: { title: "MDN — Keyed collections", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Keyed_collections" },
+    relatedResources: [
+      { title: "MDN — Map", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map" },
+      { title: "MDN — Set", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set" }
+    ]
+  },
+  {
+    id: "concept-testing-javascript-logic",
+    stage: "programming",
+    module: "Verification & Reliability",
+    title: "Testing JavaScript Logic",
+    what: "Testing is the deliberate process of checking whether a program behaves as specified for expected, boundary, and invalid inputs.",
+    why: "Testing turns assumptions about correctness into repeatable checks and makes regressions easier to detect as code changes.",
+    keyPoints: [
+      "A test compares observed behavior with an expected result derived from a specification.",
+      "Assertions express the behavior that must remain true.",
+      "Pure functions are especially useful for learning tests because the same input should produce the same output without external state.",
+      "Cover happy paths, edge and boundary cases, and meaningful invalid-input cases.",
+      "Testing and debugging are related but different: a test detects an unexpected behavior; debugging investigates why it happened.",
+      "Unit tests focus on small pieces of behavior; integration tests check interactions between pieces.",
+      "A regression test preserves a case that previously failed so the same defect is less likely to return."
+    ],
+    resource: { title: "MDN — Test your skills: JavaScript", url: "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Test_your_skills" },
+    relatedResources: [
+      { title: "MDN — Testing curriculum extension", url: "https://developer.mozilla.org/en-US/curriculum/extensions/testing/" }
+    ]
   }
 ];
