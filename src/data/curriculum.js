@@ -5,6 +5,7 @@ import { lessonFoundation } from "./lessonFoundation.js";
 import { lessonProgramming } from "./lessonProgramming.js";
 import { lessonComputerScience } from "./lessonComputerScience.js";
 import { lessonComputerScienceExpansion } from "./lessonComputerScienceExpansion.js";
+import { lessonWebDevelopmentExpansion } from "./lessonWebDevelopmentExpansion.js";
 import { lessonA1 } from "./lessonA1.js";
 import { lessonA2 } from "./lessonA2.js";
 import { lessonA3 } from "./lessonA3.js";
@@ -18,6 +19,7 @@ import { conceptFoundation } from "./conceptFoundation.js";
 import { conceptProgramming } from "./conceptProgramming.js";
 import { conceptComputerScience } from "./conceptComputerScience.js";
 import { conceptComputerScienceExpansion } from "./conceptComputerScienceExpansion.js";
+import { conceptWebDevelopmentExpansion } from "./conceptWebDevelopmentExpansion.js";
 import { concept1 } from "./concept1.js";
 import { concept2 } from "./concept2.js";
 import { concept3 } from "./concept3.js";
@@ -97,11 +99,54 @@ export const stages = baseStages.map(s => {
     };
   }
 
+  if (s.id === "web-development") {
+    return {
+      ...s,
+      skills: [
+        ...s.skills,
+        "Building accessible forms with native validation",
+        "Persisting simple client-side preferences",
+        "Using URL and browser APIs for page state",
+        "Testing accessibility with automated and manual checks",
+        "Diagnosing basic web performance bottlenecks"
+      ],
+      concepts: [
+        ...s.concepts,
+        "Forms and constraint validation",
+        "Client-side storage and browser APIs",
+        "Accessibility testing and WCAG 2.2",
+        "Web performance fundamentals"
+      ],
+      projects: [
+        ...s.projects,
+        "Build an accessible registration form with native validation",
+        "Build a browser preferences app using Web Storage and URL state"
+      ],
+      assessments: [
+        ...s.assessments,
+        "Build a form using semantic controls, native constraints, FormData, and accessible validation feedback; explain why server-side validation is still required.",
+        "Persist non-sensitive preferences across reloads and use URLSearchParams for shareable page state.",
+        "Audit a page with keyboard navigation and an automated accessibility checker, then document concrete fixes.",
+        "Use DevTools to identify a basic performance bottleneck and explain the change made to address it."
+      ],
+      resources: [
+        ...s.resources,
+        "MDN: Your first form",
+        "MDN: Client-side form validation",
+        "MDN: FormData",
+        "MDN: Web Storage API",
+        "MDN: URLSearchParams",
+        "W3C: Web Content Accessibility Guidelines (WCAG) 2.2",
+        "MDN: Web performance"
+      ]
+    };
+  }
+
   return s;
 });
 
-export const lessons = [...lessonBeginner, ...lessonFoundation, ...lessonProgramming, ...lessonComputerScience, ...lessonComputerScienceExpansion, ...lessonA1, ...lessonA2, ...lessonA3];
+export const lessons = [...lessonBeginner, ...lessonFoundation, ...lessonProgramming, ...lessonComputerScience, ...lessonComputerScienceExpansion, ...lessonWebDevelopmentExpansion, ...lessonA1, ...lessonA2, ...lessonA3];
 export const lessons2 = [...lessonB1, ...lessonB2, ...lessonB3, ...lessonB4];
-export const conceptCards = [...shortcutReferenceBeginner, ...conceptBeginner, ...conceptFoundation, ...conceptProgramming, ...conceptComputerScience, ...conceptComputerScienceExpansion, ...concept1, ...concept2, ...concept3];
+export const conceptCards = [...shortcutReferenceBeginner, ...conceptBeginner, ...conceptFoundation, ...conceptProgramming, ...conceptComputerScience, ...conceptComputerScienceExpansion, ...conceptWebDevelopmentExpansion, ...concept1, ...concept2, ...concept3];
 export { skillMatrix, tools, resourceLibrary, projectLadder, methodology };
 export const allLessons = [...lessons, ...lessons2];
