@@ -1,6 +1,7 @@
 import { lessonB4 } from "./lessonB4.js";
 import { lessonB7 } from "./lessonB7.js";
 import { concept3 } from "./concept3.js";
+import "./stage15Expansion.js";
 
 lessonB4.push(...lessonB7);
 
@@ -92,5 +93,5 @@ import("./stage2.js").then(({ stage2 }) => {
     "GitHub — Contributing to Open Source",
     "Google SRE Book"
   ];
-  stage.exitCriteria = "You have demonstrated measurable depth in at least one engineering specialization: a real problem, explicit baseline and success criteria, multiple iterations, tests, technical reasoning, documented trade-offs, and evidence that another engineer can review and understand the work."
+  stage.exitCriteria = "You have demonstrated measurable depth in at least one engineering specialization: a real problem, explicit baseline and success criteria, multiple iterations, tests, technical reasoning, documented trade-offs, and evidence that another engineer can review and understand the work.";
 });
