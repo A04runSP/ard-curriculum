@@ -1,0 +1,4 @@
+/* ARD BRAND STEP 1 — remove the current dashboard page identity. */
+.page-identity{
+  display:none !important;
+}
