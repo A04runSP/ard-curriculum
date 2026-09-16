@@ -1,3 +1,5 @@
+import "./stage10Expansion.js";
+
 export const stage2 = [
 {
     id: "software-engineering",
