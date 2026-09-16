@@ -37,9 +37,4 @@ stage15Metadata.assessments.push(
   "Can you identify what is confirmed, assumed, or missing before negotiating or accepting an offer?"
 );
 
-stage15Metadata.resources.push(
-  "MDN — Finding a job",
-  "GitHub — Using your GitHub profile to enhance your resume"
-);
-
 stage15Metadata.exitCriteria += " You can also prepare role-targeted application materials, run a structured job-search workflow, communicate professionally with recruiters, and evaluate employment terms using explicit evidence and questions.";
