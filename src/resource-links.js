@@ -26,12 +26,14 @@ const aliases=[
   [/Designing Data-Intensive Applications/i,/Designing Data-Intensive Applications/i],
   [/OWASP Top 10/i,/OWASP Top 10/i],
   [/Exercism/i,/Exercism/i],
-  [/Missing Semester/i,/MIT — The Missing Semester of Your CS Education/i]
+  [/Missing Semester/i,/MIT — The Missing Semester of Your CS Education/i],
+  [/MIT 6\.006: Introduction to Algorithms/i,/MIT 6\.006: Introduction to Algorithms — Lecture Notes/i]
 ];
 
 const directUrls=new Map([
   ["mdn: keyed collections", "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Keyed_collections"],
-  ["mdn: javascript testing and test-your-skills resources", "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Test_your_skills"]
+  ["mdn: javascript testing and test-your-skills resources", "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Test_your_skills"],
+  ["mit 6.006: introduction to algorithms — syllabus", "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/syllabus/"]
 ]);
 
 const getUrl=text=>{
