@@ -1,0 +1,14 @@
+/* STEP 1 — remove the current top ARD Curriculum identity.
+   The existing bottom branding is intentionally untouched for Step 2. */
+.page-identity{
+  display:none !important;
+}
+
+@media (max-width:520px){
+  .main-inner::before{
+    content:none !important;
+    display:none !important;
+    margin:0 !important;
+    padding:0 !important;
+  }
+}
