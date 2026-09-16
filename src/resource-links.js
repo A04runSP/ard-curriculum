@@ -29,8 +29,15 @@ const aliases=[
   [/Missing Semester/i,/MIT — The Missing Semester of Your CS Education/i]
 ];
 
+const directUrls=new Map([
+  ["mdn: keyed collections", "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Keyed_collections"],
+  ["mdn: javascript testing and test-your-skills resources", "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Test_your_skills"]
+]);
+
 const getUrl=text=>{
   const value=text.trim();
+  const direct=directUrls.get(value.toLowerCase());
+  if(direct)return direct;
   for(const [pattern,titlePattern] of aliases){
     if(pattern.test(value)){
       const item=resourceLibrary.find(r=>titlePattern.test(r.title));
