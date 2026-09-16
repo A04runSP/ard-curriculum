@@ -9,6 +9,7 @@ import { lessonWebDevelopmentExpansion } from "./lessonWebDevelopmentExpansion.j
 import { lessonFrontendExpansion } from "./lessonFrontendExpansion.js";
 import { lessonUIUXExpansion } from "./lessonUIUXExpansion.js";
 import { lessonBackendExpansion } from "./lessonBackendExpansion.js";
+import { lessonDatabaseExpansion } from "./lessonDatabaseExpansion.js";
 import { lessonA1 } from "./lessonA1.js";
 import { lessonA2 } from "./lessonA2.js";
 import { lessonA3 } from "./lessonA3.js";
@@ -26,6 +27,7 @@ import { conceptWebDevelopmentExpansion } from "./conceptWebDevelopmentExpansion
 import { conceptFrontendExpansion } from "./conceptFrontendExpansion.js";
 import { conceptUIUXExpansion } from "./conceptUIUXExpansion.js";
 import { conceptBackendExpansion } from "./conceptBackendExpansion.js";
+import { conceptDatabaseExpansion } from "./conceptDatabaseExpansion.js";
 import { concept1 } from "./concept1.js";
 import { concept2 } from "./concept2.js";
 import { concept3 } from "./concept3.js";
@@ -72,11 +74,22 @@ export const stages = baseStages.map(s => {
       exitCriteria: "You can design, build, test, secure, document, and operate a REST API backed by PostgreSQL, with deliberate architecture, real authentication and authorization, transaction-safe business rules, asynchronous processing, measured performance controls, production configuration, and useful observability."
     };
   }
+  if (s.id === "databases") {
+    return {
+      ...s,
+      skills: [...s.skills, "Designing relational schemas from real-world requirements", "Normalizing schemas to 3NF and recognizing denormalization trade-offs", "Writing multi-table joins, set operations, and advanced subqueries", "Composing complex SQL with CTEs", "Using window functions for analytical queries", "Choosing indexes based on query patterns and selectivity", "Reading EXPLAIN ANALYZE plans and measuring query changes", "Reasoning about transaction isolation and concurrent writes", "Planning safe, versioned schema migrations"],
+      concepts: [...s.concepts, "Functional dependencies and normalization anomalies", "Advanced joins, EXISTS, set operations, and NULL semantics", "CTEs and recursive query composition", "Window functions and window frames", "Index selectivity, composite, partial, and expression indexes", "EXPLAIN and EXPLAIN ANALYZE plan reading", "Transaction isolation, locking, and concurrency", "Safe schema migrations and expand-and-contract changes"],
+      projects: [...s.projects, "Design and normalize a relational schema from a messy real-world dataset", "Write an advanced SQL challenge set covering joins, aggregation, subqueries, and set operations", "Build an analytics report using CTEs and window functions", "Run a query-optimization lab using indexes and EXPLAIN ANALYZE", "Build a transaction/concurrency lab that protects a business invariant", "Create a production-style schema migration sequence with data backfill and verification"],
+      assessments: [...s.assessments, "Normalize a messy schema and explain the anomalies removed.", "Write a multi-table query using joins, aggregation, and a subquery or EXISTS.", "Use a window function to solve a ranking, running-total, or top-per-group problem.", "Choose an index for a query pattern and justify the column order and trade-offs.", "Read EXPLAIN ANALYZE and identify the operation or estimate that deserves investigation.", "Explain how transaction isolation and database constraints affect a concurrent write scenario.", "Design a safe migration for a populated table while an older application version remains deployed."],
+      resources: [...s.resources, "PostgreSQL 18 Documentation", "PostgreSQL 18 Tutorial", "PostgreSQL 18 SQL Language Tutorial", "PostgreSQL 18 Window Functions", "PostgreSQL 18 WITH Queries", "PostgreSQL 18 Indexes", "PostgreSQL 18 Using EXPLAIN", "PostgreSQL 18 Transactions", "PostgreSQL 18 Transaction Isolation", "Use The Index, Luke!"],
+      exitCriteria: "Given a real-world data problem, you can design a constrained relational schema, write advanced SQL with joins, CTEs and window functions, choose and verify indexes with EXPLAIN ANALYZE, reason about concurrent transactions, and plan safe schema migrations."
+    };
+  }
   return s;
 });
 
-export const lessons = [...lessonBeginner, ...lessonFoundation, ...lessonProgramming, ...lessonComputerScience, ...lessonComputerScienceExpansion, ...lessonWebDevelopmentExpansion, ...lessonFrontendExpansion, ...lessonUIUXExpansion, ...lessonBackendExpansion, ...lessonA1, ...lessonA2, ...lessonA3];
+export const lessons = [...lessonBeginner, ...lessonFoundation, ...lessonProgramming, ...lessonComputerScience, ...lessonComputerScienceExpansion, ...lessonWebDevelopmentExpansion, ...lessonFrontendExpansion, ...lessonUIUXExpansion, ...lessonBackendExpansion, ...lessonDatabaseExpansion, ...lessonA1, ...lessonA2, ...lessonA3];
 export const lessons2 = [...lessonB1, ...lessonB2, ...lessonB3, ...lessonB4];
-export const conceptCards = [...shortcutReferenceBeginner, ...conceptBeginner, ...conceptFoundation, ...conceptProgramming, ...conceptComputerScience, ...conceptComputerScienceExpansion, ...conceptWebDevelopmentExpansion, ...conceptFrontendExpansion, ...conceptUIUXExpansion, ...conceptBackendExpansion, ...concept1, ...concept2, ...concept3];
+export const conceptCards = [...shortcutReferenceBeginner, ...conceptBeginner, ...conceptFoundation, ...conceptProgramming, ...conceptComputerScience, ...conceptComputerScienceExpansion, ...conceptWebDevelopmentExpansion, ...conceptFrontendExpansion, ...conceptUIUXExpansion, ...conceptBackendExpansion, ...conceptDatabaseExpansion, ...concept1, ...concept2, ...concept3];
 export { skillMatrix, tools, resourceLibrary, projectLadder, methodology };
 export const allLessons = [...lessons, ...lessons2];
