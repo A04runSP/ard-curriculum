@@ -1,1 +1,1 @@
-TEMP
+export const stage1 = [];
