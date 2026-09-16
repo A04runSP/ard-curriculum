@@ -25,7 +25,32 @@ import { resourceLibrary } from "./resourceLibrary.js";
 import { projectLadder } from "./projectLadder.js";
 import { methodology } from "./methodology.js";
 
-export const stages = [...stage1, ...stage2];
+const baseStages = [...stage1, ...stage2];
+
+export const stages = baseStages.map(s => s.id === "programming" ? {
+  ...s,
+  skills: [
+    ...s.skills,
+    "Choosing an appropriate collection type for a problem",
+    "Designing basic test cases for program behavior"
+  ],
+  concepts: [
+    ...s.concepts,
+    "Map and Set",
+    "Testing and verification of program behavior"
+  ],
+  assessments: [
+    ...s.assessments,
+    "Can you choose between an Array, Object, Map, or Set for a given problem and justify the choice?",
+    "Can you design normal, edge-case, and invalid-input test cases for a function from its specification?"
+  ],
+  resources: [
+    ...s.resources,
+    "MDN: Keyed collections",
+    "MDN: JavaScript testing and test-your-skills resources"
+  ]
+} : s);
+
 export const lessons = [...lessonBeginner, ...lessonFoundation, ...lessonProgramming, ...lessonComputerScience, ...lessonA1, ...lessonA2, ...lessonA3];
 export const lessons2 = [...lessonB1, ...lessonB2, ...lessonB3, ...lessonB4];
 export const conceptCards = [...shortcutReferenceBeginner, ...conceptBeginner, ...conceptFoundation, ...conceptProgramming, ...conceptComputerScience, ...concept1, ...concept2, ...concept3];
