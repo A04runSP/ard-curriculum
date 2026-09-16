@@ -1,19 +1,20 @@
 import "./stage10Expansion.js";
+import "./stage11Expansion.js";
 
 export const stage2 = [
 {
     id: "software-engineering",
     num: 11,
     title: "Software Engineering",
-    objective: "Learn the practices that separate 'code that works' from professional software: version control workflows, clean code, testing, and collaboration.",
+    objective: "Learn the practices that separate 'code that works' from professional software: version control, code review, maintainability, testing, refactoring, debugging, documentation, and release discipline.",
     prerequisites: "Full Stack stage (or in parallel with it).",
-    skills: ["Git branching and pull-request workflows", "Writing readable, maintainable code", "Writing unit, integration, and E2E tests", "Debugging systematically", "Writing useful documentation"],
-    technologies: ["Git & GitHub", "A testing framework (Vitest/Jest)", "An E2E tool (Playwright)", "A linter/formatter (ESLint/Prettier)"],
-    concepts: ["Git internals (commits, branches, merges, rebasing) beyond the basics", "Pull requests and code review etiquette", "Clean code principles and code smells", "SOLID principles (practically, not academically)", "Common design patterns (only the ones that earn their keep)", "The testing pyramid: unit vs integration vs E2E", "Refactoring safely", "Technical documentation and READMEs"],
-    projects: ["Refactor one of your earlier full-stack projects for readability and add a real test suite", "Contribute a small, real pull request to an open-source project", "Write a README and architecture doc for your capstone-in-progress"],
-    assessments: ["Can you review someone else's pull request and give specific, constructive feedback?", "Can you write a test that would have caught a real bug you shipped?"],
-    resources: ["\"Refactoring\" by Martin Fowler (concepts, free summaries widely available)", "GitHub's official documentation on pull requests", "freeCodeCamp — testing curricula"],
-    exitCriteria: "Your code has tests, your Git history is readable, and you could hand a project to another developer and they could understand it without you in the room."
+    skills: ["Git internals and safe branching/rebase workflows", "Professional pull-request and code-review workflows", "Writing readable, maintainable code", "Applying SOLID and useful design patterns without overengineering", "Writing unit, integration, API, and E2E tests", "Refactoring safely and managing technical debt", "Debugging systematically across application boundaries", "Writing useful READMEs and architecture decision records", "Taking work from issue through reviewed release"],
+    technologies: ["Git & GitHub", "A testing framework (Vitest/Jest)", "An E2E tool (Playwright)", "A linter/formatter (ESLint/Prettier)", "Browser DevTools and structured logging"],
+    concepts: ["Git internals, refs, HEAD, merges, rebasing, cherry-pick, revert, reset, and reflog", "Pull requests and professional code review", "Clean code, code smells, coupling, cohesion, and technical debt", "SOLID principles applied to real change pressure", "Common design patterns and overengineering", "Testing boundaries: unit vs integration vs API vs E2E", "Test doubles and regression testing", "Safe incremental refactoring", "Systematic debugging and git bisect", "Technical documentation, READMEs, and ADRs"],
+    projects: ["Build a documented Git workflow and recover from deliberate Git failures", "Complete a real pull-request/code-review exercise", "Refactor an earlier full-stack project for readability with characterization and regression tests", "Build layered unit, integration/API, and E2E coverage for a capstone feature", "Create a README, architecture document, environment guide, and ADRs", "Run the Software Engineering Capstone from issue → branch → implementation → tests → review → merge → release"],
+    assessments: ["Can you explain what HEAD, a branch, the index, and a commit represent and recover lost work with reflog?", "Can you review someone else's pull request and give specific, constructive, evidence-based feedback?", "Can you identify code smells and explain whether they actually justify refactoring?", "Can you justify a SOLID principle or design pattern with a concrete change pressure and explain when not to use it?", "Can you choose the right unit, integration, API, or E2E boundary for a behavior?", "Can you refactor safely while keeping behavior protected by tests?", "Can you debug a cross-layer failure using evidence rather than guesswork?", "Can another developer run, understand, test, and continue your project using your documentation?"],
+    resources: ["Martin Fowler — Refactoring", "Martin Fowler — Code Smell", "Martin Fowler — Software Testing Guide", "GitHub official documentation on pull requests", "Git official documentation", "MADR — Markdown Architectural Decision Records"],
+    exitCriteria: "You can take a real software requirement from issue to reviewed release using focused Git history, meaningful tests, maintainable code, systematic debugging, documented architectural decisions, and a handoff another developer can follow without you in the room."
   },
 {
     id: "devops",
