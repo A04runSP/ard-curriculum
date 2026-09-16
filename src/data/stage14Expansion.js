@@ -6,93 +6,107 @@ import "./stage14Tracks.js";
 
 lessonB4.push(...lessonB7);
 
-concept3.push(
-  { title: "Advanced Performance Engineering", description: "Performance work is an evidence loop: establish a reproducible baseline, isolate the dominant cost, change one meaningful variable, and verify both average and tail behavior." },
-  { title: "Frontend Performance Architecture", description: "Advanced frontend performance combines network delivery, JavaScript execution, rendering, interaction latency, memory, and user-centered metrics such as LCP, INP, and CLS." },
-  { title: "Backend Performance & Query Optimization", description: "Backend optimization follows a request across application, database, network, and resource boundaries; query plans, connection pools, tail latency, and saturation matter together." },
-  { title: "Advanced React Rendering", description: "Large React applications benefit from deliberate state ownership, rendering boundaries, profiling, and selective optimization rather than blanket memoization." },
-  { title: "TypeScript at Scale", description: "Advanced TypeScript uses explicit contracts, discriminated unions, generics, strict configuration, and project boundaries to keep large codebases understandable and buildable." },
-  { title: "Resource-Constrained Backend Engineering", description: "Concurrency, connection pools, workers, memory, and downstream dependencies are finite resources; bounded work and explicit budgets prevent overload from becoming cascading failure." },
-  { title: "Security Engineering in Depth", description: "Security maturity combines threat modeling, trust-boundary analysis, secure defaults, supply-chain controls, identity protections, detection, and recovery instead of relying on one checklist." },
-  { title: "Large-Codebase Engineering", description: "Working safely in an existing codebase requires repository archaeology, behavior tracing, ownership awareness, small changes, characterization tests, and disciplined separation of fixes from refactors." },
-  { title: "Open-Source Engineering", description: "A successful external contribution demonstrates that an engineer can follow unfamiliar conventions, scope work, communicate with maintainers, satisfy CI, and respond to review evidence." },
-  { title: "Specialization & Technical Depth", description: "Expert-level growth comes from sustained work on a difficult problem with measurable goals, iterative experiments, documented trade-offs, peer review, and a final technical explanation." }
-);
+const stage14Concepts = [
+  {
+    id: "c-ae-performance-method",
+    stage: "advanced-engineering",
+    module: "Performance",
+    title: "Advanced Performance Engineering",
+    what: "Performance engineering is an evidence loop: establish a reproducible baseline, isolate the dominant cost, change one meaningful variable, and verify average and tail behavior.",
+    why: "Advanced optimization fails when engineers optimize by intuition instead of proving where time, memory, I/O, or rendering work is actually spent.",
+    keyPoints: ["Define the workload and success metric first.", "Measure p50/p95/p99 or user-centered metrics where appropriate.", "Change one meaningful variable at a time when practical.", "Keep or revert changes based on evidence and regression risk."],
+    resource: { title: "Chrome DevTools Performance", url: "https://developer.chrome.com/docs/devtools/performance" }
+  },
+  {
+    id: "c-ae-frontend-performance",
+    stage: "advanced-engineering",
+    module: "Frontend Performance",
+    title: "Frontend Performance Architecture",
+    what: "Frontend performance architecture controls network delivery, JavaScript execution, rendering work, memory, and interaction latency as an application grows.",
+    why: "A fast server response does not guarantee a fast experience if the browser must execute excessive JavaScript, render large trees, or process expensive interactions.",
+    keyPoints: ["Use LCP, INP, and CLS as user-centered signals rather than vanity scores.", "Profile long tasks and rendering before adding optimization machinery.", "Treat code splitting, images, fonts, and virtualization as critical-path decisions.", "Optimize the dominant user-visible bottleneck, not bundle size in isolation."],
+    resource: { title: "web.dev — Learn Performance", url: "https://web.dev/learn/performance/" }
+  },
+  {
+    id: "c-ae-backend-performance",
+    stage: "advanced-engineering",
+    module: "Backend Performance",
+    title: "Backend Performance & Query Optimization",
+    what: "Backend optimization follows a request across application, database, network, and resource boundaries; query plans, connection pools, tail latency, and saturation matter together.",
+    why: "A fast function is irrelevant if the service is waiting on a database, exhausted pool, remote dependency, lock, or other finite resource.",
+    keyPoints: ["Trace the request across boundaries.", "Use EXPLAIN/EXPLAIN ANALYZE to investigate query behavior.", "Watch tail latency and saturation rather than averages alone.", "Avoid increasing concurrency against an already saturated dependency."],
+    resource: { title: "PostgreSQL — Using EXPLAIN", url: "https://www.postgresql.org/docs/current/using-explain.html" }
+  },
+  {
+    id: "c-ae-react-architecture",
+    stage: "advanced-engineering",
+    module: "React Architecture",
+    title: "Advanced React Rendering & Actions",
+    what: "Advanced React architecture combines deliberate state ownership, rendering boundaries, profiling, asynchronous UI patterns, and selective optimization.",
+    why: "Large React applications become difficult to reason about when state, effects, rendering work, and asynchronous mutations are coupled without clear boundaries.",
+    keyPoints: ["Keep state close to its true owner and avoid accidental global state.", "Use profiling evidence before memoization or architectural optimization.", "React 19 Actions, useActionState, and useOptimistic are useful for mutation workflows with pending and optimistic states.", "Treat newer APIs as tools for specific problems rather than mandatory abstractions."],
+    resource: { title: "React 19 — Official Blog", url: "https://react.dev/blog/2024/12/05/react-19" }
+  },
+  {
+    id: "c-ae-typescript-scale",
+    stage: "advanced-engineering",
+    module: "TypeScript Architecture",
+    title: "TypeScript at Scale",
+    what: "Advanced TypeScript uses explicit contracts, discriminated unions, generics, strict configuration, runtime validation at external boundaries, and project boundaries to keep large codebases understandable.",
+    why: "The type system is valuable when it encodes important invariants without turning the codebase into unreadable type-level machinery.",
+    keyPoints: ["Use types to make important states and contracts explicit.", "Remember that TypeScript types do not validate untrusted runtime input.", "Use project references only where real ownership or build boundaries justify them.", "Prefer readable types over clever type puzzles."],
+    resource: { title: "TypeScript — Project References", url: "https://www.typescriptlang.org/docs/handbook/project-references.html" }
+  },
+  {
+    id: "c-ae-resource-control",
+    stage: "advanced-engineering",
+    module: "Backend Infrastructure",
+    title: "Resource-Constrained Backend Engineering",
+    what: "Concurrency, connection pools, workers, memory, CPU, file descriptors, and downstream capacity are finite resources that require explicit budgets.",
+    why: "Unlimited parallelism can turn a small slowdown into cascading overload by exhausting local or downstream resources.",
+    keyPoints: ["Bound concurrency and queue excess work.", "Propagate timeouts across dependency chains.", "Observe queue depth, active work, pool usage, and downstream latency.", "Design back-pressure and recovery instead of relying on unlimited retries."],
+    resource: { title: "Google SRE Book", url: "https://sre.google/sre-book/table-of-contents/" }
+  },
+  {
+    id: "c-ae-security-depth",
+    stage: "advanced-engineering",
+    module: "Security Engineering",
+    title: "Security Engineering in Depth",
+    what: "Security maturity combines threat modeling, trust-boundary analysis, secure defaults, supply-chain controls, identity protections, detection, and recovery.",
+    why: "Real security failures usually cross boundaries between identity, configuration, dependencies, data handling, and architecture rather than existing as one isolated vulnerability.",
+    keyPoints: ["Model assets, actors, trust boundaries, abuse paths, and impact.", "Use preventive, detective, and recovery controls together.", "Treat dependencies and build artifacts as part of the security boundary.", "Test security controls with regression cases rather than relying on a checklist alone."],
+    resource: { title: "OWASP Top 10:2025", url: "https://top10.owasp.org/2025/" }
+  },
+  {
+    id: "c-ae-large-codebase",
+    stage: "advanced-engineering",
+    module: "Large Codebases",
+    title: "Large-Codebase Engineering",
+    what: "Working safely in an existing codebase requires repository archaeology, behavior tracing, ownership awareness, small changes, characterization tests, and disciplined separation of fixes from refactors.",
+    why: "Professional engineers usually modify systems they did not design, so understanding existing constraints is part of engineering rather than overhead.",
+    keyPoints: ["Trace a real path before changing it.", "Read tests, configuration, history, and ownership signals.", "Make the smallest correct change first.", "Record architectural follow-up separately from the immediate fix."],
+    resource: { title: "GitHub — Contributing to Open Source", url: "https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-open-source" }
+  },
+  {
+    id: "c-ae-open-source",
+    stage: "advanced-engineering",
+    module: "Open Source Engineering",
+    title: "Open-Source Engineering",
+    what: "A meaningful external contribution demonstrates that an engineer can follow unfamiliar conventions, scope work, communicate with maintainers, satisfy CI, and respond to review evidence.",
+    why: "External review removes the safety of being the only person who understands the project and exposes real collaboration constraints.",
+    keyPoints: ["Read contribution guidelines and recent merged work before choosing a task.", "Keep pull requests focused and testable.", "Treat maintainer feedback as project evidence.", "Record the final outcome and what changed during review."],
+    resource: { title: "GitHub — Contributing to Open Source", url: "https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-open-source" }
+  },
+  {
+    id: "c-ae-specialization",
+    stage: "advanced-engineering",
+    module: "Specialization",
+    title: "Specialization & Technical Depth",
+    what: "Technical depth comes from sustained work on a difficult problem with measurable goals, iterative experiments, documented trade-offs, peer review, and a final technical explanation.",
+    why: "Completing many unrelated tutorials demonstrates breadth; depth requires evidence that you can investigate, build, evaluate, and defend decisions in one difficult area.",
+    keyPoints: ["Choose 1–2 tracks rather than attempting every specialization topic.", "Define a difficult problem and measurable success criteria.", "Show multiple iterations and explain failed or discarded approaches.", "Publish evidence another engineer can review and reproduce."],
+    resource: { title: "Google SRE Book", url: "https://sre.google/sre-book/table-of-contents/" }
+  }
+];
 
-// Stage 14 metadata lives in stage2.js. The dynamic import avoids a circular
-// module dependency while allowing this side-effect expansion to enrich the
-// existing stage object after module initialization.
-import("./stage2.js").then(({ stage2 }) => {
-  const stage = stage2.find(s => s.id === "advanced-engineering");
-  if (!stage) return;
-
-  stage.objective = "Specialize and deepen through evidence-driven engineering: choose 1–2 directions, complete the shared core, profile and optimize real systems, strengthen architecture and security, work safely in large codebases, contribute to open source, and produce a measurable depth project.";
-  stage.skills.push(
-    "Designing reproducible performance experiments and interpreting p50/p95/p99 results",
-    "Profiling frontend rendering, network, JavaScript, and interaction costs",
-    "Profiling backend CPU, I/O, database, connection-pool, and concurrency bottlenecks",
-    "Architecting large React applications around state and rendering boundaries",
-    "Using advanced TypeScript types and project boundaries without sacrificing maintainability",
-    "Controlling concurrency and finite resources in backend systems",
-    "Threat-modeling features and applying defense-in-depth security controls",
-    "Navigating unfamiliar large codebases with evidence-driven, low-risk changes",
-    "Contributing to external open-source projects through review and CI",
-    "Executing a specialization capstone with measurable engineering evidence"
-  );
-  stage.technologies = [
-    "Chrome DevTools Performance/Lighthouse",
-    "React DevTools Profiler",
-    "PostgreSQL EXPLAIN/EXPLAIN ANALYZE",
-    "TypeScript",
-    "OpenTelemetry concepts",
-    "OWASP Top 10:2025",
-    "Git/GitHub and open-source workflows",
-    "Specialization-specific tools and official APIs"
-  ];
-  stage.concepts.push(
-    "Profiling methodology and performance budgets",
-    "Core Web Vitals and interaction performance",
-    "Backend tail latency, saturation, and query optimization",
-    "Advanced React rendering and state boundaries",
-    "TypeScript generics, discriminated unions, runtime boundaries, and project references",
-    "Concurrency limits, resource budgets, and back-pressure",
-    "Threat modeling, supply-chain security, and defense in depth",
-    "Large-codebase archaeology and incremental change",
-    "Open-source contribution and maintainer collaboration",
-    "Specialization research, experimentation, and technical communication"
-  );
-  stage.projects.push(
-    "Produce a measured frontend performance optimization with a documented before/after profile",
-    "Produce a measured backend/database performance optimization with p50/p95 evidence",
-    "Refactor a React application around state and rendering boundaries using profiler evidence",
-    "Refactor a TypeScript project around stronger contracts and justified module boundaries",
-    "Harden a real application against selected OWASP Top 10:2025 risks with regression tests",
-    "Add bounded concurrency and failure controls to a backend worker or API",
-    "Make three scoped contributions to an unfamiliar open-source codebase",
-    "Complete the Advanced Engineering Specialization Capstone"
-  );
-  stage.assessments.push(
-    "Can you produce a reproducible performance baseline and identify the dominant bottleneck?",
-    "Can you distinguish a frontend rendering problem from a network or JavaScript execution problem using profiling evidence?",
-    "Can you diagnose a backend bottleneck across application, database, and resource boundaries?",
-    "Can you explain why a React optimization is justified instead of applying memoization everywhere?",
-    "Can you use advanced TypeScript without turning the type system into unreadable abstraction?",
-    "Can you set concurrency and resource limits that prevent overload amplification?",
-    "Can you threat-model a feature and implement preventive, detective, and recovery controls?",
-    "Can you enter an unfamiliar codebase and make a safe change without unnecessary refactoring?",
-    "Can you take maintainer feedback on an open-source contribution and revise the work without losing scope discipline?",
-    "Can you defend a specialization capstone using measurements, trade-offs, tests, and documented iterations?"
-  );
-  stage.resources = [
-    "Chrome DevTools Performance documentation",
-    "web.dev Performance documentation",
-    "React official performance references",
-    "PostgreSQL EXPLAIN and monitoring documentation",
-    "TypeScript Handbook and Project References",
-    "OpenTelemetry documentation",
-    "OWASP Top 10:2025",
-    "GitHub — Contributing to Open Source",
-    "Google SRE Book"
-  ];
-  stage.exitCriteria = "You have demonstrated measurable depth in at least one engineering specialization: a real problem, explicit baseline and success criteria, multiple iterations, tests, technical reasoning, documented trade-offs, peer-reviewed or externally reviewed work, and evidence that another engineer can review and understand the result.";
-});
+concept3.push(...stage14Concepts);
