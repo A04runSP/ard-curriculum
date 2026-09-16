@@ -31,7 +31,7 @@ lessonB7.forEach(lesson => {
 
 export const stage14SpecializationModel = {
   requiredLessonIds,
-  selectionRule: "Complete the shared core, then choose 1–2 specialization tracks. The specialization capstone uses the chosen track(s) as its technical depth area.",
+  selectionRule: "Complete the shared core, then choose 1–2 specialization tracks. The specialization capstone must demonstrate measurable depth in at least one selected track and may integrate a second selected track where it strengthens the engineering problem.",
   core: [
     "Advanced Profiling: Measure Before You Optimize",
     "Security Engineering in Depth",
@@ -64,25 +64,69 @@ export const stage14SpecializationModel = {
   ]
 };
 
-import("./stage2.js").then(({ stage2 }) => {
-  const stage = stage2.find(s => s.id === "advanced-engineering");
-  if (!stage) return;
-
-  stage.stage14LearningModel = stage14SpecializationModel;
-  stage.specializationTracks = stage14SpecializationModel.tracks;
-  stage.coreLessonIds = requiredLessonIds;
-  stage.electiveLessonIds = Object.keys(trackByLesson);
-  stage.projects = [
+export const stage14Metadata = {
+  objective: "Specialize and deepen through evidence-driven engineering: complete the shared core, choose 1–2 specialization tracks, profile and optimize real systems, strengthen architecture and security, work safely in large codebases, contribute to open source, and produce a measurable depth project.",
+  skills: [
+    "Designing reproducible performance experiments and interpreting p50/p95/p99 results",
+    "Profiling frontend rendering, network, JavaScript, and interaction costs",
+    "Profiling backend CPU, I/O, database, connection-pool, and concurrency bottlenecks",
+    "Architecting large React applications around state and rendering boundaries",
+    "Using advanced TypeScript types and project boundaries without sacrificing maintainability",
+    "Controlling concurrency and finite resources in backend systems",
+    "Threat-modeling features and applying defense-in-depth security controls",
+    "Navigating unfamiliar large codebases with evidence-driven, low-risk changes",
+    "Contributing to external open-source projects through review and CI",
+    "Executing a specialization capstone with measurable engineering evidence"
+  ],
+  technologies: [
+    "Chrome DevTools Performance/Lighthouse",
+    "React DevTools Profiler",
+    "PostgreSQL EXPLAIN/EXPLAIN ANALYZE",
+    "TypeScript",
+    "OpenTelemetry concepts",
+    "OWASP Top 10:2025",
+    "Git/GitHub and open-source workflows",
+    "Specialization-specific tools and official APIs"
+  ],
+  concepts: [
+    "Profiling methodology and performance budgets",
+    "Core Web Vitals and interaction performance",
+    "Backend tail latency, saturation, and query optimization",
+    "Advanced React rendering, Actions, optimistic UI, and state boundaries",
+    "TypeScript generics, discriminated unions, runtime boundaries, and project references",
+    "Concurrency limits, resource budgets, and back-pressure",
+    "Threat modeling, supply-chain security, and defense in depth",
+    "Large-codebase archaeology and incremental change",
+    "Open-source contribution and maintainer collaboration",
+    "Specialization research, experimentation, and technical communication"
+  ],
+  projects: [
     "Complete the shared Stage 14 engineering core and maintain an evidence log of advanced work",
     "Complete one meaningful, reviewed open-source contribution",
+    "Complete one required project for each selected specialization track",
     "Complete the Advanced Engineering Specialization Capstone using 1–2 selected tracks"
-  ];
-  stage.assessments = [
+  ],
+  assessments: [
     "Can you establish a reproducible baseline and identify the dominant bottleneck before optimizing?",
     "Can you threat-model a real feature and implement preventive, detective, and recovery controls?",
     "Can you enter an unfamiliar codebase and make a safe, scoped change?",
     "Can you complete and respond to review on an external open-source contribution?",
-    "Can you complete a specialization track project with measurable evidence and defend the trade-offs?"
-  ];
-  stage.exitCriteria = "You have completed the shared advanced-engineering core, selected 1–2 specialization tracks, produced measurable technical evidence in the chosen direction(s), completed a reviewed external contribution, and shipped a specialization capstone with tests, trade-offs, iterations, and a technical explanation.";
-});
+    "Can you complete selected-track projects with measurable evidence and defend the trade-offs?",
+    "Can you explain when React 19 Actions and optimistic state improve an application and when they add unnecessary complexity?",
+    "Can you defend a specialization capstone using measurements, trade-offs, tests, and documented iterations?"
+  ],
+  resources: [
+    "Chrome DevTools Performance documentation",
+    "web.dev Performance documentation",
+    "React official performance and React 19 references",
+    "PostgreSQL EXPLAIN and monitoring documentation",
+    "TypeScript Handbook and Project References",
+    "OpenTelemetry documentation",
+    "OWASP Top 10:2025",
+    "GitHub — Contributing to Open Source",
+    "Google SRE Book"
+  ],
+  exitCriteria: "You have completed the shared advanced-engineering core, selected 1–2 specialization tracks, produced measurable technical evidence in the chosen direction(s), completed a reviewed external contribution, and shipped a specialization capstone with tests, trade-offs, iterations, and a technical explanation."
+};
+
+export const stage14TrackLessonIds = Object.keys(trackByLesson);
