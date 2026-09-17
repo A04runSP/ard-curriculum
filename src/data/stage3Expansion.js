@@ -1,5 +1,18 @@
+import { stage1 } from "./stage1.js";
 import { lessonB1 } from "./lessonB1.js";
 import { concept1 } from "./concept1.js";
+
+const stage3 = stage1.find((stage) => stage.id === "programming");
+
+if (stage3) {
+  stage3.objectModelExtension = true;
+  stage3.skills = [...stage3.skills, "Understanding JavaScript's prototype-based object model", "Reasoning about `this`, constructors, prototypes, and classes", "Choosing composition or inheritance deliberately"];
+  stage3.concepts = [...stage3.concepts, "Own vs inherited properties", "Prototype chains and property lookup", "`this`, constructor functions, `new`, and `prototype`", "Classes, `extends`, and `super`", "Composition vs inheritance"];
+  stage3.projects = [...stage3.projects, "JavaScript object-model lab covering prototypes, `this`, classes, inheritance, and composition"];
+  stage3.assessments = [...stage3.assessments, "Can you explain the difference between `[[Prototype]]` and a constructor's `prototype` property?", "Can you predict and fix a detached-method `this` bug?", "Can you explain when composition is preferable to inheritance in a small JavaScript design?"];
+  stage3.resources = [...stage3.resources, "MDN: Inheritance and the prototype chain", "MDN: Using classes"];
+  stage3.exitCriteria = "You can build small console programs from scratch without following a step-by-step tutorial, and you can explain JavaScript's object model well enough to debug prototype, class, and `this` behavior.";
+}
 
 const stage3ObjectModelLesson = {
   id: "l-js-object-model",
