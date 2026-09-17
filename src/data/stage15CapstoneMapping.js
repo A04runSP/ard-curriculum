@@ -1,9 +1,9 @@
-import { lessonB4 } from "./lessonB4.js";
+import { lessonB8 } from "./lessonB8.js";
 
 // Stage 15 capstone evidence should demonstrate how the learner applies the
 // competencies developed across Stages 1–14, rather than treating the
 // professional capstone as an isolated final project.
-const professionalCapstone = lessonB4.find((lesson) => lesson.id === "l-prof-capstone");
+const professionalCapstone = lessonB8.find((lesson) => lesson.id === "l-prof-capstone");
 
 if (professionalCapstone) {
   professionalCapstone.coreConcepts = [
