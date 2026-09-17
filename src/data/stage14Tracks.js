@@ -1,3 +1,4 @@
+import "./stage3Expansion.js";
 import { lessonB7 } from "./lessonB7.js";
 
 // Stage 14 is intentionally split into a shared core plus selectable depth tracks.
