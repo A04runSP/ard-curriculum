@@ -1,3 +1,4 @@
+import "./stage12Gaps.js";
 import { lessonB4 } from "./lessonB4.js";
 import { lessonB5 } from "./lessonB5.js";
 import { concept3 } from "./concept3.js";
