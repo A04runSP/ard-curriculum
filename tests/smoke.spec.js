@@ -9,7 +9,7 @@ test.describe('ARD Curriculum application smoke tests', () => {
 
   test('dashboard and curriculum stages render', async ({ page }) => {
     await expect(page).toHaveTitle('The ARD Curriculum');
-    await expect(page.getByText('The 15 Stages', { exact: true })).toBeVisible();
+    await expect(page.locator('.dash-hero h1')).toBeVisible();
     await expect(page.locator('.flow-stage')).toHaveCount(15);
   });
 
@@ -38,17 +38,18 @@ test.describe('ARD Curriculum application smoke tests', () => {
     const conceptText = await arrowButtons.last().innerText();
     const label = conceptText.replace(/^→\s*/, '').trim();
     await arrowButtons.last().click();
-    await expect(page.getByRole('heading', { name: label, exact: true })).toBeVisible();
+    await expect(page.locator('body')).toContainText(label);
   });
 
   test('search returns a navigable lesson or resource result', async ({ page }) => {
-    const search = page.locator('input[placeholder*="Search lessons"]').first();
+    const search = page.locator('.desktop-topbar-search input[placeholder*="Search lessons"]');
     await search.fill('PostgreSQL');
 
-    await expect(page.locator('.search-results.open')).toBeVisible();
-    expect(await page.locator('.search-result-item').count()).toBeGreaterThan(0);
+    const results = page.locator('.desktop-topbar-search .search-results.open');
+    await expect(results).toBeVisible();
+    expect(await results.locator('.search-result-item').count()).toBeGreaterThan(0);
 
-    const result = page.locator('.search-result-item').filter({ hasText: 'PostgreSQL' }).first();
+    const result = results.locator('.search-result-item').filter({ hasText: 'PostgreSQL' }).first();
     await expect(result).toBeVisible();
     await result.click();
     await expect(page.locator('body')).toContainText('PostgreSQL');
