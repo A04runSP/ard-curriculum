@@ -4,7 +4,6 @@ import { concept3 } from "./concept3.js";
 import { stage12GapLessons } from "./stage12Gaps.js";
 
 lessonB4.push(...lessonB5);
-lessonB4.push(...stage12GapLessons);
 
 concept3.push(
   { title: "Linux Operations Mental Model", description: "Processes, filesystems, permissions, sockets, environment variables, signals, and command pipelines provide the evidence needed to operate and debug services." },
