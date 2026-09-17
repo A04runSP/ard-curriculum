@@ -1,0 +1,18 @@
+.stage-view .meta-block{
+  color:var(--text);
+}
+
+.stage-view .meta-block li{
+  color:var(--text) !important;
+  opacity:1 !important;
+}
+
+.stage-view .meta-block h2{
+  margin:0 0 9px;
+  font:500 .67rem var(--font-mono);
+  color:var(--lesson-a) !important;
+  text-transform:uppercase;
+  background:none !important;
+  -webkit-text-fill-color:initial !important;
+  text-shadow:0 0 8px color-mix(in srgb,var(--lesson-a) 18%,transparent);
+}
