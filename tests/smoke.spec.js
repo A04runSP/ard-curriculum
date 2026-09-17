@@ -16,9 +16,10 @@ test.describe('ARD Curriculum application smoke tests', () => {
   test('stage view exposes lessons and concepts', async ({ page }) => {
     await page.locator('.flow-stage').nth(7).click();
 
-    await expect(page.getByRole('heading', { name: 'Backend', exact: true })).toBeVisible();
+    const stage = page.locator('.stage-view');
+    await expect(stage.getByRole('heading', { name: 'Backend', exact: true })).toBeVisible();
 
-    const arrowButtons = page.locator('button').filter({ hasText: '→' });
+    const arrowButtons = stage.locator('button').filter({ hasText: '→' });
     await expect(arrowButtons.first()).toBeVisible();
     expect(await arrowButtons.count()).toBeGreaterThan(1);
 
@@ -29,7 +30,8 @@ test.describe('ARD Curriculum application smoke tests', () => {
 
   test('concept view is reachable from a stage', async ({ page }) => {
     await page.locator('.flow-stage').nth(8).click();
-    const arrowButtons = page.locator('button').filter({ hasText: '→' });
+    const stage = page.locator('.stage-view');
+    const arrowButtons = stage.locator('button').filter({ hasText: '→' });
     const count = await arrowButtons.count();
     expect(count).toBeGreaterThan(1);
 
@@ -40,8 +42,8 @@ test.describe('ARD Curriculum application smoke tests', () => {
   });
 
   test('search returns a navigable lesson or resource result', async ({ page }) => {
-    const search = page.locator('input[placeholder*="Search lessons"]');
-    await search.first().fill('PostgreSQL');
+    const search = page.locator('input[placeholder*="Search lessons"]').first();
+    await search.fill('PostgreSQL');
 
     await expect(page.locator('.search-results.open')).toBeVisible();
     expect(await page.locator('.search-result-item').count()).toBeGreaterThan(0);
@@ -54,7 +56,8 @@ test.describe('ARD Curriculum application smoke tests', () => {
 
   test('lesson completion updates progress and persists', async ({ page }) => {
     await page.locator('.flow-stage').first().click();
-    const lessonButton = page.locator('button').filter({ hasText: '→' }).first();
+    const stage = page.locator('.stage-view');
+    const lessonButton = stage.locator('button').filter({ hasText: '→' }).first();
     const lessonLabel = (await lessonButton.innerText()).replace(/^→\s*/, '').trim();
     await lessonButton.click();
     await expect(page.getByRole('heading', { name: lessonLabel, exact: true })).toBeVisible();
