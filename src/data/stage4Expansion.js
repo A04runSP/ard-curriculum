@@ -95,4 +95,28 @@ if (computerScienceStage) {
     "Can you implement a binary heap, explain its invariant, and justify the complexity of its core operations?"
   ]));
   computerScienceStage.exitCriteria = `${computerScienceStage.exitCriteria || ""} You can select, implement, and analyze trees, graphs, and heap-backed priority queues for appropriate problems, and explain the time/space trade-offs of your choice.`.trim();
+
+  // Canonicalize repeated Stage 4 metadata from earlier expansions.
+  computerScienceStage.concepts = Array.from(new Set(computerScienceStage.concepts))
+    .filter((concept) => concept !== "Heaps and priority queues")
+    .filter((concept) => concept !== "Priority queues and binary heaps");
+  if (!computerScienceStage.concepts.includes("Heaps & Priority Queues")) {
+    computerScienceStage.concepts.push("Heaps & Priority Queues");
+  }
 }
+
+// Canonicalize concept-note duplicates introduced by earlier Stage 4 additions.
+const heapTitles = new Set(["Heaps & Priority Queues", "Heaps and Priority Queues"]);
+let keptHeapConcept = false;
+for (let i = concept2.length - 1; i >= 0; i -= 1) {
+  const concept = concept2[i];
+  if (!concept || concept.stage !== "computer-science" || !heapTitles.has(concept.title)) continue;
+  if (!keptHeapConcept) {
+    keptHeapConcept = true;
+    continue;
+  }
+  concept2.splice(i, 1);
+}
+
+// Keep the existing broader "Stack, Heap & References" concept; it is a
+// memory-model topic and is intentionally distinct from the heap data structure.
