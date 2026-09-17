@@ -21,6 +21,38 @@ if (independentLesson) {
   independentLesson.mentalModel = "Optional path → problem → deliverable → scope boundary → assumptions → acceptance → change process → timeline → commercial terms.";
 }
 
+// The Professional Capstone is an evidence package, not only a shipped app.
+const professionalCapstone = lessonB4.find((lesson) => lesson.id === "l-prof-capstone");
+if (professionalCapstone) {
+  professionalCapstone.what = "The final professional project packages the curriculum into one independently defensible body of work: shipped software, engineering evidence, documentation, a case study, a technical walkthrough, and a postmortem.";
+  professionalCapstone.why = "A finished application alone does not demonstrate professional engineering. The capstone must let another person inspect the implementation, understand the decisions, reproduce the project, and verify the outcome.";
+  professionalCapstone.mentalModel = "Ship → verify → document → measure → explain decisions → expose evidence → reflect on failures → present → defend.";
+  professionalCapstone.coreConcepts = [
+    "Working software and deployed artifact",
+    "Source repository and reproducible setup",
+    "Architecture and technical decision evidence",
+    "Tests and verification evidence",
+    "Performance, reliability, or other relevant measurements",
+    "Case study with constraints and trade-offs",
+    "Technical walkthrough",
+    "Postmortem and limitations",
+    "Known risks and future work"
+  ];
+  professionalCapstone.practice = "Audit the capstone as a stranger: verify the deployed artifact, clone/setup instructions, tests, architecture evidence, measured outcomes, case study, and limitations without relying on verbal explanation.";
+  professionalCapstone.challenge = "A reviewer questions one major technical decision and asks for evidence. Defend the decision with requirements, measurements, code, tests, or documented constraints, and state what you would change with new evidence.";
+  professionalCapstone.miniProject = "Ship one complete capstone with: working deployment; public or reviewable source repository; reproducible README; architecture diagram; key technical decisions and trade-offs; automated or documented verification; measurable outcome evidence; case study; 10–15 minute technical walkthrough; postmortem; limitations; and prioritized future work.";
+  professionalCapstone.mastery = [
+    "A stranger can run or inspect the project using the documentation.",
+    "The repository and deployed artifact provide verifiable evidence of the implementation.",
+    "Major architecture and engineering decisions are explained with constraints and trade-offs.",
+    "Tests or other verification demonstrate that important behavior was checked.",
+    "At least one meaningful outcome is supported by measurements or concrete evidence.",
+    "The case study clearly separates facts, assumptions, trade-offs, limitations, and results.",
+    "I can present and defend the project without relying on unsupported claims.",
+    "The postmortem identifies failures, lessons, and specific future improvements."
+  ];
+}
+
 stage15Metadata.skills.push(
   "Engineering a concise, role-targeted CV/resume from verifiable evidence",
   "Maintaining consistent professional profiles across resume, portfolio, and GitHub",
