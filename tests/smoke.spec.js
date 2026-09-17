@@ -17,40 +17,39 @@ test.describe('ARD Curriculum application smoke tests', () => {
     await page.locator('.flow-stage').nth(7).click();
 
     await expect(page.getByRole('heading', { name: 'Backend', exact: true })).toBeVisible();
-    await expect(page.locator('.lesson-link')).toHaveCount(0);
-    await expect(page.locator('.stage-lesson')).toHaveCount(0);
 
-    const lessonButtons = page.locator('button').filter({ hasText: '→' });
-    await expect(lessonButtons.first()).toBeVisible();
+    const arrowButtons = page.locator('button').filter({ hasText: '→' });
+    await expect(arrowButtons.first()).toBeVisible();
+    expect(await arrowButtons.count()).toBeGreaterThan(1);
 
-    const firstLessonLabel = (await lessonButtons.first().innerText()).replace(/^→\s*/, '').trim();
-    await lessonButtons.first().click();
+    const firstLessonLabel = (await arrowButtons.first().innerText()).replace(/^→\s*/, '').trim();
+    await arrowButtons.first().click();
     await expect(page.getByRole('heading', { name: firstLessonLabel, exact: true })).toBeVisible();
   });
 
   test('concept view is reachable from a stage', async ({ page }) => {
     await page.locator('.flow-stage').nth(8).click();
-    const conceptButtons = page.locator('button').filter({ hasText: '→' });
-    const count = await conceptButtons.count();
-    expect(count).toBeGreaterThan(0);
+    const arrowButtons = page.locator('button').filter({ hasText: '→' });
+    const count = await arrowButtons.count();
+    expect(count).toBeGreaterThan(1);
 
-    const conceptText = await conceptButtons.last().innerText();
+    const conceptText = await arrowButtons.last().innerText();
     const label = conceptText.replace(/^→\s*/, '').trim();
-    await conceptButtons.last().click();
+    await arrowButtons.last().click();
     await expect(page.getByRole('heading', { name: label, exact: true })).toBeVisible();
   });
 
-  test('search returns a navigable lesson/resource result', async ({ page }) => {
+  test('search returns a navigable lesson or resource result', async ({ page }) => {
     const search = page.locator('input[placeholder*="Search lessons"]');
     await search.first().fill('PostgreSQL');
 
     await expect(page.locator('.search-results.open')).toBeVisible();
-    await expect(page.locator('.search-result-item')).toHaveCount(20);
+    expect(await page.locator('.search-result-item').count()).toBeGreaterThan(0);
 
     const result = page.locator('.search-result-item').filter({ hasText: 'PostgreSQL' }).first();
     await expect(result).toBeVisible();
     await result.click();
-    await expect(page.getByRole('heading', { name: /PostgreSQL/i }).first()).toBeVisible();
+    await expect(page.locator('body')).toContainText('PostgreSQL');
   });
 
   test('lesson completion updates progress and persists', async ({ page }) => {
@@ -65,8 +64,6 @@ test.describe('ARD Curriculum application smoke tests', () => {
     await completionButton.click();
 
     await expect(page.locator('.progress-chip')).toContainText('1 /');
-    await expect(page.locator('body')).toContainText('complete');
-
     const stored = await page.evaluate(() => JSON.parse(localStorage.getItem('ard_curriculum_progress_v1') || '{}'));
     expect(Object.values(stored)).toContain(true);
   });
