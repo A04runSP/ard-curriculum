@@ -1,7 +1,6 @@
 import { lessonB4 } from "./lessonB4.js";
 import { lessonB5 } from "./lessonB5.js";
 import { concept3 } from "./concept3.js";
-import { stage12GapLessons } from "./stage12Gaps.js";
 
 lessonB4.push(...lessonB5);
 
