@@ -7,9 +7,9 @@
 .stage14-block-title span{font-size:.68rem;font-weight:900;letter-spacing:.12em;padding:5px 8px;border-radius:7px;background:rgba(57,213,198,.14);color:#82f5d6}
 .stage14-block-title strong{font-size:.9rem;color:var(--lesson-a,#FFD166)}
 .stage14-chip-grid{display:grid;gap:8px}
-.stage14-lesson-chip{width:100%;text-align:left;border:1px solid color-mix(in srgb,var(--lesson-a,#FFD166) 18%,rgba(255,255,255,.1));border-radius:10px;padding:11px 13px;background:linear-gradient(135deg,color-mix(in srgb,var(--lesson-a,#FFD166) 6%,rgba(255,255,255,.035)),rgba(255,255,255,.025));color:inherit;cursor:pointer;font:inherit;transition:transform .16s ease,border-color .16s ease,background .16s ease;box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+.stage14-lesson-chip{width:100%;text-align:left;color:var(--lesson-a,#FFD166);border:1px solid color-mix(in srgb,var(--lesson-a,#FFD166) 18%,rgba(255,255,255,.1));border-radius:10px;padding:11px 13px;background:linear-gradient(135deg,color-mix(in srgb,var(--lesson-a,#FFD166) 6%,rgba(255,255,255,.035)),rgba(255,255,255,.025));color:inherit;cursor:pointer;font:inherit;transition:transform .16s ease,border-color .16s ease,background .16s ease;box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
 .stage14-lesson-chip:hover{transform:translateY(-1px);border-color:rgba(255,209,102,.45);background:rgba(255,209,102,.08)}
-.stage14-lesson-chip.core{border-color:rgba(57,213,198,.18)}
+.stage14-lesson-chip.core{border-color:rgba(57,213,198,.18);color:var(--lesson-a,#FFD166)}
 .stage14-track-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .stage14-track-card{padding:18px;border-radius:16px;background:radial-gradient(220px 150px at 0% 0%,color-mix(in srgb,var(--lesson-a,#FFD166) 10%,transparent),transparent 72%),linear-gradient(145deg,color-mix(in srgb,var(--lesson-a,#FFD166) 5%,rgba(255,255,255,.03)),rgba(255,255,255,.02));border:1px solid color-mix(in srgb,var(--lesson-a,#FFD166) 22%,rgba(255,255,255,.09));min-width:0;box-shadow:0 14px 30px rgba(0,0,0,.20),inset 0 1px 0 rgba(255,255,255,.07)}
 .stage14-track-number{font-size:.7rem;font-weight:900;letter-spacing:.12em;opacity:.55;margin-bottom:7px}
@@ -18,6 +18,6 @@
 .stage14-track-lessons{display:grid;gap:7px;margin-bottom:14px}
 .stage14-track-project{display:grid;gap:4px;padding-top:12px;border-top:1px solid color-mix(in srgb,var(--lesson-a,#FFD166) 16%,rgba(255,255,255,.08));font-size:.78rem;line-height:1.5;opacity:.8}
 .stage14-track-project strong{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--lesson-a,#FFD166);opacity:.82}
-.stage14-capstone-note{margin-top:16px;padding:13px 15px;border-radius:12px;background:rgba(255,209,102,.07);border:1px solid rgba(255,209,102,.15);font-size:.84rem;line-height:1.55}
+.stage14-capstone-note{margin-top:16px;padding:13px 15px;border-radius:12px;background:rgba(255,209,102,.07);border:1px solid rgba(255,209,102,.15);font-size:.84rem;line-height:1.55}.stage14-capstone-note strong{color:#39D5C6;text-shadow:0 0 9px rgba(57,213,198,.2)}
 @media(max-width:900px){.stage14-track-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.stage14-specialization-planner{padding:18px;margin:22px 0 28px}.stage14-track-grid{grid-template-columns:1fr}.stage14-track-card{padding:15px}}
