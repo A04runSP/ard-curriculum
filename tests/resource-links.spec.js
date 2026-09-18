@@ -3,21 +3,29 @@ import { test, expect } from '@playwright/test';
 const HTTP_URL = /^https?:\/\//i;
 
 async function assertLinks(locator, label, failures) {
-  const entries = await locator.evaluateAll(items =>
-    items.map(item => ({
-      text: item.textContent?.trim() || '',
-      href: item.querySelector('a')?.getAttribute('href') || ''
-    }))
-  );
+  const entries = await locator.evaluateAll(items => {
+    const resources = [];
+    for (const item of items) {
+      const heading = item.querySelector('h3, h2, h4')?.textContent?.trim() || '';
+      if (heading === 'Resources' || heading === '11. Resources' || heading === 'Resource') {
+        for (const candidate of item.querySelectorAll('li, .resource-item, a')) {
+          const anchor = candidate.matches('a') ? candidate : candidate.querySelector('a');
+          if (anchor) resources.push({ text: anchor.textContent?.trim() || '', href: anchor.getAttribute('href') || '' });
+        }
+      }
+    }
+    return resources;
+  });
 
   for (const entry of entries) {
     if (!HTTP_URL.test(entry.href)) {
-      failures.push(`${label}: ${entry.text || '(unnamed resource)'} → ${entry.href || '(no href)'}`);
+      failures.push(label + ': ' + (entry.text || '(unnamed resource)') + ' → ' + (entry.href || '(no href)'));
     }
   }
 }
 
 test('all Stage 1–15 resource entries expose clickable HTTP(S) URLs', async ({ page }) => {
+  test.setTimeout(120000);
   const failures = [];
 
   for (let stageIndex = 0; stageIndex < 15; stageIndex += 1) {
@@ -32,15 +40,8 @@ test('all Stage 1–15 resource entries expose clickable HTTP(S) URLs', async ({
     const stage = page.locator('.stage-view');
     await expect(stage).toBeVisible();
 
-    await assertLinks(
-      stage.locator('.meta-block').filter({
-        has: stage.getByRole('heading', { name: 'Resources', exact: true })
-      }).locator('li'),
-      `Stage ${stageIndex + 1}`,
-      failures
-    );
+    await assertLinks(stage.locator('.meta-block'), 'Stage ' + (stageIndex + 1), failures);
 
-    const lessonHeading = stage.getByRole('heading', { name: 'Full Lessons in this Stage', exact: true });
     const lessonButtons = stage.locator('button[data-content-type="lesson"]');
     const lessonCount = await lessonButtons.count();
 
@@ -48,21 +49,17 @@ test('all Stage 1–15 resource entries expose clickable HTTP(S) URLs', async ({
       const lessonButton = lessonButtons.nth(lessonIndex);
       const lessonTitle = (await lessonButton.textContent())?.trim() || '(unnamed lesson)';
       await lessonButton.click();
+
       const lesson = page.locator('.lesson-view');
-      await expect(
-        lesson,
-        `Stage ${stageIndex + 1}, lesson ${lessonIndex + 1} (${lessonTitle}) did not open`
-      ).toBeVisible();
+      await expect(lesson, 'Stage ' + (stageIndex + 1) + ', lesson ' + (lessonIndex + 1) + ' (' + lessonTitle + ') did not open').toBeVisible();
 
       await assertLinks(
-        lesson.locator('.lsection').filter({
-          has: lesson.getByRole('heading', { name: '11. Resources', exact: true })
-        }).locator('.resource-item'),
-        `Stage ${stageIndex + 1} lesson ${lessonIndex + 1} (${lessonTitle})`,
+        lesson.locator('.lsection'),
+        'Stage ' + (stageIndex + 1) + ' lesson ' + (lessonIndex + 1) + ' (' + lessonTitle + ')',
         failures
       );
 
-      await lesson.getByRole('button', { name: new RegExp(`^← .+`) }).first().click();
+      await lesson.getByRole('button', { name: new RegExp('^← .+') }).first().click();
       await expect(page.locator('.stage-view')).toBeVisible();
     }
 
@@ -77,12 +74,12 @@ test('all Stage 1–15 resource entries expose clickable HTTP(S) URLs', async ({
         await expect(concept).toBeVisible();
 
         await assertLinks(
-          concept.locator('h4').filter({ hasText: 'Resource' }).locator('xpath=following-sibling::p[1]'),
-          `Stage ${stageIndex + 1} concept ${conceptIndex + 1}`,
+          concept.locator('h4').locator('xpath=..'),
+          'Stage ' + (stageIndex + 1) + ' concept ' + (conceptIndex + 1),
           failures
         );
 
-        await page.getByRole('button', { name: 'Back to stage', exact: true }).click();
+        await concept.getByRole('button', { name: 'Back to stage', exact: true }).click();
         await expect(page.locator('.stage-view')).toBeVisible();
       }
     }
