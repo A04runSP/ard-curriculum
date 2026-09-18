@@ -25,6 +25,7 @@ body[data-theme="light"]{--ink:#F5F7FA;--surface:#FFFFFF;--surface-2:#EEF2F6;--s
   .app-shell:not(.is-collapsed) .sidebar-scroll{overflow:auto}
   .app-shell:not(.is-collapsed) .stage-body{display:block}
 }
+@media(max-width:520px){.mark-complete-bar .btn{min-height:44px}}
 /* Mobile navigation state: filamentOpen expands the collapsed rail as an overlay without shifting content. */
 @media(max-width:520px){
   .app-shell.filament-open .sidebar{width:260px;overflow:hidden;box-shadow:18px 0 45px rgba(0,0,0,.42)}
