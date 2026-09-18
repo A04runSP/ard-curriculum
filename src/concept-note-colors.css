@@ -1,0 +1,29 @@
+/* Concept-note family
+   Concept notes inherit the colour family of their parent stage.
+   This keeps each stage visually coherent: Web Development stays purple,
+   Computer Science stays blue, etc. Body copy remains neutral.
+*/
+.concept-card{
+  --concept-a:var(--lesson-a,#6675FF);
+  --concept-b:var(--lesson-b,#9AA4FF);
+  border-color:color-mix(in srgb,var(--concept-a) 72%,rgba(255,255,255,.12)) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.10),
+    0 0 22px color-mix(in srgb,var(--concept-a) 10%,transparent);
+}
+
+.concept-card h2,
+.concept-card .cmod,
+.concept-card h4{
+  color:var(--concept-a) !important;
+  text-shadow:0 0 12px color-mix(in srgb,var(--concept-a) 18%,transparent);
+}
+
+.concept-card h2{
+  text-shadow:0 0 16px color-mix(in srgb,var(--concept-a) 20%,transparent);
+}
+
+/* The requested editorial punctuation: "Why it matters..." */
+.concept-card h4:nth-of-type(2)::after{
+  content:"...";
+}

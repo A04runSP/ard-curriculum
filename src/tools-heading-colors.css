@@ -1,0 +1,13 @@
+/* Tools Roadmap only
+   Keep the page/environment styling unchanged. Tool names inside tool cards
+   use one consistent purple family instead of the mixed white/purple treatment.
+*/
+.tool-card h3{
+  color:#9B6BFF !important;
+  text-shadow:0 0 14px rgba(155,107,255,.16);
+}
+
+.tool-card h3 .tool-cost{
+  color:#D6A4FF !important;
+  text-shadow:none;
+}

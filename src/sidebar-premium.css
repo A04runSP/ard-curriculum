@@ -1,0 +1,146 @@
+/* ARD SIDEBAR — ACTIVE ITEM ONLY
+   The normal navigation rows remain exactly as they are.
+   Only the currently selected destination receives the premium Stages-style
+   glass treatment.
+*/
+
+/* Remove the top-header ARD logo mark; keep the title and navigation intact. */
+.brand .dot{display:none !important}
+
+.sidebar .nav-top-item.active{
+  --nav-a:#FF3EA5;
+  --nav-b:#FF78AC;
+  position:relative;
+  isolation:isolate;
+  min-height:46px;
+  margin:4px 8px;
+  padding:10px 12px;
+  border:1px solid color-mix(in srgb,var(--nav-a) 76%,rgba(255,255,255,.20));
+  border-radius:16px;
+  color:#FFFFFF;
+  background:linear-gradient(145deg,rgba(255,255,255,.055) 0%,transparent 25%),linear-gradient(112deg,color-mix(in srgb,var(--nav-a) 24%,rgba(31,25,61,.96)) 0%,color-mix(in srgb,var(--nav-b) 12%,rgba(34,27,66,.94)) 54%,rgba(27,23,53,.92) 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18),inset 0 -1px 0 rgba(0,0,0,.30),0 2px 0 rgba(255,255,255,.025),0 12px 30px rgba(0,0,0,.34),0 0 28px color-mix(in srgb,var(--nav-a) 17%,transparent),0 0 7px color-mix(in srgb,var(--nav-a) 16%,transparent);
+  transform:translateY(-1px);
+  overflow:hidden;
+}
+.sidebar .nav-top-item.active:nth-of-type(1){--nav-a:#FF3EA5;--nav-b:#FF78AC}
+.sidebar .nav-top-item.active:nth-of-type(2){--nav-a:#4D7CFF;--nav-b:#8EADFF}
+.sidebar .nav-top-item.active:nth-of-type(3){--nav-a:#7C5CFF;--nav-b:#B59AFF}
+.sidebar .nav-top-item.active:nth-of-type(4){--nav-a:#FF5C9A;--nav-b:#FF9BBD}
+.sidebar .nav-top-item.active:nth-of-type(5){--nav-a:#39D5C6;--nav-b:#82F5D6}
+.sidebar .nav-top-item.active:nth-of-type(6){--nav-a:#FFD166;--nav-b:#FFE6A3}
+.sidebar .nav-top-item.active:nth-of-type(7){--nav-a:#FF3EA5;--nav-b:#FF78AC}
+.sidebar .nav-top-item.active::after{content:"";position:absolute;z-index:-1;left:10%;right:10%;top:1px;height:1px;border-radius:999px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.42),transparent);box-shadow:0 0 8px rgba(255,255,255,.08);pointer-events:none}
+.sidebar .nav-top-item.active::before{content:"";position:absolute;left:-1px;top:7px;bottom:7px;width:3px;border-radius:999px;background:linear-gradient(180deg,var(--nav-b),var(--nav-a));box-shadow:0 0 7px color-mix(in srgb,var(--nav-a) 72%,transparent),0 0 16px color-mix(in srgb,var(--nav-a) 38%,transparent)}
+.sidebar .nav-top-item.active .icon{color:var(--nav-a);filter:drop-shadow(0 0 7px color-mix(in srgb,var(--nav-a) 55%,transparent))}
+.sidebar .stages-nav-item.active{--nav-a:#FF3EA5;--nav-b:#FF78AC}
+
+@media(max-width:520px){
+  .sidebar .nav-top-item.active{min-height:46px;margin:4px 7px;padding:10px;border-radius:15px}
+  .sidebar .nav-top-item.active::before{top:6px;bottom:6px}
+
+  /* MOBILE STATE MODEL
+     hidden:    collapsed=true,  filamentOpen=false
+     icon rail: collapsed=true,  filamentOpen=true
+     full:      collapsed=false
+
+     Edge handle opens the icon rail.
+     Top rail button expands the icon rail into the full named sidebar.
+     Navigation items stay open while selecting destinations.
+  */
+
+  .app-shell.is-collapsed:not(.filament-open) .sidebar{top:0 !important;bottom:0 !important;left:0 !important;width:0 !important;height:100vh !important;overflow:visible !important;background:transparent !important;border-right:0 !important;box-shadow:none !important;pointer-events:none !important}
+  .app-shell.is-collapsed:not(.filament-open) .sidebar-scroll,.app-shell.is-collapsed:not(.filament-open) .sidebar-footer{display:none !important}
+  .app-shell.is-collapsed:not(.filament-open) .main{left:0 !important;right:0 !important;width:100% !important;max-width:100vw !important}
+
+  .app-shell.is-collapsed.filament-open .sidebar{top:0 !important;bottom:0 !important;left:0 !important;width:64px !important;height:100vh !important;overflow:hidden !important;background:var(--surface) !important;border-right:1px solid var(--border) !important;box-shadow:6px 0 24px rgba(0,0,0,.24) !important;pointer-events:auto !important;z-index:90 !important}
+  .app-shell.is-collapsed.filament-open .main{left:64px !important;right:0 !important;width:calc(100% - 64px) !important;max-width:calc(100vw - 64px) !important}
+  .app-shell.is-collapsed.filament-open .sidebar-scroll{display:block !important;width:64px !important;padding:64px 0 58px !important;height:100% !important;overflow-y:auto !important;overflow-x:hidden !important;box-sizing:border-box !important}
+  .app-shell.is-collapsed.filament-open .nav-section-label{display:none !important}
+  .app-shell.is-collapsed.filament-open .nav-top-item{width:48px !important;min-width:48px !important;margin:0 8px !important;padding:8px 0 !important;justify-content:center !important}
+  .app-shell.is-collapsed.filament-open .nav-top-item span{display:none !important}
+
+  /* The top control in the icon rail expands to the full named sidebar. */
+  .app-shell.is-collapsed.filament-open .mobile-filament{display:none !important}
+  .app-shell.is-collapsed.filament-open .sidebar-footer{display:block !important;position:absolute !important;left:0 !important;right:0 !important;top:0 !important;bottom:auto !important;height:64px !important;padding:0 !important;z-index:20 !important;pointer-events:auto !important}
+  .app-shell.is-collapsed.filament-open .collapse-btn{display:flex !important;width:64px !important;height:64px !important;margin:0 !important;padding:0 !important;align-items:center !important;justify-content:center !important;border:0 !important;border-radius:0 !important;background:transparent !important;color:rgba(255,255,255,.92) !important;box-shadow:none !important}
+  .app-shell.is-collapsed.filament-open .collapse-btn span{display:none !important}
+  .app-shell.is-collapsed.filament-open .collapse-btn .icon{display:none !important}
+  .app-shell.is-collapsed.filament-open .collapse-btn::before{content:"☰" !important;display:block !important;font-size:30px !important;line-height:1 !important;font-family:Arial,sans-serif !important;color:currentColor !important}
+
+  .app-shell:not(.is-collapsed) .sidebar{top:0 !important;bottom:0 !important;left:0 !important;width:300px !important;height:100vh !important;z-index:90 !important;overflow:hidden !important;pointer-events:auto !important}
+  .app-shell:not(.is-collapsed) .main{left:0 !important;right:0 !important;width:100% !important;max-width:100vw !important}
+  .app-shell:not(.is-collapsed) .sidebar-scroll{display:block !important;width:100% !important;height:100% !important;padding:64px 10px 80px !important;overflow-y:auto !important;overflow-x:hidden !important;box-sizing:border-box !important}
+  .app-shell:not(.is-collapsed) .nav-section-label{display:block !important}
+  .app-shell:not(.is-collapsed) .nav-top-item{width:100% !important;min-width:0 !important;margin:4px 0 !important;padding:10px 12px !important;justify-content:flex-start !important}
+  .app-shell:not(.is-collapsed) .nav-top-item span{display:inline !important}
+  .app-shell:not(.is-collapsed) .sidebar-footer{display:block !important;position:absolute !important;left:0 !important;right:0 !important;bottom:0 !important;padding:10px !important;z-index:10 !important;pointer-events:auto !important}
+  .app-shell:not(.is-collapsed) .collapse-btn{display:flex !important;width:100% !important;height:40px !important;margin:0 !important;align-items:center !important;justify-content:center !important}
+  .app-shell:not(.is-collapsed) .collapse-btn span{display:inline !important}
+
+  /* Mobile header control: independent of desktop topbar geometry. */
+  .app-shell .mobile-filament{display:flex !important;position:fixed !important;top:15px !important;left:auto !important;right:14px !important;width:38px !important;height:34px !important;align-items:center !important;justify-content:center !important;padding:0 !important;margin:0 !important;border:0 !important;border-radius:8px !important;background:transparent !important;color:rgba(255,255,255,.94) !important;box-shadow:none !important;z-index:101 !important;pointer-events:auto !important}
+  .app-shell .mobile-filament::before{content:'☰' !important;display:block !important;font-size:22px !important;line-height:1 !important;color:rgba(255,255,255,.92) !important;font-family:Arial,sans-serif !important}
+  .app-shell .mobile-filament span{display:none !important}
+  .app-shell:not(.is-collapsed) .mobile-filament{display:none !important}
+
+  /* The rail logo belongs to the sidebar when the icon rail/full sidebar is open. */
+  .app-shell.is-collapsed.filament-open .rail-logo{position:relative !important;top:auto !important;left:auto !important;width:64px !important;height:64px !important;padding:0 !important;justify-content:center !important;background:var(--surface) !important;border-bottom:1px solid var(--border) !important;box-shadow:none !important;backdrop-filter:none !important;-webkit-backdrop-filter:none !important;z-index:auto !important}
+  .app-shell.is-collapsed.filament-open .rail-logo::after{display:none !important}
+  .app-shell.is-collapsed.filament-open .rail-logo .rail-mark{width:34px !important;height:34px !important}
+
+  .app-shell:not(.is-collapsed) .rail-logo{position:relative !important;top:auto !important;left:auto !important;width:300px !important;height:56px !important;padding:0 18px !important;justify-content:flex-start !important;background:var(--surface) !important;border-bottom:1px solid var(--border) !important;box-shadow:none !important;backdrop-filter:none !important;-webkit-backdrop-filter:none !important;z-index:auto !important}
+}
+
+/* MOBILE HAMBURGER — closed state only; final control is the left-edge handle. */
+@media(max-width:520px){
+  .app-shell .mobile-filament{left:14px !important;right:auto !important;top:15px !important;display:flex !important;z-index:101 !important}
+  .app-shell.is-collapsed:not(.filament-open) .rail-logo{display:none !important;visibility:hidden !important}
+}
+
+/* Phase C: keep the mobile navigation toggle available while the rail is expanded. */
+@media (max-width:520px){
+  .app-shell.is-collapsed.filament-open .sidebar{
+    width:260px !important;
+    max-width:calc(100vw - 32px) !important;
+    overflow:hidden !important;
+    z-index:90 !important;
+  }
+  .app-shell.is-collapsed.filament-open .sidebar-scroll{
+    width:100% !important;
+    padding:64px 10px 80px !important;
+    overflow-y:auto !important;
+    overflow-x:hidden !important;
+    box-sizing:border-box !important;
+  }
+  .app-shell.is-collapsed.filament-open .nav-section-label{
+    display:block !important;
+  }
+  .app-shell.is-collapsed.filament-open .nav-top-item{
+    width:100% !important;
+    min-width:0 !important;
+    margin:4px 0 !important;
+    padding:10px 12px !important;
+    justify-content:flex-start !important;
+  }
+  .app-shell.is-collapsed.filament-open .nav-top-item span{
+    display:inline !important;
+  }
+  .app-shell.is-collapsed.filament-open .stage-title,
+  .app-shell.is-collapsed.filament-open .stage-caret{
+    display:inline !important;
+  }
+  .app-shell.is-collapsed.filament-open .mobile-filament{
+    display:flex !important;
+    position:fixed !important;
+    top:15px !important;
+    right:14px !important;
+    width:38px !important;
+    height:34px !important;
+    z-index:101 !important;
+    pointer-events:auto !important;
+  }
+  .app-shell.is-collapsed.filament-open .sidebar-footer{
+    display:none !important;
+  }
+}

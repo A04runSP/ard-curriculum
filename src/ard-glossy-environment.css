@@ -1,0 +1,16 @@
+/* ARD GLOSSY ENVIRONMENT
+   The cards already have their own glossy/glass material.
+   This layer gives the entire website a cinematic environment underneath them.
+*/
+html,body,#root{background:transparent}
+body{position:relative;background:#080914;isolation:isolate;overflow:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(900px 620px at 8% 12%,rgba(44,76,180,.26),transparent 68%),radial-gradient(760px 560px at 88% 16%,rgba(133,39,130,.24),transparent 68%),radial-gradient(820px 620px at 72% 86%,rgba(65,32,150,.22),transparent 70%),radial-gradient(620px 520px at 12% 88%,rgba(12,112,137,.16),transparent 70%),linear-gradient(135deg,#070912 0%,#0B0D1D 34%,#100A1C 68%,#080914 100%)}
+body::after{content:"";position:fixed;inset:-18%;z-index:-1;pointer-events:none;opacity:.92;background:linear-gradient(116deg,transparent 0 17%,rgba(52,87,255,.055) 23%,rgba(52,87,255,.16) 27%,rgba(52,87,255,.035) 31%,transparent 38%),linear-gradient(116deg,transparent 38%,rgba(255,62,165,.035) 45%,rgba(255,62,165,.13) 49%,rgba(255,62,165,.028) 53%,transparent 60%),linear-gradient(116deg,transparent 63%,rgba(32,227,230,.025) 69%,rgba(32,227,230,.09) 73%,transparent 78%);filter:blur(34px) saturate(125%);transform:rotate(-4deg) scale(1.08)}
+#root::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.045),transparent 16%,transparent 78%,rgba(255,255,255,.018)),radial-gradient(520px 180px at 50% -5%,rgba(255,255,255,.055),transparent 72%)}
+.app-shell,.main{background:transparent!important}
+body[data-theme="light"]{background:#F4EEF8}
+body[data-theme="light"]::before{background:radial-gradient(760px 520px at 8% 10%,rgba(77,124,255,.13),transparent 68%),radial-gradient(700px 520px at 90% 12%,rgba(255,62,165,.11),transparent 68%),radial-gradient(760px 560px at 72% 88%,rgba(139,92,255,.10),transparent 70%),linear-gradient(135deg,#F7F3FA 0%,#EEEAF6 48%,#F7F1F8 100%)}
+body[data-theme="light"]::after{opacity:.55;filter:blur(42px) saturate(110%)}
+body[data-theme="light"] #root::before{background:linear-gradient(180deg,rgba(255,255,255,.62),transparent 24%,rgba(255,255,255,.18) 100%)}
+@media(max-width:520px){body::before{background:radial-gradient(520px 440px at 0% 8%,rgba(44,76,180,.24),transparent 68%),radial-gradient(500px 460px at 100% 20%,rgba(133,39,130,.22),transparent 68%),radial-gradient(560px 520px at 75% 90%,rgba(65,32,150,.20),transparent 70%),linear-gradient(135deg,#070912 0%,#0B0D1D 42%,#100A1C 72%,#080914 100%)}body::after{filter:blur(40px) saturate(120%);opacity:.82}}
+@media(prefers-reduced-motion:reduce){body::before,body::after,#root::before{animation:none!important}}

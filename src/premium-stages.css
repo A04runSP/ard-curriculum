@@ -28,13 +28,7 @@ body{
 .stages-index-stats .num{color:#ff72ad;text-shadow:0 0 20px rgba(255,62,165,.16)}
 
 .stage-index-grid{display:grid !important;grid-template-columns:repeat(4,minmax(0,1fr)) !important;gap:18px !important}
-.stage-index-card{position:relative;min-height:226px;padding:23px !important;overflow:hidden;isolation:isolate;text-align:left;border:1px solid color-mix(in srgb,var(--lesson-a) 54%,rgba(255,255,255,.18)) !important;border-radius:23px !important;background:
-  radial-gradient(240px 170px at -5% -8%,color-mix(in srgb,var(--lesson-a) 22%,transparent),transparent 70%),
-  radial-gradient(180px 150px at 105% 108%,color-mix(in srgb,var(--lesson-b) 12%,transparent),transparent 72%),
-  linear-gradient(135deg,rgba(37,37,61,.70),rgba(10,11,23,.54) 55%,rgba(13,12,27,.60)) !important;
-  backdrop-filter:blur(22px) saturate(150%);-webkit-backdrop-filter:blur(22px) saturate(150%);
-  box-shadow:0 24px 48px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.16),inset 0 -1px 0 rgba(0,0,0,.30),0 0 28px color-mix(in srgb,var(--lesson-a) 11%,transparent);
-  transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+.stage-index-card{position:relative;min-height:226px;padding:23px !important;overflow:hidden;isolation:isolate;text-align:left;border:1px solid color-mix(in srgb,var(--lesson-a) 54%,rgba(255,255,255,.18)) !important;border-radius:23px !important;background:radial-gradient(240px 170px at -5% -8%,color-mix(in srgb,var(--lesson-a) 22%,transparent),transparent 70%),radial-gradient(180px 150px at 105% 108%,color-mix(in srgb,var(--lesson-b) 12%,transparent),transparent 72%),linear-gradient(135deg,rgba(37,37,61,.70),rgba(10,11,23,.54) 55%,rgba(13,12,27,.60)) !important;backdrop-filter:blur(22px) saturate(150%);-webkit-backdrop-filter:blur(22px) saturate(150%);box-shadow:0 24px 48px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.16),inset 0 -1px 0 rgba(0,0,0,.30),0 0 28px color-mix(in srgb,var(--lesson-a) 11%,transparent);transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
 .stage-index-card::before{content:"";position:absolute;z-index:-1;left:-15%;top:-42%;width:78%;height:120%;background:linear-gradient(125deg,transparent 25%,rgba(255,255,255,.085) 43%,rgba(255,255,255,.025) 50%,transparent 64%);transform:rotate(-8deg);pointer-events:none}
 .stage-index-card::after{content:"";position:absolute;z-index:-1;right:-80px;top:-85px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--lesson-a) 20%,transparent),transparent 68%);filter:blur(15px);pointer-events:none}
 .stage-index-card:hover{transform:translateY(-7px) scale(1.012);border-color:color-mix(in srgb,var(--lesson-a) 78%,rgba(255,255,255,.20)) !important;box-shadow:0 31px 58px rgba(0,0,0,.48),inset 0 1px 0 rgba(255,255,255,.20),0 0 34px color-mix(in srgb,var(--lesson-a) 16%,transparent) !important}
@@ -47,18 +41,13 @@ body{
 .stage-card-progress{position:relative;z-index:2;height:3px;margin-top:14px;overflow:hidden;border-radius:99px;background:rgba(255,255,255,.075);box-shadow:inset 0 1px rgba(255,255,255,.06)}
 .stage-card-progress span{background:linear-gradient(90deg,var(--lesson-a),var(--lesson-b)) !important;box-shadow:0 0 13px color-mix(in srgb,var(--lesson-a) 42%,transparent)}
 
-/* The other content surfaces use the same premium material without inheriting stage colour fills. */
 .stat-box,.meta-block,.concept-card,.tool-card,.project-card,.lsection,.exit-box,.flow-stage{border-color:rgba(255,255,255,.13);background:linear-gradient(145deg,rgba(31,31,52,.64),rgba(9,10,21,.50));backdrop-filter:blur(18px) saturate(135%);-webkit-backdrop-filter:blur(18px) saturate(135%);box-shadow:0 18px 38px rgba(0,0,0,.31),inset 0 1px 0 rgba(255,255,255,.09)}
 
 @media(max-width:1100px){.stage-index-grid{grid-template-columns:repeat(3,minmax(0,1fr)) !important}}
 @media(max-width:860px){.stages-index-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stage-index-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important}}
 
 @media(max-width:520px){
-  body{background:
-    radial-gradient(440px 310px at 92% 0%,rgba(155,107,255,.20),transparent 68%),
-    radial-gradient(400px 320px at 0% 36%,rgba(32,227,230,.13),transparent 70%),
-    radial-gradient(420px 340px at 88% 90%,rgba(255,62,165,.18),transparent 70%),
-    linear-gradient(145deg,#03040a 0%,#090a17 45%,#080615 72%,#04050b 100%) !important}
+  body{background:radial-gradient(440px 310px at 92% 0%,rgba(155,107,255,.20),transparent 68%),radial-gradient(400px 320px at 0% 36%,rgba(32,227,230,.13),transparent 70%),radial-gradient(420px 340px at 88% 90%,rgba(255,62,165,.18),transparent 70%),linear-gradient(145deg,#03040a 0%,#090a17 45%,#080615 72%,#04050b 100%) !important}
   .app-shell::before{opacity:1;background:linear-gradient(140deg,transparent 0 27%,rgba(77,124,255,.07) 37%,transparent 47%),linear-gradient(155deg,transparent 0 51%,rgba(255,62,165,.085) 61%,transparent 71%),linear-gradient(25deg,transparent 0 67%,rgba(32,227,230,.055) 75%,transparent 84%);filter:blur(12px)}
   .stages-index{padding-bottom:34px}.stages-index-hero{margin-bottom:29px}
   .stages-index-hero::before{left:-30%;top:-100px;width:380px;height:220px}.stages-index-hero::after{right:-110px;top:-80px;width:300px;height:210px}
@@ -74,3 +63,26 @@ body{
 }
 
 @media(prefers-reduced-motion:reduce){.stage-index-card{transition:none}.stage-index-card:hover{transform:none}}
+
+/* ROADMAP OVERVIEW — 15 individual glossy colour-glass stage cards. */
+.roadmap-flow{position:relative;display:grid;gap:15px;margin-top:8px}
+.flow-stage{--flow-a:#7c5cff;--flow-b:#b59aff;position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px;width:100%;min-height:132px;padding:22px 24px;border:1px solid color-mix(in srgb,var(--flow-a) 58%,rgba(255,255,255,.16)) !important;border-radius:22px !important;background:radial-gradient(220px 150px at -2% 0%,color-mix(in srgb,var(--flow-a) 24%,transparent),transparent 70%),radial-gradient(220px 160px at 104% 105%,color-mix(in srgb,var(--flow-b) 14%,transparent),transparent 72%),linear-gradient(135deg,rgba(34,34,58,.72),rgba(8,9,20,.56) 56%,rgba(14,12,28,.64)) !important;backdrop-filter:blur(22px) saturate(155%);-webkit-backdrop-filter:blur(22px) saturate(155%);box-shadow:0 22px 46px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.16),inset 0 -1px 0 rgba(0,0,0,.30),0 0 28px color-mix(in srgb,var(--flow-a) 12%,transparent);text-align:left;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.flow-stage::before{content:"";position:absolute;z-index:-1;left:-10%;top:-48%;width:82%;height:125%;background:linear-gradient(122deg,transparent 28%,rgba(255,255,255,.10) 45%,rgba(255,255,255,.025) 52%,transparent 66%);transform:rotate(-8deg);pointer-events:none}
+.flow-stage::after{content:"";position:absolute;z-index:-1;right:-85px;top:-90px;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--flow-a) 24%,transparent),transparent 68%);filter:blur(14px);pointer-events:none}
+.flow-stage:hover{transform:translateY(-5px);border-color:color-mix(in srgb,var(--flow-a) 82%,rgba(255,255,255,.22)) !important;box-shadow:0 30px 58px rgba(0,0,0,.48),inset 0 1px 0 rgba(255,255,255,.21),0 0 36px color-mix(in srgb,var(--flow-a) 17%,transparent) !important}
+.flow-stage .fnum{position:relative;z-index:2;display:grid;place-items:center;min-width:58px;height:46px;padding:0 13px;border:1px solid color-mix(in srgb,var(--flow-a) 72%,rgba(255,255,255,.15));border-radius:14px;background:linear-gradient(145deg,color-mix(in srgb,var(--flow-a) 17%,rgba(255,255,255,.04)),rgba(255,255,255,.025));color:var(--flow-a);font-weight:800;letter-spacing:.03em;box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 0 18px color-mix(in srgb,var(--flow-a) 14%,transparent);text-shadow:0 0 14px color-mix(in srgb,var(--flow-a) 42%,transparent)}
+.flow-stage .ftitle{position:relative;z-index:2;color:#faf9fc;font-size:20px;font-weight:800;letter-spacing:-.025em;text-shadow:0 3px 16px rgba(0,0,0,.55)}
+.flow-stage .fobjective{position:relative;z-index:2;margin-top:7px;max-width:760px;color:#b9b9c8;font-size:13px;line-height:1.62}
+.flow-stage .flow-arrow{position:relative;z-index:2;display:grid;place-items:center;width:42px;height:42px;border:1px solid color-mix(in srgb,var(--flow-a) 65%,rgba(255,255,255,.14));border-radius:50%;color:var(--flow-a);font-size:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 18px color-mix(in srgb,var(--flow-a) 12%,transparent);text-shadow:0 0 14px color-mix(in srgb,var(--flow-a) 42%,transparent)}
+.flow-stage:nth-child(1){--flow-a:#20E3E6;--flow-b:#39D5C6}.flow-stage:nth-child(2){--flow-a:#35C9FF;--flow-b:#7BE0FF}.flow-stage:nth-child(3){--flow-a:#4D7CFF;--flow-b:#8EADFF}.flow-stage:nth-child(4){--flow-a:#6675FF;--flow-b:#9AA4FF}.flow-stage:nth-child(5){--flow-a:#7C5CFF;--flow-b:#B59AFF}.flow-stage:nth-child(6){--flow-a:#9B6BFF;--flow-b:#C7A8FF}.flow-stage:nth-child(7){--flow-a:#C18CFF;--flow-b:#E0C8FF}.flow-stage:nth-child(8){--flow-a:#FF3EA5;--flow-b:#FF78AC}.flow-stage:nth-child(9){--flow-a:#FF5C9A;--flow-b:#FF9BBD}.flow-stage:nth-child(10){--flow-a:#FF78AC;--flow-b:#FFC1D6}.flow-stage:nth-child(11){--flow-a:#FF8A78;--flow-b:#FFB09F}.flow-stage:nth-child(12){--flow-a:#FFB38A;--flow-b:#FFD0B8}.flow-stage:nth-child(13){--flow-a:#FFE0A3;--flow-b:#FFF0C9}.flow-stage:nth-child(14){--flow-a:#FFD166;--flow-b:#FFE6A3}.flow-stage:nth-child(15){--flow-a:#39D5C6;--flow-b:#82F5D6}
+
+@media(max-width:520px){
+  .roadmap-flow{gap:14px;margin-top:7px}
+  .flow-stage{grid-template-columns:52px 1fr auto;gap:13px;min-height:170px;padding:19px 16px;border-radius:21px !important;box-shadow:0 23px 46px rgba(0,0,0,.44),inset 0 1px 0 rgba(255,255,255,.16),inset 0 -1px 0 rgba(0,0,0,.30),0 0 27px color-mix(in srgb,var(--flow-a) 14%,transparent)}
+  .flow-stage::before{left:-26%;top:-40%;width:112%;height:115%;background:linear-gradient(125deg,transparent 23%,rgba(255,255,255,.085) 43%,rgba(255,255,255,.02) 51%,transparent 66%)}
+  .flow-stage::after{right:-62px;top:-72px;width:185px;height:185px}
+  .flow-stage .fnum{min-width:52px;height:44px;padding:0 8px;border-radius:13px;font-size:15px}
+  .flow-stage .ftitle{font-size:18px;line-height:1.15}
+  .flow-stage .fobjective{margin-top:7px;font-size:13px;line-height:1.58}
+  .flow-stage .flow-arrow{width:36px;height:36px;font-size:18px}
+}

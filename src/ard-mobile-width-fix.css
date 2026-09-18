@@ -1,83 +1,146 @@
-/* ARD MOBILE WIDTH + SCALE CONTAINMENT
-   Mobile collapsed navigation is hidden behind one compact hamburger filament.
-   The existing icon navigation is revealed inside the rail when opened. */
-.theme-toggle{display:none !important}
-
+/* ARD MOBILE WIDTH + SCALE CONTAINMENT */
 @media (max-width:520px){
+  .theme-toggle{display:none !important}
   .app-shell{width:100% !important;max-width:100% !important;min-width:0 !important;overflow:hidden !important}
-
-  /* Mobile app header: hamburger + ARD mark/name. This is a true app layer,
-     separate from the scrolling page content. */
-  .topbar{position:fixed !important;top:0 !important;left:0 !important;right:0 !important;width:100% !important;height:64px !important;padding:0 !important;background:rgba(10,9,25,.82) !important;border-bottom:1px solid rgba(255,255,255,.10) !important;pointer-events:none !important;overflow:visible !important;z-index:90 !important;box-sizing:border-box !important}
-  .brand{display:flex !important;position:absolute !important;left:70px !important;top:0 !important;height:64px !important;align-items:center !important;gap:9px !important;color:rgba(255,255,255,.94) !important;pointer-events:none !important;white-space:nowrap !important}
-  .brand .dot{display:inline-flex !important;width:34px !important;height:34px !important;border-radius:9px !important;align-items:center !important;justify-content:center !important;background:linear-gradient(145deg,#2ce7e5,#27cbd1) !important;color:#07151b !important;box-shadow:0 6px 16px rgba(0,0,0,.24),inset 0 1px rgba(255,255,255,.35) !important}
-  .brand .dot::after{content:'ϟ' !important;font-size:18px !important;font-weight:800 !important}
-  .brand .full{display:inline !important;font-size:15px !important;font-weight:600 !important;letter-spacing:-.01em !important}
-  .brand .compact{display:none !important}
-  .topbar-right{display:none !important}
-  .desktop-topbar-search{display:none !important}
-
-  /* The existing hamburger is promoted into the app header. Its old arrow/text is removed. */
-  .app-shell.is-collapsed .mobile-filament{display:flex !important;position:fixed !important;top:15px !important;left:22px !important;width:34px !important;height:34px !important;align-items:center !important;justify-content:center !important;padding:0 !important;margin:0 !important;border:0 !important;border-radius:9px !important;background:transparent !important;color:rgba(255,255,255,.88) !important;box-shadow:none !important;backdrop-filter:none !important;-webkit-backdrop-filter:none !important;cursor:pointer !important;pointer-events:auto !important;z-index:101 !important}
-  .app-shell.is-collapsed .mobile-filament span{display:none !important}
-  .app-shell.is-collapsed .mobile-filament::before{content:'☰' !important;display:block !important;font-size:24px !important;line-height:1 !important;font-family:Arial,sans-serif !important}
-
-  /* The mobile search is a real part of the scrolling page flow. */
+  .topbar{display:none !important;left:0 !important;right:0 !important;width:100% !important;height:0 !important;padding:0 !important;background:transparent !important;border:0 !important;pointer-events:none !important;overflow:visible !important;z-index:80 !important}
+  .brand,.topbar-right,.desktop-topbar-search{display:none !important}
   .mobile-page-search{display:block !important;width:100% !important;max-width:100% !important;min-width:0 !important;margin:0 0 18px !important;padding:0 !important;box-sizing:border-box !important}
-  .mobile-page-search .search-wrap{position:relative !important;inset:auto !important;transform:none !important;float:none !important;display:block !important;width:100% !important;max-width:100% !important;min-width:0 !important;margin:0 !important;padding:0 !important;z-index:5 !important;pointer-events:auto !important;box-sizing:border-box !important}
+  .mobile-page-search .search-wrap{position:relative !important;inset:auto !important;width:100% !important;max-width:100% !important;min-width:0 !important;margin:0 !important;padding:0 !important;z-index:5 !important;pointer-events:auto !important;box-sizing:border-box !important}
   .mobile-page-search .search-wrap input{height:38px !important;width:100% !important;min-width:0 !important;box-sizing:border-box !important;font-size:.74rem !important;border-radius:12px !important;padding-left:32px !important;pointer-events:auto !important;touch-action:manipulation !important}
   .mobile-page-search .search-wrap>.icon{left:11px !important;width:14px !important;height:14px !important;pointer-events:none !important}
   .mobile-page-search .search-results{pointer-events:auto !important;max-width:100% !important;box-sizing:border-box !important}
-
-  /* Keep the scrolling content below the fixed app header without creating a width extension. */
   .topbar,.main{box-sizing:border-box !important;min-width:0 !important;max-width:100vw !important}
   .app-shell.is-collapsed:not(.filament-open) .main{left:0 !important;right:0 !important;width:100% !important}
   .app-shell.is-collapsed.filament-open .main{left:64px !important;right:0 !important;width:calc(100% - 64px) !important}
   .app-shell:not(.is-collapsed) .main{left:0 !important;right:0 !important;width:100% !important}
-  .main{top:0 !important;overflow-y:auto !important;overflow-x:clip !important;padding:82px 12px 52px !important;max-width:100vw !important;min-width:0 !important;box-sizing:border-box !important;overscroll-behavior-x:none !important}
+  .main{top:0 !important;overflow-y:auto !important;overflow-x:clip !important;padding:80px 12px 52px !important;max-width:100vw !important;min-width:0 !important;box-sizing:border-box !important;overscroll-behavior-x:none !important}
   .main-inner{display:block !important;width:100% !important;max-width:620px !important;min-width:0 !important;margin-left:auto !important;margin-right:auto !important;box-sizing:border-box !important;overflow-x:clip !important}
-  .main-inner,.main-inner > *{min-width:0 !important}
   .dash-hero,.stages-index-hero,.stage-view,.lesson-view{margin-top:0 !important}
-
   body{font-size:13px !important;max-width:100% !important;overflow-x:hidden !important}
   .eyebrow,.stage-eyebrow,.lesson-eyebrow{font-size:.60rem !important;line-height:1.45 !important;letter-spacing:.075em !important}
   .dash-hero h1,.stages-index-hero h1,.stage-view h1,.lesson-view h1{font-size:clamp(1.42rem,6vw,1.75rem) !important;line-height:1.08 !important;letter-spacing:-.028em !important}
   .dash-hero p,.lead{font-size:.84rem !important;line-height:1.58 !important}
   .subheading{font-size:.95rem !important}.lsection h2{font-size:.92rem !important}.concept-card h2{font-size:1rem !important}.concept-card h4{font-size:.70rem !important}
   .lsection p,.concept-card p,.meta-block li,.lsection li,.concept-card li{font-size:.82rem !important;line-height:1.58 !important}.small,.rnote,.trow{font-size:.72rem !important}
-
   .dash-hero,.stages-index-hero,.stage-view,.lesson-view,.roadmap-flow,.stat-row,.stages-index-stats,.stage-meta-grid,.project-fields,.stage-index-grid,.meta-block,.concept-card,.tool-card,.project-card,.lsection,.exit-box,.flow-stage,.table-wrap{width:100% !important;max-width:100% !important;min-width:0 !important;box-sizing:border-box !important}
   .stat-row,.stages-index-stats{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:8px !important}.stage-meta-grid,.project-fields{grid-template-columns:minmax(0,1fr) !important}
-  .stat-box{min-height:76px !important;padding:12px !important;border-radius:14px !important}.stat-box .num{font-size:1.05rem !important}.stat-box .label{font-size:.67rem !important;line-height:1.3 !important}
-  .stages-index-hero{margin-bottom:22px !important}.stages-index-hero>p{max-width:100% !important;font-size:.82rem !important;line-height:1.58 !important}
+  .stat-box{min-height:76px !important;padding:12px !important;border-radius:14px !important}.stat-box .num{font-size:1.05rem !important}.stat-box .label{font-size:.67rem !important;line-height:1.3 !important}.stages-index-hero{margin-bottom:22px !important}.stages-index-hero>p{max-width:100% !important;font-size:.82rem !important;line-height:1.58 !important}
   .stage-index-grid{display:grid !important;grid-template-columns:minmax(0,1fr) !important;gap:10px !important}.stage-index-card{min-height:158px !important;padding:15px 15px 60px !important;border-radius:17px !important;overflow:hidden !important}.stage-card-num{min-width:43px !important;height:34px !important;font-size:.78rem !important}.stage-index-card h2{font-size:1rem !important;line-height:1.18 !important;margin:11px 0 6px !important}.stage-index-card p{font-size:.76rem !important;line-height:1.46 !important}.stage-card-meta{font-size:.63rem !important;margin-top:10px !important}.stage-index-card .stage-card-arrow{right:15px !important;bottom:15px !important;width:34px !important;height:34px !important;font-size:.9rem !important}.stage-card-progress{margin-top:9px !important;height:2px !important}
   .flow-stage{min-height:168px !important;padding:15px 55px 52px 14px !important;border-radius:14px !important}.flow-stage .fnum{min-width:46px !important;height:36px !important;font-size:.72rem !important}.flow-stage .ftitle{font-size:1rem !important;line-height:1.16 !important;margin-top:10px !important}.flow-stage .fobjective{font-size:.77rem !important;line-height:1.45 !important}.flow-stage .flow-arrow{right:14px !important;bottom:14px !important;width:34px !important;height:34px !important;font-size:.9rem !important}
-  .meta-block,.concept-card,.tool-card,.project-card,.lsection,.exit-box{padding:13px !important;border-radius:14px !important}
-  table{min-width:720px}.table-wrap{overflow-x:auto !important;max-width:100% !important}
-  .stat-box,.stage-index-card,.meta-block,.concept-card,.tool-card,.project-card,.lsection,.exit-box,.flow-stage,.content-link{overflow-wrap:anywhere;word-break:normal}
+  .meta-block,.concept-card,.tool-card,.project-card,.lsection,.exit-box{padding:13px !important;border-radius:14px !important}.table-wrap{overflow-x:auto !important;max-width:100% !important}.stat-box,.stage-index-card,.meta-block,.concept-card,.tool-card,.project-card,.lsection,.exit-box,.flow-stage,.content-link{overflow-wrap:anywhere;word-break:normal}
+}
+@media (max-width:520px){
+  .mobile-page-search{display:block !important}.desktop-topbar-search{display:none !important}.mobile-page-search .search-wrap{position:relative !important;inset:auto !important;transform:none !important;float:none !important;display:block !important}.mobile-page-search .search-wrap input{position:relative !important;display:block !important}.main-inner > .mobile-page-search + *{max-width:100% !important;min-width:0 !important}.main-inner,.main-inner > *{min-width:0 !important}.main{width:100% !important;max-width:100vw !important;min-width:0 !important}.app-shell.is-collapsed.filament-open .main{width:calc(100% - 64px) !important;max-width:calc(100vw - 64px) !important}
+}
+@media (min-width:521px){.mobile-page-search{display:none !important}.desktop-topbar-search{display:block !important}}
+@media (max-width:520px){body{background:#050509 !important}.app-shell{top:0 !important;min-height:100vh !important;border-top:0 !important;box-shadow:none !important}.topbar{top:0 !important}.main{top:0 !important;height:100vh !important}}
 
-  /* Collapsed rail remains available only when explicitly opened by the hamburger. */
-  .app-shell.is-collapsed .sidebar{width:64px !important;background:var(--surface) !important;overflow:hidden !important}
-  .app-shell.is-collapsed .rail-logo{height:50px !important;padding:0 !important;justify-content:center !important}
-  .app-shell.is-collapsed .rail-mark{width:34px !important;height:34px !important;border-radius:9px !important;font-size:.88rem !important}
-  .app-shell.is-collapsed .nav-top-item{min-height:38px !important;padding:8px !important;justify-content:center !important}
-  .app-shell.is-collapsed .nav-top-item .icon{width:17px !important;height:17px !important;stroke-width:1.7 !important}
-  .app-shell.is-collapsed .collapse-btn{width:42px !important;height:36px !important}
-  .app-shell.is-collapsed .collapse-btn .icon{width:18px !important;height:18px !important}
-  .app-shell.is-collapsed:not(.filament-open) .sidebar{width:0 !important;overflow:visible !important;background:transparent !important;border-right:0 !important;box-shadow:none !important;pointer-events:none !important}
-  .app-shell.is-collapsed:not(.filament-open) .rail-logo{display:none !important}
-  .app-shell.is-collapsed:not(.filament-open) .sidebar-scroll,.app-shell.is-collapsed:not(.filament-open) .sidebar-footer{display:none !important}
-  .app-shell.is-collapsed.filament-open .sidebar{width:64px !important;background:var(--surface) !important;border-right:1px solid var(--border) !important;box-shadow:6px 0 24px rgba(0,0,0,.24) !important;pointer-events:auto !important}
-  .app-shell.is-collapsed.filament-open .rail-logo{display:none !important}
-  .app-shell.is-collapsed.filament-open .sidebar-scroll{display:block !important;width:64px !important;box-sizing:border-box !important;overflow-x:hidden !important;padding-top:50px !important}
-  .app-shell.is-collapsed.filament-open .nav-section-label{display:none !important}
-  .app-shell.is-collapsed.filament-open .nav-top-item{width:48px !important;min-width:48px !important;margin:0 8px !important;padding:8px 0 !important;justify-content:center !important}
-  .app-shell.is-collapsed.filament-open .nav-top-item .icon{width:17px !important;height:17px !important}
-  .app-shell.is-collapsed.filament-open .sidebar-footer{display:block !important;left:0 !important;right:0 !important;bottom:0 !important;padding:8px 9px !important;z-index:10 !important;pointer-events:auto !important}
-  .app-shell.is-collapsed.filament-open .collapse-btn{width:42px !important;height:36px !important;margin:0 auto !important}
+/* MOBILE HEADER — isolated from the desktop topbar and sidebar geometry. */
+@media (max-width:520px){
+  .app-shell .rail-logo{position:fixed !important;top:0 !important;left:0 !important;width:100vw !important;max-width:100vw !important;height:64px !important;padding:0 58px 0 18px !important;margin:0 !important;display:flex !important;align-items:center !important;justify-content:flex-start !important;gap:10px !important;box-sizing:border-box !important;background:rgba(8,7,24,.92) !important;border-bottom:1px solid rgba(255,255,255,.08) !important;box-shadow:0 8px 22px rgba(0,0,0,.14),inset 0 -1px rgba(255,255,255,.035) !important;backdrop-filter:blur(14px) !important;-webkit-backdrop-filter:blur(14px) !important;z-index:96 !important;pointer-events:none !important;overflow:hidden !important}
+  .app-shell .rail-logo .rail-mark{width:34px !important;height:34px !important;flex:0 0 34px !important;border-radius:9px !important;font-size:.88rem !important}
+  .app-shell .rail-logo .rail-label{display:none !important}
+  .app-shell .rail-logo::after{content:'The ARD Curriculum' !important;display:block !important;min-width:0 !important;max-width:calc(100vw - 116px) !important;overflow:hidden !important;text-overflow:ellipsis !important;font-size:1rem !important;font-weight:650 !important;letter-spacing:-.02em !important;color:rgba(255,255,255,.94) !important;white-space:nowrap !important}
+  .app-shell .mobile-filament{top:15px !important;left:auto !important;right:14px !important;width:38px !important;height:34px !important;display:flex !important;align-items:center !important;justify-content:center !important;padding:0 !important;margin:0 !important;border:0 !important;border-radius:8px !important;background:transparent !important;box-shadow:none !important;backdrop-filter:none !important;-webkit-backdrop-filter:none !important;color:rgba(255,255,255,.94) !important;z-index:101 !important;pointer-events:auto !important}
+  .app-shell .mobile-filament::before{content:'☰' !important;display:block !important;font-size:22px !important;line-height:1 !important;font-family:Arial,sans-serif !important;color:currentColor !important}
+  .app-shell .mobile-filament span{display:none !important}
+  .app-shell:not(.is-collapsed) .mobile-filament{display:none !important}
+  .app-shell.is-collapsed.filament-open .rail-logo{width:64px !important;height:64px !important;padding:0 !important;justify-content:center !important;background:var(--surface) !important;border-bottom:1px solid var(--border) !important;box-shadow:none !important;backdrop-filter:none !important;z-index:91 !important}
+  .app-shell.is-collapsed.filament-open .rail-logo::after{display:none !important}
+  .app-shell.is-collapsed.filament-open .rail-logo .rail-mark{width:34px !important;height:34px !important}
+  .app-shell.is-collapsed.filament-open .rail-logo .rail-label{display:none !important}
+  .main{padding-top:80px !important}
+  .app-shell.is-collapsed.filament-open .main{padding-top:12px !important}
 }
 
-@media (min-width:521px){
-  .mobile-page-search{display:none !important}
-  .desktop-topbar-search{display:block !important}
+/* MOBILE PAGE IDENTITY — normal content flow, not a fixed header layer. */
+@media (max-width:520px){
+  .app-shell .rail-logo{display:none !important}
+  .main-inner{display:flex !important;flex-direction:column !important;align-items:stretch !important}
+  .main-inner::before{content:'ϟ  The ARD Curriculum' !important;order:1 !important;display:block !important;width:100% !important;margin:0 0 28px !important;padding:0 !important;text-align:center !important;color:rgba(255,255,255,.96) !important;font-size:1.32rem !important;font-weight:700 !important;letter-spacing:-.025em !important;line-height:1.2 !important;white-space:nowrap !important}
+  .main-inner > .mobile-page-search{order:3 !important;margin:0 0 22px !important}
+  .main-inner > .dash-hero{display:contents !important}
+  .main-inner > .dash-hero > .eyebrow{order:2 !important;margin:0 0 10px !important}
+  .main-inner > .dash-hero > h1{order:4 !important;margin:0 0 10px !important}
+  .main-inner > .dash-hero > p{order:5 !important;margin:0 0 26px !important}
+  .main-inner > .stat-row{order:6 !important}
+  .main-inner > .roadmap-flow{order:7 !important}
+  .main-inner > .stages-index-hero{display:block !important}
+  .main-inner > *:not(.mobile-page-search):not(.dash-hero):not(.stat-row):not(.roadmap-flow):not(.stages-index-hero){order:10}
+  .main{padding-top:28px !important}
+  .app-shell.is-collapsed.filament-open .main{padding-top:12px !important}
+}
+
+/* MOBILE NAV CONTROL — keep the fixed hamburger visually out of scrolled text. */
+@media (max-width:520px){
+  .app-shell.is-collapsed:not(.filament-open) .mobile-filament{
+    top:0 !important;
+    left:0 !important;
+    right:auto !important;
+    width:56px !important;
+    height:56px !important;
+    border-right:1px solid rgba(255,255,255,.08) !important;
+    border-bottom:1px solid rgba(255,255,255,.08) !important;
+    border-radius:0 0 14px 0 !important;
+    background:rgba(8,7,24,.96) !important;
+    box-shadow:0 6px 18px rgba(0,0,0,.18) !important;
+    backdrop-filter:blur(12px) !important;
+    -webkit-backdrop-filter:blur(12px) !important;
+  }
+  .app-shell.is-collapsed:not(.filament-open) .mobile-filament::before{font-size:24px !important}
+  .app-shell.is-collapsed.filament-open .mobile-filament{top:0 !important;left:0 !important;right:auto !important;width:64px !important;height:64px !important;background:var(--surface) !important;border-radius:0 !important;border-right:1px solid var(--border) !important;border-bottom:1px solid var(--border) !important;box-shadow:none !important}
+}
+
+/* MOBILE EDGE HANDLE — minimal replacement for the hamburger. */
+@media (max-width:520px){
+  .app-shell.is-collapsed:not(.filament-open) .mobile-filament{
+    top:50% !important;
+    left:0 !important;
+    right:auto !important;
+    width:22px !important;
+    height:128px !important;
+    transform:translateY(-50%) !important;
+    padding:0 !important;
+    border:0 !important;
+    border-radius:0 6px 6px 0 !important;
+    background:transparent !important;
+    box-shadow:none !important;
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+  }
+  .app-shell.is-collapsed:not(.filament-open) .mobile-filament::before{
+    content:'' !important;
+    display:block !important;
+    width:4px !important;
+    height:116px !important;
+    border-radius:4px !important;
+    background:rgba(255,255,255,.72) !important;
+    box-shadow:0 0 8px rgba(255,255,255,.10) !important;
+  }
+  .app-shell.is-collapsed:not(.filament-open) .mobile-filament:active::before{
+    background:rgba(255,255,255,.95) !important;
+  }
+  .app-shell.is-collapsed.filament-open .mobile-filament{
+    top:0 !important;
+    left:0 !important;
+    right:auto !important;
+    width:64px !important;
+    height:64px !important;
+    transform:none !important;
+    border-radius:0 !important;
+    background:var(--surface) !important;
+    border-right:1px solid var(--border) !important;
+    border-bottom:1px solid var(--border) !important;
+    box-shadow:none !important;
+  }
+  .app-shell.is-collapsed.filament-open .mobile-filament::before{
+    content:'☰' !important;
+    width:auto !important;
+    height:auto !important;
+    background:transparent !important;
+    box-shadow:none !important;
+    font-size:22px !important;
+    line-height:1 !important;
+    font-family:Arial,sans-serif !important;
+  }
 }

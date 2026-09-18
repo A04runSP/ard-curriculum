@@ -5,10 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0F0F1A" />
     <title>The ARD Curriculum</title>
+    <script>
+      (function(){
+        var mobile=window.matchMedia&&window.matchMedia('(max-width:520px)').matches;
+        var saved=localStorage.getItem('ard_curriculum_theme');
+        document.documentElement.dataset.ardInitialTheme=mobile?'dark':(saved||'dark');
+        document.body&&document.body.setAttribute('data-theme',mobile?'dark':(saved||'dark'));
+      })();
+    </script>
   </head>
   <body data-theme="dark">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="/src/resource-links.js"></script>
+    <script type="module" src="/src/stage14-ui.js"></script>
+    <script type="module" src="/src/accessibility-fixes.js"></script>
     <link rel="stylesheet" href="/src/glossy.css" />
     <link rel="stylesheet" href="/src/page-colors.css" />
     <link rel="stylesheet" href="/src/lesson-colors.css" />
@@ -16,5 +27,15 @@
     <link rel="stylesheet" href="/src/ard-mobile-reference.css" />
     <link rel="stylesheet" href="/src/premium-stages.css" />
     <link rel="stylesheet" href="/src/ard-premium-mobile.css" />
+    <link rel="stylesheet" href="/src/ard-glossy-environment.css" />
+    <link rel="stylesheet" href="/src/stage-heading-colors.css" />
+    <link rel="stylesheet" href="/src/card-layout.css" />
+    <link rel="stylesheet" href="/src/concept-note-colors.css" />
+    <link rel="stylesheet" href="/src/tools-heading-colors.css" />
+    <link rel="stylesheet" href="/src/ard-mobile-width-fix.css" />
+    <link rel="stylesheet" href="/src/sidebar-premium.css" />
+    <link rel="stylesheet" href="/src/ard-brand-step1.css" />
+    <link rel="stylesheet" href="/src/stage14-specialization.css" />
+    <link rel="stylesheet" href="/src/stage-meta-contrast.css" />
   </body>
 </html>

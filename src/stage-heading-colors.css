@@ -1,0 +1,25 @@
+/* ARD STAGE CARD HEADINGS
+   Stage colour should carry into the card title as well as the edge, badge and glow.
+   Keep body copy neutral for readability. */
+
+.stage-index-card h2{
+  color:var(--lesson-a) !important;
+  text-shadow:0 0 18px color-mix(in srgb,var(--lesson-a) 18%,transparent),0 3px 15px rgba(0,0,0,.52) !important;
+}
+
+.flow-stage .ftitle{
+  color:var(--flow-a) !important;
+  text-shadow:0 0 16px color-mix(in srgb,var(--flow-a) 18%,transparent),0 3px 15px rgba(0,0,0,.48) !important;
+}
+
+/* Slightly brighter on hover without turning the whole title white. */
+.stage-index-card:hover h2,
+.flow-stage:hover .ftitle{
+  color:var(--lesson-a,var(--flow-a)) !important;
+  text-shadow:0 0 22px color-mix(in srgb,var(--lesson-a,var(--flow-a)) 28%,transparent),0 3px 15px rgba(0,0,0,.5) !important;
+}
+
+@media(max-width:520px){
+  .stage-index-card h2{font-size:21px}
+  .flow-stage .ftitle{font-size:18px}
+}
