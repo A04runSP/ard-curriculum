@@ -74,3 +74,15 @@ body[data-theme="light"]{--ink:#F5F7FA;--surface:#FFFFFF;--surface-2:#EEF2F6;--s
 .stage-back-btn:hover{border-color:color-mix(in srgb,var(--lesson-a,#20E3E6) 60%,transparent);background:color-mix(in srgb,var(--lesson-a,#20E3E6) 12%,transparent)}
 @media(max-width:720px){.stage-index-grid{grid-template-columns:1fr}.stages-index-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stage-index-card{padding:19px}.stage-index-card p{min-height:0}}
 @media (max-width:520px){.stages-index{padding-bottom:32px}.stages-index-hero h1{font-size:34px}.stages-index-hero>p{font-size:14px;line-height:1.65}.stages-index-stats{gap:8px}.stage-index-card{border-radius:17px}.stage-index-card h2{font-size:19px}.stages-index-link{width:48px;justify-content:center;padding:9px;margin-left:8px}.stage-index-text,.stage-index-arrow{display:none}.stage-index-icon{width:32px}}
+
+/* Phone landscape: keep the fixed app chrome out of the content flow when the
+   browser viewport becomes short. This breakpoint is height-based because a
+   landscape phone can be wider than the normal mobile max-width breakpoint. */
+@media (orientation: landscape) and (max-height: 600px){
+  html,body,#root{height:100dvh}
+  .app-shell{height:100dvh}
+  .topbar{height:48px}
+  .brand{height:48px}
+  .rail-logo{height:48px}
+  .main{top:48px;padding-top:24px;scroll-padding-top:24px}
+}
