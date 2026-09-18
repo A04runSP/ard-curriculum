@@ -40,19 +40,25 @@ test('all Stage 1–15 resource entries expose clickable HTTP(S) URLs', async ({
       failures
     );
 
-    const lessonButtons = stage.locator('button.content-link').filter({ hasText: '→' });
+    const lessonHeading = stage.getByRole('heading', { name: 'Full Lessons in this Stage', exact: true });
+    const lessonButtons = lessonHeading.locator('xpath=following-sibling::button');
     const lessonCount = await lessonButtons.count();
 
     for (let lessonIndex = 0; lessonIndex < lessonCount; lessonIndex += 1) {
-      await lessonButtons.nth(lessonIndex).click();
+      const lessonButton = lessonButtons.nth(lessonIndex);
+      const lessonTitle = (await lessonButton.textContent())?.trim() || '(unnamed lesson)';
+      await lessonButton.click();
       const lesson = page.locator('.lesson-view');
-      await expect(lesson).toBeVisible();
+      await expect(
+        lesson,
+        `Stage ${stageIndex + 1}, lesson ${lessonIndex + 1} (${lessonTitle}) did not open`
+      ).toBeVisible();
 
       await assertLinks(
         lesson.locator('.lsection').filter({
           has: lesson.getByRole('heading', { name: '11. Resources', exact: true })
         }).locator('.resource-item'),
-        `Stage ${stageIndex + 1} lesson ${lessonIndex + 1}`,
+        `Stage ${stageIndex + 1} lesson ${lessonIndex + 1} (${lessonTitle})`,
         failures
       );
 
