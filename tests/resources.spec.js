@@ -124,19 +124,16 @@ test.describe('ARD Curriculum resource QA', () => {
       let stage = page.locator('.stage-view');
       await expect(stage).toBeVisible();
 
-      const conceptButtons = stage.locator('.content-link').filter({ hasText: '→' });
-      const buttons = await conceptButtons.allTextContents();
+      const conceptHeading = stage.getByRole('heading', { name: 'Concept Notes in this Stage', exact: true });
+      if (await conceptHeading.count()) {
+        const buttons = conceptHeading.locator('xpath=following-sibling::button');
+        const buttonCount = await buttons.count();
 
-      for (let conceptIndex = 0; conceptIndex < buttons.length; conceptIndex += 1) {
-        const currentStage = page.locator('.stage-view');
-        const conceptHeading = currentStage.getByRole('heading', { name: 'Concept Notes in this Stage', exact: true });
-        if (!(await conceptHeading.count())) break;
-
-        const concepts = currentStage.locator('.content-link').filter({ hasText: '→' });
-        const count = await concepts.count();
-        if (conceptIndex >= count) break;
-
-        await concepts.nth(conceptIndex).click();
+        for (let conceptIndex = 0; conceptIndex < buttonCount; conceptIndex += 1) {
+          const currentStage = page.locator('.stage-view');
+          const currentHeading = currentStage.getByRole('heading', { name: 'Concept Notes in this Stage', exact: true });
+          const concepts = currentHeading.locator('xpath=following-sibling::button');
+          await concepts.nth(conceptIndex).click();
         await expect(page.locator('.concept-card')).toBeVisible();
 
         try {
@@ -145,8 +142,9 @@ test.describe('ARD Curriculum resource QA', () => {
           failures.push(error.message);
         }
 
-        await page.locator('.concept-card').locator('xpath=following-sibling::button[1]').click();
-        await expect(page.locator('.stage-view')).toBeVisible();
+          await page.locator('.concept-card').locator('xpath=following-sibling::button[1]').click();
+          await expect(page.locator('.stage-view')).toBeVisible();
+        }
       }
 
       await page.locator('.stage-view').getByRole('button', { name: '← All 15 stages', exact: true }).click();
