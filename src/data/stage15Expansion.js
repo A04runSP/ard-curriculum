@@ -3,7 +3,6 @@ import { lessonB8 } from "./lessonB8.js";
 import { concept3 } from "./concept3.js";
 import { stage15Metadata, stage15ConceptNotes } from "./stage15Metadata.js";
 import { stage15CareerLessons, stage15CareerConceptNotes } from "./stage15CareerExpansion.js";
-import "./stage15CapstoneMapping.js";
 
 // Stage 15 lesson expansion is synchronous. Metadata is enriched before
 // curriculum.js maps the Professional stage, keeping the data timing-safe.
