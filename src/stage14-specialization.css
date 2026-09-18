@@ -1,22 +1,22 @@
-.stage14-specialization-planner{margin:28px 0 34px;padding:24px;border:1px solid rgba(255,255,255,.1);border-radius:20px;background:linear-gradient(145deg,rgba(255,209,102,.08),rgba(255,255,255,.025));box-shadow:0 18px 50px rgba(0,0,0,.18)}
+.stage14-specialization-planner{margin:28px 0 34px;padding:24px;border:1px solid color-mix(in srgb,var(--lesson-a,#FFD166) 28%,rgba(255,255,255,.1));border-radius:20px;background:radial-gradient(420px 260px at 0% 0%,color-mix(in srgb,var(--lesson-a,#FFD166) 12%,transparent),transparent 72%),radial-gradient(360px 240px at 100% 100%,color-mix(in srgb,var(--lesson-b,#FFE6A3) 8%,transparent),transparent 74%),linear-gradient(145deg,rgba(38,34,55,.68),rgba(10,11,24,.56));box-shadow:0 22px 50px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.10)}
 .stage14-planner-eyebrow{font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;font-weight:800;opacity:.7;margin-bottom:7px}
 .stage14-specialization-planner h2{margin:0 0 9px;font-size:1.35rem}
 .stage14-planner-rule{margin:0 0 22px;line-height:1.65;opacity:.82}
-.stage14-core-block{padding:18px;border-radius:16px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);margin-bottom:18px}
+.stage14-core-block{padding:18px;border-radius:16px;background:linear-gradient(145deg,color-mix(in srgb,var(--lesson-a,#FFD166) 7%,rgba(255,255,255,.035)),rgba(255,255,255,.02));border:1px solid color-mix(in srgb,var(--lesson-a,#FFD166) 20%,rgba(255,255,255,.08));margin-bottom:18px}
 .stage14-block-title{display:flex;align-items:center;gap:10px;margin-bottom:13px}
 .stage14-block-title span{font-size:.68rem;font-weight:900;letter-spacing:.12em;padding:5px 8px;border-radius:7px;background:rgba(57,213,198,.14);color:#82f5d6}
 .stage14-block-title strong{font-size:.9rem}
 .stage14-chip-grid{display:grid;gap:8px}
-.stage14-lesson-chip{width:100%;text-align:left;border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:11px 13px;background:rgba(255,255,255,.035);color:inherit;cursor:pointer;font:inherit;transition:transform .16s ease,border-color .16s ease,background .16s ease}
+.stage14-lesson-chip{width:100%;text-align:left;border:1px solid color-mix(in srgb,var(--lesson-a,#FFD166) 18%,rgba(255,255,255,.1));border-radius:10px;padding:11px 13px;background:linear-gradient(135deg,color-mix(in srgb,var(--lesson-a,#FFD166) 6%,rgba(255,255,255,.035)),rgba(255,255,255,.025));color:inherit;cursor:pointer;font:inherit;transition:transform .16s ease,border-color .16s ease,background .16s ease;box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
 .stage14-lesson-chip:hover{transform:translateY(-1px);border-color:rgba(255,209,102,.45);background:rgba(255,209,102,.08)}
 .stage14-lesson-chip.core{border-color:rgba(57,213,198,.18)}
 .stage14-track-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.stage14-track-card{padding:18px;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.09);min-width:0}
+.stage14-track-card{padding:18px;border-radius:16px;background:radial-gradient(220px 150px at 0% 0%,color-mix(in srgb,var(--lesson-a,#FFD166) 10%,transparent),transparent 72%),linear-gradient(145deg,color-mix(in srgb,var(--lesson-a,#FFD166) 5%,rgba(255,255,255,.03)),rgba(255,255,255,.02));border:1px solid color-mix(in srgb,var(--lesson-a,#FFD166) 22%,rgba(255,255,255,.09));min-width:0;box-shadow:0 14px 30px rgba(0,0,0,.20),inset 0 1px 0 rgba(255,255,255,.07)}
 .stage14-track-number{font-size:.7rem;font-weight:900;letter-spacing:.12em;opacity:.55;margin-bottom:7px}
 .stage14-track-card h3{margin:0 0 8px;font-size:1rem}
 .stage14-track-card>p{margin:0 0 14px;line-height:1.55;font-size:.88rem;opacity:.78}
 .stage14-track-lessons{display:grid;gap:7px;margin-bottom:14px}
-.stage14-track-project{display:grid;gap:4px;padding-top:12px;border-top:1px solid rgba(255,255,255,.08);font-size:.78rem;line-height:1.5;opacity:.8}
+.stage14-track-project{display:grid;gap:4px;padding-top:12px;border-top:1px solid color-mix(in srgb,var(--lesson-a,#FFD166) 16%,rgba(255,255,255,.08));font-size:.78rem;line-height:1.5;opacity:.8}
 .stage14-track-project strong{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;opacity:.7}
 .stage14-capstone-note{margin-top:16px;padding:13px 15px;border-radius:12px;background:rgba(255,209,102,.07);border:1px solid rgba(255,209,102,.15);font-size:.84rem;line-height:1.55}
 @media(max-width:900px){.stage14-track-grid{grid-template-columns:1fr 1fr}}
