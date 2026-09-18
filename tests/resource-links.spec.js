@@ -1,41 +1,85 @@
 import { test, expect } from '@playwright/test';
 
+const HTTP_URL = /^https?:\/\//i;
+
+async function assertLinks(locator, label, failures) {
+  const entries = await locator.evaluateAll(items =>
+    items.map(item => ({
+      text: item.textContent?.trim() || '',
+      href: item.querySelector('a')?.getAttribute('href') || ''
+    }))
+  );
+
+  for (const entry of entries) {
+    if (!HTTP_URL.test(entry.href)) {
+      failures.push(`${label}: ${entry.text || '(unnamed resource)'} → ${entry.href || '(no href)'}`);
+    }
+  }
+}
+
 test('all Stage 1–15 resource entries expose clickable HTTP(S) URLs', async ({ page }) => {
-  await page.goto('/');
-  await page.evaluate(() => localStorage.clear());
-  await page.reload();
-
-  const stages = page.locator('.flow-stage');
-  await expect(stages).toHaveCount(15);
-
   const failures = [];
 
   for (let stageIndex = 0; stageIndex < 15; stageIndex += 1) {
+    await page.goto('/');
+    await page.evaluate(() => localStorage.clear());
+    await page.reload();
+
+    const stages = page.locator('.flow-stage');
+    await expect(stages).toHaveCount(15);
+
     await stages.nth(stageIndex).click();
     const stage = page.locator('.stage-view');
     await expect(stage).toBeVisible();
 
-    const resourceBlocks = stage.locator('.meta-block').filter({
-      has: stage.getByRole('heading', { name: 'Resources', exact: true })
-    });
+    await assertLinks(
+      stage.locator('.meta-block').filter({
+        has: stage.getByRole('heading', { name: 'Resources', exact: true })
+      }).locator('li'),
+      `Stage ${stageIndex + 1}`,
+      failures
+    );
 
-    if (await resourceBlocks.count()) {
-      const entries = await resourceBlocks.locator('li').evaluateAll(items =>
-        items.map(li => ({
-          text: li.textContent?.trim() || '',
-          href: li.querySelector('a')?.getAttribute('href') || ''
-        }))
+    const lessonButtons = stage.locator('button.content-link').filter({ hasText: '→' });
+    const lessonCount = await lessonButtons.count();
+
+    for (let lessonIndex = 0; lessonIndex < lessonCount; lessonIndex += 1) {
+      await lessonButtons.nth(lessonIndex).click();
+      const lesson = page.locator('.lesson-view');
+      await expect(lesson).toBeVisible();
+
+      await assertLinks(
+        lesson.locator('.lsection').filter({
+          has: lesson.getByRole('heading', { name: '11. Resources', exact: true })
+        }).locator('.resource-item'),
+        `Stage ${stageIndex + 1} lesson ${lessonIndex + 1}`,
+        failures
       );
 
-      for (const entry of entries) {
-        if (!/^https?:\/\//i.test(entry.href)) {
-          failures.push(`Stage ${stageIndex + 1}: ${entry.text || '(unnamed resource)'} → ${entry.href || '(no href)'}`);
-        }
-      }
+      await lesson.getByRole('button', { name: new RegExp(`^← .+`) }).first().click();
+      await expect(page.locator('.stage-view')).toBeVisible();
     }
 
-    await stage.getByRole('button', { name: '← All 15 stages', exact: true }).click();
-    await expect(page.locator('.flow-stage')).toHaveCount(15);
+    const conceptHeading = stage.getByRole('heading', { name: 'Concept Notes in this Stage', exact: true });
+    if (await conceptHeading.count()) {
+      const conceptButtons = conceptHeading.locator('xpath=following-sibling::button');
+      const conceptCount = await conceptButtons.count();
+
+      for (let conceptIndex = 0; conceptIndex < conceptCount; conceptIndex += 1) {
+        await conceptButtons.nth(conceptIndex).click();
+        const concept = page.locator('.concept-card');
+        await expect(concept).toBeVisible();
+
+        await assertLinks(
+          concept.locator('h4').filter({ hasText: 'Resource' }).locator('xpath=following-sibling::p[1]'),
+          `Stage ${stageIndex + 1} concept ${conceptIndex + 1}`,
+          failures
+        );
+
+        await concept.getByRole('button', { name: 'Back to stage', exact: true }).click();
+        await expect(page.locator('.stage-view')).toBeVisible();
+      }
+    }
   }
 
   expect(failures, 'Resources missing clickable HTTP(S) URLs').toEqual([]);
