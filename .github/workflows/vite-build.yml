@@ -34,3 +34,6 @@ jobs:
 
       - name: Run mobile QA
         run: npm run test:mobile
+
+      - name: Run resource QA
+        run: npm run test:resources
