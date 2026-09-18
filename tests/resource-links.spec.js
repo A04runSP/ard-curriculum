@@ -28,7 +28,7 @@ test('all Stage 1–15 resource entries expose clickable HTTP(S) URLs', async ({
       );
 
       for (const entry of entries) {
-        if (!/^https?:\\/\\//i.test(entry.href)) {
+        if (!/^https?:\/\//i.test(entry.href)) {
           failures.push(`Stage ${stageIndex + 1}: ${entry.text || '(unnamed resource)'} → ${entry.href || '(no href)'}`);
         }
       }
