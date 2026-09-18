@@ -41,7 +41,7 @@ test('all Stage 1–15 resource entries expose clickable HTTP(S) URLs', async ({
     );
 
     const lessonHeading = stage.getByRole('heading', { name: 'Full Lessons in this Stage', exact: true });
-    const lessonButtons = lessonHeading.locator('xpath=following-sibling::button');
+    const lessonButtons = stage.locator('button.content-link').filter({\n      has: stage.getByRole('heading', { name: 'Full Lessons in this Stage', exact: true })\n    });
     const lessonCount = await lessonButtons.count();
 
     for (let lessonIndex = 0; lessonIndex < lessonCount; lessonIndex += 1) {
@@ -68,7 +68,7 @@ test('all Stage 1–15 resource entries expose clickable HTTP(S) URLs', async ({
 
     const conceptHeading = stage.getByRole('heading', { name: 'Concept Notes in this Stage', exact: true });
     if (await conceptHeading.count()) {
-      const conceptButtons = conceptHeading.locator('xpath=following-sibling::button');
+      const conceptButtons = stage.locator('button.content-link').filter({\n        has: stage.getByRole('heading', { name: 'Concept Notes in this Stage', exact: true })\n      });
       const conceptCount = await conceptButtons.count();
 
       for (let conceptIndex = 0; conceptIndex < conceptCount; conceptIndex += 1) {
