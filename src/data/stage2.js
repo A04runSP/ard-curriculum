@@ -1,7 +1,4 @@
-import "./stage10Expansion.js";
-import "./stage11Expansion.js";
-import "./stage12Expansion.js";
-import "./stage13Expansion.js";
+import "./curriculumExpansions.js";
 
 export const stage2 = [
 {
