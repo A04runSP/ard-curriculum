@@ -79,7 +79,7 @@ test('all Stage 1–15 resource entries expose clickable HTTP(S) URLs', async ({
           failures
         );
 
-        await concept.getByRole('button', { name: /Back to stage/i }).click();
+        await page.getByRole('button', { name: 'Back to stage', exact: true }).click();
         await expect(page.locator('.stage-view')).toBeVisible();
       }
     }
