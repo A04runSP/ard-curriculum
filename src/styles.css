@@ -6,9 +6,9 @@
 body[data-theme="light"]{--ink:#F5F7FA;--surface:#FFFFFF;--surface-2:#EEF2F6;--surface-3:#E5EAF0;--border:#D6DEE8;--text:#162033;--muted:#647187;--teal:#007C70;--teal-dim:#B9DDD7}body[data-theme="light"] .topbar{background:rgba(245,247,250,.94)}body[data-theme="light"] pre{background:#F0F3F7;color:#243247}
 .app-shell.is-collapsed .sidebar{width:76px}.app-shell.is-collapsed .topbar{left:76px}.app-shell.is-collapsed .main{left:76px}.app-shell.is-collapsed .rail-logo{justify-content:center;padding:0}.app-shell.is-collapsed .rail-label,.app-shell.is-collapsed .nav-section-label,.app-shell.is-collapsed .nav-top-item span,.app-shell.is-collapsed .stage-title,.app-shell.is-collapsed .stage-caret,.app-shell.is-collapsed .stage-body,.app-shell.is-collapsed .collapse-btn span{display:none}.app-shell.is-collapsed .nav-top-item{justify-content:center;padding:10px}.app-shell.is-collapsed .stage-header{justify-content:center;padding:9px 4px}.app-shell.is-collapsed .stage-num{width:30px;height:30px}.app-shell.is-collapsed .collapse-btn{width:46px;margin:auto}.app-shell.is-collapsed .collapse-btn .icon{transform:rotate(180deg)}
 @media(max-width:860px){.topbar{left:76px}.main{left:76px;padding:32px 24px 72px}.brand{left:0;width:76px;justify-content:center}.brand .full{display:none}.brand .compact{display:inline}.stat-row{grid-template-columns:1fr 1fr}.stage-meta-grid,.project-fields{grid-template-columns:1fr}.progress-chip{display:none}}
-@media(max-width:520px){.sidebar{width:64px;overflow:hidden}.topbar{left:64px;padding:0 10px;gap:8px}.brand{width:64px}.main{left:64px;padding:28px 16px 60px}.search-wrap input{font-size:.78rem}.dash-hero h1{font-size:1.45rem}.flow-stage{grid-template-columns:36px 1fr 12px}.mark-complete-bar{flex-direction:column}.btn{width:100%}.rail-logo{justify-content:center;padding:0}.rail-label,.nav-section-label,.nav-top-item span,.stage-title,.stage-caret,.stage-body,.collapse-btn span{display:none}.nav-top-item{justify-content:center;padding:10px}.stage-header{justify-content:center;padding:9px 4px}.stage-num{width:30px;height:30px}.collapse-btn{width:46px;margin:auto}}
+@media (max-width:520px){.sidebar{width:64px;overflow:hidden}.topbar{left:64px;padding:0 10px;gap:8px}.brand{width:64px}.main{left:64px;padding:28px 16px 60px}.search-wrap input{font-size:.78rem}.dash-hero h1{font-size:1.45rem}.flow-stage{grid-template-columns:36px 1fr 12px}.mark-complete-bar{flex-direction:column}.btn{width:100%}.rail-logo{justify-content:center;padding:0}.rail-label,.nav-section-label,.nav-top-item span,.stage-title,.stage-caret,.stage-body,.collapse-btn span{display:none}.nav-top-item{justify-content:center;padding:10px}.stage-header{justify-content:center;padding:9px 4px}.stage-num{width:30px;height:30px}.collapse-btn{width:46px;margin:auto}}
 /* Mobile navigation: the expanded rail overlays the workspace instead of resizing it. */
-@media(max-width:520px){
+@media (max-width:520px){
   .app-shell.is-collapsed .sidebar{width:64px;box-shadow:none}
   .app-shell.is-collapsed .topbar,.app-shell.is-collapsed .main{left:64px}
   .app-shell:not(.is-collapsed) .sidebar{width:260px;overflow:hidden;box-shadow:18px 0 45px rgba(0,0,0,.42)}
@@ -25,9 +25,9 @@ body[data-theme="light"]{--ink:#F5F7FA;--surface:#FFFFFF;--surface-2:#EEF2F6;--s
   .app-shell:not(.is-collapsed) .sidebar-scroll{overflow:auto}
   .app-shell:not(.is-collapsed) .stage-body{display:block}
 }
-@media(max-width:520px){.mark-complete-bar .btn{min-height:44px}}
+@media (max-width:520px){.mark-complete-bar .btn{min-height:44px}}
 /* Mobile navigation state: filamentOpen expands the collapsed rail as an overlay without shifting content. */
-@media(max-width:520px){
+@media (max-width:520px){
   .app-shell.filament-open .sidebar{width:260px;overflow:hidden;box-shadow:18px 0 45px rgba(0,0,0,.42)}
   .app-shell.filament-open .rail-logo{justify-content:flex-start;padding:0 18px}
   .app-shell.filament-open .rail-label,.app-shell.filament-open .nav-section-label,.app-shell.filament-open .nav-top-item span,.app-shell.filament-open .stage-title,.app-shell.filament-open .stage-caret,.app-shell.filament-open .collapse-btn span{display:initial}
@@ -42,7 +42,7 @@ body[data-theme="light"]{--ink:#F5F7FA;--surface:#FFFFFF;--surface-2:#EEF2F6;--s
   .app-shell.filament-open .main::before{content:"";position:fixed;z-index:55;top:56px;left:64px;right:0;bottom:0;background:rgba(4,8,16,.52);backdrop-filter:blur(2px);pointer-events:auto}
 }
 \n/* Mobile outside-click layer closes the expanded navigation. */
-@media(max-width:520px){
+@media (max-width:520px){
   .app-shell:not(.is-collapsed) .main::before{pointer-events:auto}
 }
 
@@ -73,4 +73,4 @@ body[data-theme="light"]{--ink:#F5F7FA;--surface:#FFFFFF;--surface-2:#EEF2F6;--s
 .stage-back-btn{display:inline-flex;align-items:center;gap:7px;margin:0 0 18px;padding:8px 12px;border:1px solid color-mix(in srgb,var(--lesson-a,#20E3E6) 30%,rgba(255,255,255,.08));border-radius:10px;background:color-mix(in srgb,var(--lesson-a,#20E3E6) 7%,transparent);color:var(--lesson-a,#20E3E6);font-size:12px;font-weight:700;cursor:pointer}
 .stage-back-btn:hover{border-color:color-mix(in srgb,var(--lesson-a,#20E3E6) 60%,transparent);background:color-mix(in srgb,var(--lesson-a,#20E3E6) 12%,transparent)}
 @media(max-width:720px){.stage-index-grid{grid-template-columns:1fr}.stages-index-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stage-index-card{padding:19px}.stage-index-card p{min-height:0}}
-@media(max-width:520px){.stages-index{padding-bottom:32px}.stages-index-hero h1{font-size:34px}.stages-index-hero>p{font-size:14px;line-height:1.65}.stages-index-stats{gap:8px}.stage-index-card{border-radius:17px}.stage-index-card h2{font-size:19px}.stages-index-link{width:48px;justify-content:center;padding:9px;margin-left:8px}.stage-index-text,.stage-index-arrow{display:none}.stage-index-icon{width:32px}}
+@media (max-width:520px){.stages-index{padding-bottom:32px}.stages-index-hero h1{font-size:34px}.stages-index-hero>p{font-size:14px;line-height:1.65}.stages-index-stats{gap:8px}.stage-index-card{border-radius:17px}.stage-index-card h2{font-size:19px}.stages-index-link{width:48px;justify-content:center;padding:9px;margin-left:8px}.stage-index-text,.stage-index-arrow{display:none}.stage-index-icon{width:32px}}
