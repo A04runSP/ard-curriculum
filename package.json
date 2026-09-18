@@ -10,7 +10,7 @@
     "test:smoke": "playwright test tests/smoke.spec.js",
     "test:a11y": "playwright test tests/accessibility.spec.js",
     "test:mobile": "playwright test tests/mobile.spec.js",
-    "test:resources": "playwright test tests/resources.spec.js"
+    "test:resources": "playwright test tests/resource-links.spec.js"
   },
   "dependencies": {
     "vite": "^7.1.5",
