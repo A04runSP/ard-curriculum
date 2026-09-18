@@ -29,30 +29,31 @@ test.describe('ARD Curriculum application smoke tests', () => {
   });
 
   test('concept view is reachable from a stage', async ({ page }) => {
-    await page.locator('.flow-stage').nth(8).click();
-    const stage = page.locator('.stage-view');
-    const arrowButtons = stage.locator('button').filter({ hasText: '→' });
-    const count = await arrowButtons.count();
-    expect(count).toBeGreaterThan(1);
+    await page.locator('.flow-stage').first().click();
 
-    const conceptText = await arrowButtons.last().innerText();
-    const label = conceptText.replace(/^→\s*/, '').trim();
-    await arrowButtons.last().click();
-    await expect(page.locator('body')).toContainText(label);
+    const stage = page.locator('.stage-view');
+    const conceptHeading = stage.getByRole('heading', { name: 'Concept Notes in this Stage', exact: true });
+    await expect(conceptHeading).toBeVisible();
+
+    const conceptButton = conceptHeading.locator('xpath=following-sibling::button[1]');
+    const label = (await conceptButton.innerText()).replace(/^→\s*/, '').trim();
+    await conceptButton.click();
+
+    await expect(page.locator('.concept-card h2')).toHaveText(label);
   });
 
-  test('search returns a navigable lesson or resource result', async ({ page }) => {
+  test('search returns a navigable lesson result', async ({ page }) => {
     const search = page.locator('.desktop-topbar-search input[placeholder*="Search lessons"]');
-    await search.fill('PostgreSQL');
+    await search.fill('Indexes');
 
     const results = page.locator('.desktop-topbar-search .search-results.open');
     await expect(results).toBeVisible();
-    expect(await results.locator('.search-result-item').count()).toBeGreaterThan(0);
 
-    const result = results.locator('.search-result-item').filter({ hasText: 'PostgreSQL' }).first();
+    const result = results.locator('.search-result-item').filter({ hasText: 'Indexes, Selectivity & Query Performance' }).first();
     await expect(result).toBeVisible();
     await result.click();
-    await expect(page.locator('body')).toContainText('PostgreSQL');
+
+    await expect(page.getByRole('heading', { name: 'Indexes, Selectivity & Query Performance', exact: true })).toBeVisible();
   });
 
   test('lesson completion updates progress and persists', async ({ page }) => {
