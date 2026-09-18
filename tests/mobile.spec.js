@@ -51,7 +51,7 @@ test.describe('ARD Curriculum mobile QA', () => {
         await expect(page.locator('.lesson-view')).toBeVisible();
         await assertNoHorizontalOverflow(page);
 
-        await page.goBack();
+        await page.locator('.lesson-back-btn').click();
         await expect(page.locator('.stage-view')).toBeVisible();
 
         const conceptHeading = stage.getByRole('heading', { name: 'Concept Notes in this Stage', exact: true });
