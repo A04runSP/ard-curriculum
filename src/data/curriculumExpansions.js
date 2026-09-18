@@ -6,5 +6,6 @@ import "./stage10Expansion.js";
 import "./stage11Expansion.js";
 import "./stage12Gaps.js";
 import "./stage12Expansion.js";
+import "./stage15Expansion.js";
 import "./stage14Expansion.js";
 import "./stage13Expansion.js";
