@@ -25,7 +25,22 @@ body[data-theme="light"]{--ink:#F5F7FA;--surface:#FFFFFF;--surface-2:#EEF2F6;--s
   .app-shell:not(.is-collapsed) .sidebar-scroll{overflow:auto}
   .app-shell:not(.is-collapsed) .stage-body{display:block}
 }
-/* Mobile outside-click layer closes the expanded navigation. */
+/* Mobile navigation state: filamentOpen expands the collapsed rail as an overlay without shifting content. */
+@media(max-width:520px){
+  .app-shell.filament-open .sidebar{width:260px;overflow:hidden;box-shadow:18px 0 45px rgba(0,0,0,.42)}
+  .app-shell.filament-open .rail-logo{justify-content:flex-start;padding:0 18px}
+  .app-shell.filament-open .rail-label,.app-shell.filament-open .nav-section-label,.app-shell.filament-open .nav-top-item span,.app-shell.filament-open .stage-title,.app-shell.filament-open .stage-caret,.app-shell.filament-open .collapse-btn span{display:initial}
+  .app-shell.filament-open .nav-section-label{display:block}
+  .app-shell.filament-open .nav-top-item{justify-content:flex-start;padding:9px 10px}
+  .app-shell.filament-open .stage-header{justify-content:flex-start;padding:8px 10px}
+  .app-shell.filament-open .stage-num{width:24px;height:24px}
+  .app-shell.filament-open .collapse-btn{width:100%;margin:0}
+  .app-shell.filament-open .collapse-btn span{display:inline}
+  .app-shell.filament-open .sidebar-scroll{overflow:auto}
+  .app-shell.filament-open .stage-body{display:block}
+  .app-shell.filament-open .main::before{content:"";position:fixed;z-index:55;top:56px;left:64px;right:0;bottom:0;background:rgba(4,8,16,.52);backdrop-filter:blur(2px);pointer-events:auto}
+}
+\n/* Mobile outside-click layer closes the expanded navigation. */
 @media(max-width:520px){
   .app-shell:not(.is-collapsed) .main::before{pointer-events:auto}
 }
